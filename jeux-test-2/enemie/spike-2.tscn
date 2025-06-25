@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfbhu5obw76i6"]
+
+[ext_resource type="Texture2D" uid="uid://dvpoby8a77vua" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0068.png" id="1_6pi6m"]
+[ext_resource type="Script" uid="uid://crqfofx0o2qqp" path="res://enemie/spike-2.gd" id="1_uce32"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uce32"]
+size = Vector2(18, 9)
+
+[node name="spike-2" type="Area2D"]
+script = ExtResource("1_uce32")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6pi6m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_uce32")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(0, 4.5)
+scale = Vector2(1, 0.55)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
