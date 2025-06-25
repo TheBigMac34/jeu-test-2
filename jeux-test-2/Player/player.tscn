@@ -38,3 +38,9 @@ animation = &"player 1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_sweqy")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.025, 2.025)
+limit_left = -575
+limit_bottom = 20
+position_smoothing_enabled = true
