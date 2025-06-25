@@ -339,7 +339,7 @@ texture_region_size = Vector2i(19, 19)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_yfilb")
 
-[sub_resource type="FontFile" id="FontFile_7t2xu"]
+[sub_resource type="FontFile" id="FontFile_xagii"]
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
@@ -390,56 +390,16 @@ cache/0/81/0/descent = 0.0
 cache/0/81/0/underline_position = 0.0
 cache/0/81/0/underline_thickness = 0.0
 cache/0/81/0/scale = 1.0
-cache/0/86/0/ascent = 0.0
-cache/0/86/0/descent = 0.0
-cache/0/86/0/underline_position = 0.0
-cache/0/86/0/underline_thickness = 0.0
-cache/0/86/0/scale = 1.0
-cache/0/91/0/ascent = 0.0
-cache/0/91/0/descent = 0.0
-cache/0/91/0/underline_position = 0.0
-cache/0/91/0/underline_thickness = 0.0
-cache/0/91/0/scale = 1.0
-cache/0/96/0/ascent = 0.0
-cache/0/96/0/descent = 0.0
-cache/0/96/0/underline_position = 0.0
-cache/0/96/0/underline_thickness = 0.0
-cache/0/96/0/scale = 1.0
-cache/0/101/0/ascent = 0.0
-cache/0/101/0/descent = 0.0
-cache/0/101/0/underline_position = 0.0
-cache/0/101/0/underline_thickness = 0.0
-cache/0/101/0/scale = 1.0
-cache/0/106/0/ascent = 0.0
-cache/0/106/0/descent = 0.0
-cache/0/106/0/underline_position = 0.0
-cache/0/106/0/underline_thickness = 0.0
-cache/0/106/0/scale = 1.0
-cache/0/111/0/ascent = 0.0
-cache/0/111/0/descent = 0.0
-cache/0/111/0/underline_position = 0.0
-cache/0/111/0/underline_thickness = 0.0
-cache/0/111/0/scale = 1.0
-cache/0/116/0/ascent = 0.0
-cache/0/116/0/descent = 0.0
-cache/0/116/0/underline_position = 0.0
-cache/0/116/0/underline_thickness = 0.0
-cache/0/116/0/scale = 1.0
-cache/0/121/0/ascent = 0.0
-cache/0/121/0/descent = 0.0
-cache/0/121/0/underline_position = 0.0
-cache/0/121/0/underline_thickness = 0.0
-cache/0/121/0/scale = 1.0
-cache/0/100/0/ascent = 0.0
-cache/0/100/0/descent = 0.0
-cache/0/100/0/underline_position = 0.0
-cache/0/100/0/underline_thickness = 0.0
-cache/0/100/0/scale = 1.0
+cache/0/64/0/ascent = 0.0
+cache/0/64/0/descent = 0.0
+cache/0/64/0/underline_position = 0.0
+cache/0/64/0/underline_thickness = 0.0
+cache/0/64/0/scale = 1.0
 
-[sub_resource type="LabelSettings" id="LabelSettings_xagii"]
-font = SubResource("FontFile_7t2xu")
-font_size = 100
-font_color = Color(0.585062, 0.585062, 0.585062, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_7t2xu"]
+font = SubResource("FontFile_xagii")
+font_size = 64
+font_color = Color(0, 0, 0, 1)
 
 [node name="Lvl 1_1" type="Node2D"]
 script = ExtResource("1_xagii")
@@ -459,28 +419,18 @@ tile_set = SubResource("TileSet_m1jwn")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ui" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/ui"]
-layout_mode = 1
+[node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -153.0
-offset_top = 122.0
-offset_right = 9.0
-offset_bottom = 256.0
+offset_left = -46.0
+offset_top = 4.0
+offset_right = 109.0
+offset_bottom = 91.0
 grow_horizontal = 0
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.29, 0.29)
 text = "300"
-label_settings = SubResource("LabelSettings_xagii")
+label_settings = SubResource("LabelSettings_7t2xu")
 horizontal_alignment = 2
 
 [node name="Area2D2" parent="." instance=ExtResource("4_ovx1c")]
