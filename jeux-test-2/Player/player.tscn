@@ -52,7 +52,6 @@ limit_bottom = 20
 position_smoothing_enabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="TimerLabel" type="Label" parent="CanvasLayer"]
 anchors_preset = 1

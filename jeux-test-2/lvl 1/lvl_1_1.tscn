@@ -352,7 +352,6 @@ tile_set = SubResource("TileSet_ovx1c")
 position = Vector2(-359, -93)
 
 [node name="ui" parent="." instance=ExtResource("4_7t2xu")]
-visible = false
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1

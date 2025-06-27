@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@onready var over = preload("res://Game Over/Game Over.tscn")
 @onready var animation = $AnimatedSprite2D
 @onready var timer_label = $CanvasLayer/TimerLabel
 @onready var timer = $CanvasLayer/Timer
@@ -8,7 +9,7 @@ var time_left := 300
 var invincible = false
 var blink_timer := 0.0
 
-const INVINCIBILITY_TIME := 5.0
+const INVINCIBILITY_TIME := 0.0
 const BLINK_INTERVAL := 0.1
 const SPEED = 200
 const JUMP_VELOCITY = -300
@@ -74,6 +75,9 @@ func take_damage():
 	if invincible:
 		return
 	Global.perdre_vie()
+	if Global.vies_actuelles <= 0:
+		call_deferred("_go_to_game_over")
+		return
 	var ui = get_tree().current_scene.get_node_or_null("ui")
 	if ui:
 		ui.update_vie()
@@ -83,3 +87,6 @@ func take_damage():
 	await get_tree().create_timer(INVINCIBILITY_TIME).timeout
 	invincible = false
 	$AnimatedSprite2D.visible = true  # Assure qu'il redevienne visible à la fin
+
+func _go_to_game_over():
+	get_tree().change_scene_to_file("res://Game Over/Game Over.tscn")
