@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwcbnmwranim6"]
+
+[ext_resource type="Texture2D" uid="uid://cnmdqlcdchheo" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0044.png" id="1_2fwl4"]
+[ext_resource type="Script" uid="uid://by1o8220ds7me" path="res://UI/ui.gd" id="1_dajm1"]
+
+[node name="ui" type="CanvasLayer"]
+script = ExtResource("1_dajm1")
+
+[node name="LifeContainer" type="HBoxContainer" parent="."]
+offset_right = 175.0
+offset_bottom = 19.0
+scale = Vector2(4, 4)
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="LifeContainer"]
+layout_mode = 2
+texture = ExtResource("1_2fwl4")

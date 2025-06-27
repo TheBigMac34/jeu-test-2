@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://drtqdvw6bxpeo"]
+[gd_scene load_steps=9 format=3 uid="uid://drtqdvw6bxpeo"]
 
 [ext_resource type="Texture2D" uid="uid://c3ulmkwyiq5g5" path="res://base de donné image/kenney_pixel-platformer/Tilemap/tilemap-characters.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://deuqqk5mxh8ty" path="res://Player/player.gd" id="1_4ntmi"]
+[ext_resource type="FontFile" uid="uid://cq8fch0f4cr5d" path="res://base de donné image/Fonts/Kenney Blocks.ttf" id="3_btcbx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_onrkg"]
 atlas = ExtResource("1_4flbx")
@@ -28,6 +29,11 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_sweqy"]
 radius = 13.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_gwnis"]
+font = ExtResource("3_btcbx")
+font_size = 124
+font_color = Color(0, 0, 0, 1)
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_4ntmi")
 
@@ -44,3 +50,25 @@ zoom = Vector2(2.025, 2.025)
 limit_left = -575
 limit_bottom = 20
 position_smoothing_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="TimerLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -85.0
+offset_top = 3.0
+offset_right = 194.0
+offset_bottom = 189.0
+grow_horizontal = 0
+scale = Vector2(0.29, 0.29)
+text = "300"
+label_settings = SubResource("LabelSettings_gwnis")
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Timer" parent="CanvasLayer"]
+
+[connection signal="timeout" from="CanvasLayer/Timer" to="." method="_on_timer_timeout"]

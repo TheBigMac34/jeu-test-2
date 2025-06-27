@@ -1,12 +1,44 @@
 extends CharacterBody2D
 
 @onready var animation = $AnimatedSprite2D
+@onready var timer_label = $CanvasLayer/TimerLabel
+@onready var timer = $CanvasLayer/Timer
 
+var time_left := 300
+var invincible = false
+var blink_timer := 0.0
+
+const INVINCIBILITY_TIME := 5.0
+const BLINK_INTERVAL := 0.1
 const SPEED = 200
 const JUMP_VELOCITY = -300
 
+func _on_timer_timeout() -> void:
+	time_left -= 1
+	update_timer_label()
+	if time_left <= 0:
+		timer.stop()
+		print("Temps écoulé !")
+		# Tu peux appeler une fonction ici pour déclencher un game over ou autre
+func update_timer_label():
+	timer_label.text = str(time_left) + ""
+
+func _ready() -> void:
+	timer.start()
+
+
+
 
 func _physics_process(delta: float) -> void:
+	if invincible:
+		blink_timer+=delta
+		# Rendre visible/invisible toutes les BLINK_INTERVAL (secondes)
+		if int(blink_timer / BLINK_INTERVAL) % 2 == 0:
+			$AnimatedSprite2D.visible = false
+		else:
+			$AnimatedSprite2D.visible = true
+
+
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -39,4 +71,15 @@ func _physics_process(delta: float) -> void:
 # systeme de vie 
 
 func take_damage(): 
+	if invincible:
+		return
+	Global.perdre_vie()
+	var ui = get_tree().current_scene.get_node_or_null("ui")
+	if ui:
+		ui.update_vie()
 	print("outch") 
+	invincible = true
+	blink_timer = 0.0
+	await get_tree().create_timer(INVINCIBILITY_TIME).timeout
+	invincible = false
+	$AnimatedSprite2D.visible = true  # Assure qu'il redevienne visible à la fin
