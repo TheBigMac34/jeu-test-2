@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://doc66ywrgq7w6"]
+
+[ext_resource type="Texture2D" uid="uid://cybvgbbatbmx4" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0008.png" id="1_4a433"]
+[ext_resource type="Script" uid="uid://dkkkatu8yj8vs" path="res://enemie/Balls/balls_mobs.gd" id="1_t8hm0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t8hm0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4a433")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mm0p0"]
+
+[node name="Balls Mobs" type="Node2D"]
+script = ExtResource("1_t8hm0")
+
+[node name="Balls" type="Area2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Balls"]
+sprite_frames = SubResource("SpriteFrames_t8hm0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Balls"]
+shape = SubResource("CircleShape2D_mm0p0")
+
+[connection signal="body_entered" from="Balls" to="." method="_on_balls_body_entered"]

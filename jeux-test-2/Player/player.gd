@@ -7,9 +7,10 @@ extends CharacterBody2D
 
 var time_left := 300
 var invincible = false
-var blink_timer := 0.0
+var blink_timer := 2.0
 
-const INVINCIBILITY_TIME := 0.0
+const Y_LIMITE = 100  # Choisis une valeur assez basse selon ton niveau
+const INVINCIBILITY_TIME := 2.0
 const BLINK_INTERVAL := 0.1
 const SPEED = 200
 const JUMP_VELOCITY = -300
@@ -31,6 +32,8 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if position.y > Y_LIMITE:
+		Global.game_over()  # Ou appelle directement une fonction de mort
 	if invincible:
 		blink_timer+=delta
 		# Rendre visible/invisible toutes les BLINK_INTERVAL (secondes)
@@ -88,5 +91,5 @@ func take_damage():
 	invincible = false
 	$AnimatedSprite2D.visible = true  # Assure qu'il redevienne visible à la fin
 
-func _go_to_game_over():
-	get_tree().change_scene_to_file("res://Game Over/Game Over.tscn")
+func bounce():
+	velocity.y = -400  # Ajuste la valeur pour le rebond

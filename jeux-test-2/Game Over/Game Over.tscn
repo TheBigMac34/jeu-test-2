@@ -7,7 +7,7 @@
 font = ExtResource("2_exro6")
 font_size = 64
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="Game Over" type="CanvasLayer"]
 script = ExtResource("1_fl8gp")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -19,10 +19,10 @@ grow_vertical = 2
 color = Color(0.501407, 0.501406, 0.501406, 1)
 
 [node name="Button" type="Button" parent="."]
-offset_left = 475.0
-offset_top = 477.0
-offset_right = 691.0
-offset_bottom = 581.0
+offset_left = 457.0
+offset_top = 472.0
+offset_right = 673.0
+offset_bottom = 576.0
 theme_override_fonts/font = ExtResource("2_exro6")
 theme_override_font_sizes/font_size = 64
 text = "Menu"
@@ -36,4 +36,14 @@ scale = Vector2(1.335, 1.335)
 text = "Game Over"
 label_settings = SubResource("LabelSettings_gyyjp")
 
+[node name="Restart" type="Button" parent="."]
+offset_left = 405.0
+offset_top = 292.0
+offset_right = 413.0
+offset_bottom = 300.0
+theme_override_fonts/font = ExtResource("2_exro6")
+theme_override_font_sizes/font_size = 64
+text = "Restart"
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]

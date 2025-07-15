@@ -1,0 +1,86 @@
+[gd_scene load_steps=11 format=3 uid="uid://cj0jeu14i08kw"]
+
+[ext_resource type="Script" uid="uid://c75bmkgoijdoh" path="res://enemie/chenille/chenille_4.gd" id="1_baw56"]
+[ext_resource type="Texture2D" uid="uid://dxac7t3styfim" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0016.png" id="1_ye8k1"]
+[ext_resource type="Texture2D" uid="uid://bje4cl0w3axsh" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0015.png" id="2_baw56"]
+[ext_resource type="Texture2D" uid="uid://0bfmlfqsgcnp" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0001.png" id="4_xtwc4"]
+[ext_resource type="Texture2D" uid="uid://dkrpa60l47bnt" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0002.png" id="5_uroej"]
+[ext_resource type="Texture2D" uid="uid://fcg7ifra2n37" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0003.png" id="6_xdpdv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cfbfm"]
+size = Vector2(67, 15)
+
+[sub_resource type="Curve2D" id="Curve2D_4bs2x"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1, 9, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 67, 0, 0, 0, 0, 0, 67, 16, 0, 0, 0, 0, 0, 16, 0, 0, 0, 0, 1, 9)
+}
+point_count = 6
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xtwc4"]
+radius = 6.5
+height = 18.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uroej"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ye8k1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_baw56")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="Chenille 4" type="Node2D"]
+position = Vector2(60, 47)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(33.5, 7.5)
+shape = SubResource("RectangleShape2D_cfbfm")
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(-1, 0)
+curve = SubResource("Curve2D_4bs2x")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(1, 9)
+rotation = -1.5708
+script = ExtResource("1_baw56")
+
+[node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D"]
+position = Vector2(0.21374, -2.99238)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area2D"]
+position = Vector2(6.55473, -7.55219)
+shape = SubResource("CapsuleShape2D_xtwc4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path2D/PathFollow2D/Area2D"]
+position = Vector2(6.83972, -11.542)
+sprite_frames = SubResource("SpriteFrames_uroej")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.149363
+flip_h = true
+
+[node name="Tile0001" type="Sprite2D" parent="."]
+position = Vector2(7, 7)
+texture = ExtResource("4_xtwc4")
+
+[node name="Tile0002" type="Sprite2D" parent="."]
+position = Vector2(25, 7)
+texture = ExtResource("5_uroej")
+
+[node name="Tile0003" type="Sprite2D" parent="."]
+position = Vector2(42, 7)
+texture = ExtResource("5_uroej")
+
+[node name="Tile0004" type="Sprite2D" parent="."]
+position = Vector2(60, 7)
+texture = ExtResource("6_xdpdv")
+
+[connection signal="body_entered" from="Path2D/PathFollow2D/Area2D" to="Path2D/PathFollow2D" method="_on_area_2d_body_entered"]

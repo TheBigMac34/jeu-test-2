@@ -13,3 +13,11 @@ func _process(delta: float) -> void:
 
 func _on_button_pressed() -> void:
 	get_tree().change_scene_to_packed(menu_principale)
+
+
+func _on_restart_pressed() -> void:
+	if Global.dernier_niveau_path != "":
+		get_tree().change_scene_to_file(Global.dernier_niveau_path)
+	else:
+		print("Aucun niveau précédent enregistré.")
+	Global.vies_actuelles = 5
