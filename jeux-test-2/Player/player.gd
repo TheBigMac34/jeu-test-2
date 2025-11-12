@@ -4,7 +4,9 @@ extends CharacterBody2D
 @onready var animation = $AnimatedSprite2D
 @onready var timer_label = $CanvasLayer/TimerLabel
 @onready var timer = $CanvasLayer/Timer
+@export var start_position: Vector2
 
+var last_checkpoint: Vector2
 var time_left := 300
 var invincible = false
 var blink_timer := 2.0
@@ -20,6 +22,7 @@ func _on_timer_timeout() -> void:
 	update_timer_label()
 	if time_left <= 0:
 		timer.stop()
+		Global.game_over() 
 		print("Temps écoulé !")
 		# Tu peux appeler une fonction ici pour déclencher un game over ou autre
 func update_timer_label():
@@ -27,7 +30,11 @@ func update_timer_label():
 
 func _ready() -> void:
 	timer.start()
-
+	var spawn_point = get_parent().get_node("SpawnPoint")
+	global_position = spawn_point.global_position
+	if Global.last_checkpoint_position != Vector2.ZERO:
+		global_position = Global.last_checkpoint_position
+		print("Respawn au dernier checkpoint :", Global.last_checkpoint_position)
 
 
 
@@ -50,6 +57,7 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		$"Jumps Sound".play()
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -85,6 +93,7 @@ func take_damage():
 	if ui:
 		ui.update_vie()
 	print("outch") 
+	$"Damage Sond".play()
 	invincible = true
 	blink_timer = 0.0
 	await get_tree().create_timer(INVINCIBILITY_TIME).timeout

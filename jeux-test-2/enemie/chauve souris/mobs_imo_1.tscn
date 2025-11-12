@@ -29,7 +29,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_731m8"]
-size = Vector2(15, 2.5)
+size = Vector2(16, 3.25)
 
 [node name="Mobs 1" type="Node2D"]
 script = ExtResource("1_07pqb")
@@ -48,7 +48,7 @@ frame_progress = 0.130975
 [node name="TopHitbox" type="Area2D" parent="."]
 
 [node name="jump" type="CollisionShape2D" parent="TopHitbox"]
-position = Vector2(0, -8)
+position = Vector2(0, -9.625)
 shape = SubResource("RectangleShape2D_731m8")
 one_way_collision_margin = 0.0
 

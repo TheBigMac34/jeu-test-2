@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://bm42lonl4ilfb"]
+[gd_scene load_steps=5 format=3 uid="uid://bm42lonl4ilfb"]
 
 [ext_resource type="Script" uid="uid://brfrtu1q0omi5" path="res://Game Over/game_over.gd" id="1_fl8gp"]
 [ext_resource type="FontFile" uid="uid://cq8fch0f4cr5d" path="res://base de donné image/Fonts/Kenney Blocks.ttf" id="2_exro6"]
+[ext_resource type="AudioStream" uid="uid://dfio4bweuucrb" path="res://Son/game_over.mp3" id="3_exro6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gyyjp"]
 font = ExtResource("2_exro6")
 font_size = 64
 
 [node name="Game Over" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_fl8gp")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -37,13 +39,17 @@ text = "Game Over"
 label_settings = SubResource("LabelSettings_gyyjp")
 
 [node name="Restart" type="Button" parent="."]
-offset_left = 405.0
-offset_top = 292.0
-offset_right = 413.0
-offset_bottom = 300.0
+offset_left = 439.0
+offset_top = 289.0
+offset_right = 687.0
+offset_bottom = 393.0
 theme_override_fonts/font = ExtResource("2_exro6")
 theme_override_font_sizes/font_size = 64
-text = "Restart"
+text = "ReTry"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_exro6")
+volume_db = -22.961
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]

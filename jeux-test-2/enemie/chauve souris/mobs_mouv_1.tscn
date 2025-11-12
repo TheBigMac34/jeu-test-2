@@ -29,7 +29,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hr6a7"]
-size = Vector2(12, 1)
+size = Vector2(15, 2)
 
 [node name="mobs_mouv_1" type="Node2D"]
 
@@ -47,7 +47,7 @@ frame_progress = 0.384197
 [node name="TopHitbox" type="Area2D" parent="Area2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D/TopHitbox"]
-position = Vector2(0, -7.5)
+position = Vector2(0, -9)
 shape = SubResource("RectangleShape2D_hr6a7")
 
 [node name="Left Limite" type="Marker2D" parent="."]

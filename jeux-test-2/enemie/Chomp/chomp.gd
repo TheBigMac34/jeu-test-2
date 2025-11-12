@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var anim_sprite = $AnimatedSprite2D
-@export var fall_speed := 600.0
+@export var fall_speed := 500.0
 @export var rise_speed := 100.0
 @export var wait_time := 0.5  # temps d’attente avant de remonter
 

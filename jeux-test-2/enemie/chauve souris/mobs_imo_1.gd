@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var player_camera := get_viewport().get_camera_2d()
 var invincible_to_player := false
+var damage : = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,12 +27,13 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		if body.has_method("take_damage"):  
 			body.take_damage()  
 			queue_free()
+			damage = true 
 			print("hit mobs 1 imo")
 
 
 
 func _on_top_hitbox_body_entered(body: Node2D) -> void:
-	if body.name == "Player":
+	if body.name == "Player" and not damage :
 		if body.has_method("bounce"):
 			body.bounce()
 		invincible_to_player = true

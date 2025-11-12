@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://bw7glqxm4m5t5"]
+
+[ext_resource type="Script" uid="uid://dnq2bjc4rtupv" path="res://enemie/chenille/chenille_bleu_tout_droit.gd" id="1_3oxh2"]
+[ext_resource type="Texture2D" uid="uid://cygl0x7rgxlfd" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0018.png" id="1_hpsla"]
+[ext_resource type="Texture2D" uid="uid://btcm0n423ygf3" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0019.png" id="2_3oxh2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nfy6c"]
+size = Vector2(13, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7odoe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hpsla")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_3oxh2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3oxh2"]
+size = Vector2(11, 10)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_3oxh2")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 5.5)
+shape = SubResource("RectangleShape2D_nfy6c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+sprite_frames = SubResource("SpriteFrames_7odoe")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 6)
+shape = SubResource("RectangleShape2D_3oxh2")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

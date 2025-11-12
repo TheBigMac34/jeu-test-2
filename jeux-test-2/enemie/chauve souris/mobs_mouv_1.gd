@@ -6,6 +6,11 @@ extends Area2D
 @onready var right_limit = $"../Right Limite"
 @onready var animated_sprite = $AnimatedSprite2D
 
+
+var invincible_to_player := false
+var damage : = false
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -21,9 +26,10 @@ func _process(delta: float) -> void:
 		pass
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.name == "Player":
+	if body.name == "Player" and not invincible_to_player:
 		if body.has_method("take_damage"):  
 			body.take_damage()  
+			damage = true 
 			print("hit mobs 1 mouv")
 
 
@@ -38,7 +44,8 @@ func  _physics_process(delta: float) -> void:
 		animated_sprite.flip_h = true
 
 func _on_top_hitbox_body_entered(body: Node2D) -> void:
-	if body.name == "Player":
+	if body.name == "Player" and not damage :
 		if body.has_method("bounce"):
 			body.bounce()
+			invincible_to_player = true
 		queue_free()

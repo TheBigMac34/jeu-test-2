@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://bmw8fvkp54m4f"]
+
+[ext_resource type="Script" uid="uid://1hrcysjyg7yv" path="res://enemie/chenille/chenille_rouge.gd" id="1_plike"]
+[ext_resource type="Texture2D" uid="uid://btu3jyo36sv5o" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0018 red.png" id="2_vm7pl"]
+[ext_resource type="Texture2D" uid="uid://dgefwywcfu7qc" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0019 red.png" id="3_q22yv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_srlfh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vm7pl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_q22yv")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vns2h"]
+size = Vector2(13, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8hbfm"]
+size = Vector2(9, 7)
+
+[node name="chenille Rouge" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+platform_floor_layers = 4294967041
+platform_wall_layers = 1
+script = ExtResource("1_plike")
+
+[node name="death" type="Area2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="death"]
+position = Vector2(1, -5)
+sprite_frames = SubResource("SpriteFrames_srlfh")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.5212978
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="death"]
+position = Vector2(0.5, -6)
+shape = SubResource("RectangleShape2D_vns2h")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-6, 0)
+target_position = Vector2(0, 16)
+
+[node name="WallCheck" type="RayCast2D" parent="."]
+position = Vector2(-6, -4)
+target_position = Vector2(-1, 0)
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -3.5)
+shape = SubResource("RectangleShape2D_8hbfm")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -3)
+rect = Rect2(-30, -10, 60, 18)
+
+[connection signal="body_entered" from="death" to="." method="_on_death_body_entered"]

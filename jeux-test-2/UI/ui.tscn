@@ -1,10 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwcbnmwranim6"]
+[gd_scene load_steps=4 format=3 uid="uid://bwcbnmwranim6"]
 
 [ext_resource type="Texture2D" uid="uid://cnmdqlcdchheo" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0044.png" id="1_2fwl4"]
 [ext_resource type="Script" uid="uid://by1o8220ds7me" path="res://UI/ui.gd" id="1_dajm1"]
+[ext_resource type="FontFile" uid="uid://cq8fch0f4cr5d" path="res://base de donné image/Fonts/Kenney Blocks.ttf" id="3_e6gg6"]
 
 [node name="ui" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_dajm1")
+
+[node name="Fond" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.840238, 0.29497874, 0.16470589)
 
 [node name="LifeContainer" type="HBoxContainer" parent="."]
 offset_right = 175.0
@@ -15,3 +25,70 @@ size_flags_vertical = 4
 [node name="TextureRect" type="TextureRect" parent="LifeContainer"]
 layout_mode = 2
 texture = ExtResource("1_2fwl4")
+
+[node name="Pause Button" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -184.0
+offset_top = 13.000001
+offset_right = 64.0
+offset_bottom = 117.0
+grow_horizontal = 0
+scale = Vector2(0.385, 0.385)
+theme_override_fonts/font = ExtResource("3_e6gg6")
+theme_override_font_sizes/font_size = 64
+text = "Pause"
+
+[node name="Menu Button" type="Button" parent="."]
+process_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -107.0
+offset_right = 108.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_e6gg6")
+theme_override_font_sizes/font_size = 64
+text = "Menu"
+
+[node name="Restart Button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -172.0
+offset_top = 37.0
+offset_right = 172.0
+offset_bottom = 141.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_e6gg6")
+theme_override_font_sizes/font_size = 64
+text = "Restart"
+
+[node name="Back Button" type="Button" parent="."]
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -184.0
+offset_top = 13.000001
+offset_right = 64.0
+offset_bottom = 117.0
+grow_horizontal = 0
+scale = Vector2(0.385, 0.385)
+theme_override_fonts/font = ExtResource("3_e6gg6")
+theme_override_font_sizes/font_size = 64
+text = "Back"
+
+[connection signal="pressed" from="Pause Button" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="Menu Button" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="Restart Button" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Back Button" to="." method="_on_back_button_pressed"]

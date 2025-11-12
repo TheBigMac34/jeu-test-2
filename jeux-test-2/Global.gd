@@ -1,7 +1,11 @@
 extends Node
 
-var vies_max = 5
+@onready var over = preload("res://Game Over/Game Over.tscn")
+
+var vies_max = 3
 var vies_actuelles = vies_max
+var dernier_niveau_path: String = ""
+var last_checkpoint_position: Vector2 = Vector2.ZERO
 
 signal heal
 
@@ -31,4 +35,5 @@ func gagner_vie():
 
 func game_over():
 	print("GAME OVER !")
+	get_tree().change_scene_to_packed(over)
 	#get_tree().change_scene_to_file("res://game_over.tscn")  # ou autre scène
