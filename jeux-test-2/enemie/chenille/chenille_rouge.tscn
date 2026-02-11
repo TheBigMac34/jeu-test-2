@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmw8fvkp54m4f"]
+[gd_scene load_steps=9 format=3 uid="uid://bmw8fvkp54m4f"]
 
 [ext_resource type="Script" uid="uid://1hrcysjyg7yv" path="res://enemie/chenille/chenille_rouge.gd" id="1_plike"]
 [ext_resource type="Texture2D" uid="uid://btu3jyo36sv5o" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0018 red.png" id="2_vm7pl"]
 [ext_resource type="Texture2D" uid="uid://dgefwywcfu7qc" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0019 red.png" id="3_q22yv"]
+[ext_resource type="Texture2D" uid="uid://bje4cl0w3axsh" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0015.png" id="4_q22yv"]
+[ext_resource type="Texture2D" uid="uid://dxac7t3styfim" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0016.png" id="5_8nl8q"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_srlfh"]
 animations = [{
@@ -14,12 +16,23 @@ animations = [{
 "texture": ExtResource("3_q22yv")
 }],
 "loop": true,
+"name": &"chenille Rouge",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_q22yv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8nl8q")
+}],
+"loop": true,
 "name": &"new_animation",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vns2h"]
-size = Vector2(13, 10)
+size = Vector2(13, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hbfm"]
 size = Vector2(9, 7)
@@ -34,14 +47,15 @@ script = ExtResource("1_plike")
 [node name="death" type="Area2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="death"]
-position = Vector2(1, -5)
+position = Vector2(1, -11)
 sprite_frames = SubResource("SpriteFrames_srlfh")
 animation = &"new_animation"
 autoplay = "new_animation"
-frame_progress = 0.5212978
+frame = 1
+frame_progress = 0.026899545
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="death"]
-position = Vector2(0.5, -6)
+position = Vector2(0.5, -8.5)
 shape = SubResource("RectangleShape2D_vns2h")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]

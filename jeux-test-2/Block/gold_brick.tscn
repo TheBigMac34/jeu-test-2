@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://dr2j7f5sbpb38"]
+
+[ext_resource type="Texture2D" uid="uid://bvytqtneoydkw" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0011.png" id="1_sypu5"]
+[ext_resource type="Script" uid="uid://c1kugtlven03x" path="res://Block/gold_brick.gd" id="1_w6whe"]
+[ext_resource type="Texture2D" uid="uid://ib74n5tqe57s" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0011_use.png" id="3_mxnkx"]
+[ext_resource type="PackedScene" uid="uid://ctn1d5moef16y" path="res://Block/piece_block.tscn" id="4_bmxgb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_25mqt"]
+size = Vector2(16, 18)
+
+[node name="Gold Brick" type="StaticBody2D"]
+script = ExtResource("1_w6whe")
+sprite_actif = ExtResource("1_sypu5")
+sprite_vide = ExtResource("3_mxnkx")
+piece_scene = ExtResource("4_bmxgb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_25mqt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_sypu5")

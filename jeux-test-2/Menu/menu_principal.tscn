@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://jw38kplxrumc"]
+[gd_scene load_steps=9 format=3 uid="uid://jw38kplxrumc"]
 
 [ext_resource type="VideoStream" uid="uid://bvfbfktps4xrj" path="res://base de donné image/video random/0626.ogv" id="1_iihua"]
 [ext_resource type="Script" uid="uid://b2k5u3f1acn1r" path="res://Menu/menu_principal.gd" id="1_xbuub"]
 [ext_resource type="Texture2D" uid="uid://c7ar4x4tkgurf" path="res://base de donné image/video random/test.png" id="2_avouw"]
 [ext_resource type="FontFile" uid="uid://cq8fch0f4cr5d" path="res://base de donné image/Fonts/Kenney Blocks.ttf" id="3_uqf63"]
 [ext_resource type="FontFile" uid="uid://tieccn0jv3pd" path="res://base de donné image/Fonts/Kenney Future Narrow.ttf" id="5_b00oi"]
+[ext_resource type="Texture2D" uid="uid://csqrbqsxoysee" path="res://base de donné image/kenney_platformer-art-pixel-redux/Tiles/tile_0076 pointiller.png" id="6_dbu0d"]
 [ext_resource type="AudioStream" uid="uid://d2e5sqe7rtsl5" path="res://Son/main menu.mp3" id="6_y2etj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xbuub"]
@@ -107,11 +108,51 @@ theme_override_fonts/font = ExtResource("3_uqf63")
 theme_override_font_sizes/font_size = 64
 text = "Level 1-1"
 
+[node name="VBoxContainer" type="VBoxContainer" parent="Level 1/VBoxContainer/Level 1-1"]
+layout_direction = 2
+layout_mode = 0
+offset_left = 474.0
+offset_top = 54.0
+offset_right = 504.76923
+offset_bottom = 74.87912
+scale = Vector2(7.675, 7.675)
+
+[node name="Bronze 1-1" type="Sprite2D" parent="Level 1/VBoxContainer/Level 1-1/VBoxContainer"]
+texture = ExtResource("6_dbu0d")
+
+[node name="argent1-1" type="Sprite2D" parent="Level 1/VBoxContainer/Level 1-1/VBoxContainer"]
+position = Vector2(12.508143, 0)
+texture = ExtResource("6_dbu0d")
+
+[node name="or 1-1" type="Sprite2D" parent="Level 1/VBoxContainer/Level 1-1/VBoxContainer"]
+position = Vector2(25.016287, 0)
+texture = ExtResource("6_dbu0d")
+
 [node name="Level 1-2" type="Button" parent="Level 1/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_uqf63")
 theme_override_font_sizes/font_size = 64
 text = "Level 1-2"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Level 1/VBoxContainer/Level 1-2"]
+layout_direction = 2
+layout_mode = 0
+offset_left = 474.0
+offset_top = 54.0
+offset_right = 504.76923
+offset_bottom = 74.87912
+scale = Vector2(7.675, 7.675)
+
+[node name="Bronze 1-2" type="Sprite2D" parent="Level 1/VBoxContainer/Level 1-2/VBoxContainer"]
+texture = ExtResource("6_dbu0d")
+
+[node name="argent1-2" type="Sprite2D" parent="Level 1/VBoxContainer/Level 1-2/VBoxContainer"]
+position = Vector2(12.508143, 0)
+texture = ExtResource("6_dbu0d")
+
+[node name="or 1-2" type="Sprite2D" parent="Level 1/VBoxContainer/Level 1-2/VBoxContainer"]
+position = Vector2(25.016287, 0)
+texture = ExtResource("6_dbu0d")
 
 [node name="Level 1-3" type="Button" parent="Level 1/VBoxContainer"]
 layout_mode = 2
@@ -119,13 +160,62 @@ theme_override_fonts/font = ExtResource("3_uqf63")
 theme_override_font_sizes/font_size = 64
 text = "Level 1-3"
 
+[node name="VBoxContainer" type="VBoxContainer" parent="Level 1/VBoxContainer/Level 1-3"]
+layout_direction = 2
+layout_mode = 0
+offset_left = 474.0
+offset_top = 54.0
+offset_right = 504.76923
+offset_bottom = 74.87912
+scale = Vector2(7.675, 7.675)
+
+[node name="Bronze 1-3" type="Sprite2D" parent="Level 1/VBoxContainer/Level 1-3/VBoxContainer"]
+texture = ExtResource("6_dbu0d")
+
+[node name="argent1-3" type="Sprite2D" parent="Level 1/VBoxContainer/Level 1-3/VBoxContainer"]
+position = Vector2(12.508143, 0)
+texture = ExtResource("6_dbu0d")
+
+[node name="or 1-3" type="Sprite2D" parent="Level 1/VBoxContainer/Level 1-3/VBoxContainer"]
+position = Vector2(25.016287, 0)
+texture = ExtResource("6_dbu0d")
+
 [node name="Main Menu Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_y2etj")
 volume_db = -33.063
 parameters/looping = true
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 420.0
+offset_top = -325.0
+offset_right = 577.0
+offset_bottom = -245.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_b00oi")
+theme_override_font_sizes/font_size = 64
+text = "Quit"
+
+[node name="Reset" type="Button" parent="."]
+layout_mode = 0
+offset_left = 904.0
+offset_top = 520.0
+offset_right = 1152.0
+offset_bottom = 624.0
+theme_override_fonts/font = ExtResource("3_uqf63")
+theme_override_font_sizes/font_size = 64
+text = "Reset"
 
 [connection signal="pressed" from="Chose your level" to="." method="_on_chose_your_level_pressed"]
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Level 1" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="Level 1/VBoxContainer/Level 1-1" to="." method="_on_level_11_pressed"]
 [connection signal="pressed" from="Level 1/VBoxContainer/Level 1-2" to="." method="_on_level_12_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Reset" to="." method="_on_reset_pressed"]

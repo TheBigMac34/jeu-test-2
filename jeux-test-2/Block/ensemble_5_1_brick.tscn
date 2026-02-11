@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgubbtebu55kr"]
+
+[ext_resource type="PackedScene" uid="uid://dr2j7f5sbpb38" path="res://Block/gold_brick.tscn" id="1_wo3tb"]
+[ext_resource type="PackedScene" uid="uid://ky5rk4xvw0d1" path="res://Block/Brick_vide.tscn" id="2_qk2is"]
+
+[node name="ensemble brick" type="Node2D"]
+
+[node name="Gold Brick" parent="." instance=ExtResource("1_wo3tb")]
+position = Vector2(-41, -8)
+
+[node name="Brick_vide" parent="." instance=ExtResource("2_qk2is")]
+position = Vector2(-25, -8)
+
+[node name="Brick_vide2" parent="." instance=ExtResource("2_qk2is")]
+position = Vector2(-9, -8)
+
+[node name="Brick_vide3" parent="." instance=ExtResource("2_qk2is")]
+position = Vector2(7, -8)
+
+[node name="Gold Brick2" parent="." instance=ExtResource("1_wo3tb")]
+position = Vector2(23, -8)
+
+[node name="Gold Brick5" parent="." instance=ExtResource("1_wo3tb")]
+position = Vector2(-9, -56)

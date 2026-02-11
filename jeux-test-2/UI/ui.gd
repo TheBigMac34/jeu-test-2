@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 @onready var life_container = $LifeContainer  # ton HBoxContainer ou autre
+@onready var label = $TextureRect/Label
 
 
 func _ready() -> void:
@@ -11,13 +12,13 @@ func _ready() -> void:
 	$"Back Button".hide()
 	
 func _process(delta: float) -> void:
-	pass
+	label.text = str(Global.coins) + "/30"
 
 func update_vie():
 	# Supprimer les icônes précédentes
 	for child in life_container.get_children():
 		child.queue_free()
-	print("nonon")
+	# print("nonon")
 	# Ajouter autant de vies que dans Global
 	for i in Global.vies_actuelles:
 		var coeur = TextureRect.new()
@@ -47,6 +48,7 @@ func _on_back_button_pressed() -> void:
 
 
 func _on_menu_button_pressed() -> void:
+	Global.clear_checkpoint()
 	get_tree().paused = false
 	$Fond.hide()
 	$"Menu Button".hide()
@@ -61,6 +63,7 @@ func _on_menu_button_pressed() -> void:
 
 
 func _on_restart_button_pressed() -> void:
+	Global.clear_checkpoint()
 	$Fond.hide()
 	$"Menu Button".hide()
 	$"Restart Button".hide()

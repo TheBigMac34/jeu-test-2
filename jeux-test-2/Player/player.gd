@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@onready var player = $"."
 @onready var over = preload("res://Game Over/Game Over.tscn")
 @onready var animation = $AnimatedSprite2D
 @onready var timer_label = $CanvasLayer/TimerLabel
@@ -25,20 +26,26 @@ func _on_timer_timeout() -> void:
 		Global.game_over() 
 		print("Temps écoulé !")
 		# Tu peux appeler une fonction ici pour déclencher un game over ou autre
+
 func update_timer_label():
 	timer_label.text = str(time_left) + ""
 
 func _ready() -> void:
 	timer.start()
-	var spawn_point = get_parent().get_node("SpawnPoint")
-	global_position = spawn_point.global_position
-	if Global.last_checkpoint_position != Vector2.ZERO:
-		global_position = Global.last_checkpoint_position
-		print("Respawn au dernier checkpoint :", Global.last_checkpoint_position)
 
+	var spawn_point = get_parent().get_node("SpawnPoint")
+
+	if Global.checkpoint_position != Vector2.ZERO:
+		player.global_position = Global.checkpoint_position
+		print("🎯 Spawn au checkpoint")
+
+	else:
+		global_position = spawn_point.global_position
+		print("Spawn au début du niveau")
 
 
 func _physics_process(delta: float) -> void:
+
 	if position.y > Y_LIMITE:
 		Global.game_over()  # Ou appelle directement une fonction de mort
 	if invincible:
@@ -79,6 +86,16 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	move_and_slide()
+	
+	# 🔍 Détection des collisions (coup de tête)
+	for i in range(get_slide_collision_count()):
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+
+		# Si le joueur tape PAR DESSOUS
+		if collision.get_normal().y > 0.9:
+			if collider.has_method("casser"):
+				collider.casser()
 
 # systeme de vie 
 

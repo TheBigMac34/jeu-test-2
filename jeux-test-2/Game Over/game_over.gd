@@ -9,8 +9,10 @@ func _ready() -> void:
 
 
 func _on_button_pressed() -> void:
+	Global.clear_checkpoint()
 	get_tree().change_scene_to_packed(menu_principale)
 	Global.last_checkpoint_position = Vector2.ZERO
+	Global.coins = 0 
 
 
 func _on_restart_pressed() -> void:
@@ -19,3 +21,4 @@ func _on_restart_pressed() -> void:
 	else:
 		print("Aucun niveau précédent enregistré.")
 	Global.vies_actuelles = 3
+	Global.coins = 0 

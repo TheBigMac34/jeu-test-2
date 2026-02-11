@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvxg7yeb8qve1"]
+
+[ext_resource type="PackedScene" uid="uid://1udu7c4h54gy" path="res://power up+piece/piece.tscn" id="1_phvhr"]
+
+[node name="ensemble de 4 pièces" type="Node2D"]
+
+[node name="Piece" parent="." instance=ExtResource("1_phvhr")]
+position = Vector2(-29, -14)
+
+[node name="Piece2" parent="." instance=ExtResource("1_phvhr")]
+position = Vector2(-17, -34)
+
+[node name="Piece3" parent="." instance=ExtResource("1_phvhr")]
+position = Vector2(17, -34)
+
+[node name="Piece4" parent="." instance=ExtResource("1_phvhr")]
+position = Vector2(29, -14)

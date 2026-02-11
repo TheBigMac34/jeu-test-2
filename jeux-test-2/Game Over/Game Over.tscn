@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bm42lonl4ilfb"]
+[gd_scene format=3 uid="uid://bm42lonl4ilfb"]
 
 [ext_resource type="Script" uid="uid://brfrtu1q0omi5" path="res://Game Over/game_over.gd" id="1_fl8gp"]
 [ext_resource type="FontFile" uid="uid://cq8fch0f4cr5d" path="res://base de donné image/Fonts/Kenney Blocks.ttf" id="2_exro6"]
@@ -8,11 +8,11 @@
 font = ExtResource("2_exro6")
 font_size = 64
 
-[node name="Game Over" type="CanvasLayer"]
+[node name="Game Over" type="CanvasLayer" unique_id=919728449]
 process_mode = 3
 script = ExtResource("1_fl8gp")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1466976186]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -20,7 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.501407, 0.501406, 0.501406, 1)
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=160595382]
 offset_left = 457.0
 offset_top = 472.0
 offset_right = 673.0
@@ -29,7 +29,7 @@ theme_override_fonts/font = ExtResource("2_exro6")
 theme_override_font_sizes/font_size = 64
 text = "Menu"
 
-[node name="Game over" type="Label" parent="."]
+[node name="Game over" type="Label" parent="." unique_id=1966430718]
 offset_left = 310.0
 offset_top = 131.0
 offset_right = 726.0
@@ -38,7 +38,7 @@ scale = Vector2(1.335, 1.335)
 text = "Game Over"
 label_settings = SubResource("LabelSettings_gyyjp")
 
-[node name="Restart" type="Button" parent="."]
+[node name="Restart" type="Button" parent="." unique_id=1239399342]
 offset_left = 439.0
 offset_top = 289.0
 offset_right = 687.0
@@ -47,7 +47,7 @@ theme_override_fonts/font = ExtResource("2_exro6")
 theme_override_font_sizes/font_size = 64
 text = "ReTry"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=373938632]
 stream = ExtResource("3_exro6")
 volume_db = -22.961
 

@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://bw7glqxm4m5t5"]
+[gd_scene load_steps=9 format=3 uid="uid://bw7glqxm4m5t5"]
 
 [ext_resource type="Script" uid="uid://dnq2bjc4rtupv" path="res://enemie/chenille/chenille_bleu_tout_droit.gd" id="1_3oxh2"]
 [ext_resource type="Texture2D" uid="uid://cygl0x7rgxlfd" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0018.png" id="1_hpsla"]
 [ext_resource type="Texture2D" uid="uid://btcm0n423ygf3" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0019.png" id="2_3oxh2"]
+[ext_resource type="Texture2D" uid="uid://082otfc7yrm3" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0018 pick.png" id="4_7odoe"]
+[ext_resource type="Texture2D" uid="uid://kvtwlorliddr" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0019 pick.png" id="5_2mqoq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nfy6c"]
-size = Vector2(13, 11)
+size = Vector2(14.5, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7odoe"]
 animations = [{
@@ -19,6 +21,17 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_7odoe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2mqoq")
+}],
+"loop": true,
+"name": &"pick",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3oxh2"]
@@ -30,15 +43,22 @@ script = ExtResource("1_3oxh2")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0.5, 5.5)
+position = Vector2(0.75, 3)
 shape = SubResource("RectangleShape2D_nfy6c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+position = Vector2(1, 5)
 sprite_frames = SubResource("SpriteFrames_7odoe")
-autoplay = "default"
+animation = &"pick"
+autoplay = "pick"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 6)
+position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_3oxh2")
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-1, -23)
+rect = Rect2(-10, -10, 48, 48)
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]

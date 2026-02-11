@@ -23,13 +23,13 @@ func _physics_process(delta):
 
 	# Si pas de sol ou mur devant → demi-tour
 	if not ground_check.is_colliding():
-		print("vue sol")
+		#print("vue sol")
 		direction *= -1
 		sprite.flip_h = direction > 0
 		_update_raycast_positions()
 		
 	if wall_check.is_colliding():
-		print("vue mur")
+		#print("vue mur")
 		direction *= -1
 		sprite.flip_h = direction > 0
 		_update_raycast_positions()

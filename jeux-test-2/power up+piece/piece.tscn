@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://1udu7c4h54gy"]
+
+[ext_resource type="Texture2D" uid="uid://br7m4mdrr4gvv" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0151_phase0.png" id="1_10qqn"]
+[ext_resource type="Script" uid="uid://b8qhd3bd7evf3" path="res://power up+piece/piece.gd" id="1_gt64k"]
+[ext_resource type="Texture2D" uid="uid://7ydafftes6k5" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0151_phase1.png" id="2_gt64k"]
+[ext_resource type="Texture2D" uid="uid://ukuhahhgxde4" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0151_phase2.png" id="3_w2svy"]
+[ext_resource type="Texture2D" uid="uid://buvk1r6trd14h" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0151_phase3.png" id="4_80b7w"]
+[ext_resource type="AudioStream" uid="uid://bkpap3446k0wc" path="res://Son/coin.mp3" id="6_w2svy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u2lic"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_10qqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_gt64k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_w2svy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_80b7w")
+}],
+"loop": true,
+"name": &"piece",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gxsn3"]
+radius = 6.0
+
+[node name="Piece" type="Node2D"]
+script = ExtResource("1_gt64k")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_w2svy")
+volume_db = -31.917
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+sprite_frames = SubResource("SpriteFrames_u2lic")
+animation = &"piece"
+autoplay = "piece"
+frame_progress = 0.7373402
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_gxsn3")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

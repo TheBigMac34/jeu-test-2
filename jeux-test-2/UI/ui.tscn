@@ -1,14 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwcbnmwranim6"]
+[gd_scene format=3 uid="uid://bwcbnmwranim6"]
 
 [ext_resource type="Texture2D" uid="uid://cnmdqlcdchheo" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0044.png" id="1_2fwl4"]
 [ext_resource type="Script" uid="uid://by1o8220ds7me" path="res://UI/ui.gd" id="1_dajm1"]
 [ext_resource type="FontFile" uid="uid://cq8fch0f4cr5d" path="res://base de donné image/Fonts/Kenney Blocks.ttf" id="3_e6gg6"]
+[ext_resource type="Texture2D" uid="uid://milv7bqr6yc2" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0151.png" id="4_hat8c"]
 
-[node name="ui" type="CanvasLayer"]
+[node name="ui" type="CanvasLayer" unique_id=1956993423]
 process_mode = 3
 script = ExtResource("1_dajm1")
 
-[node name="Fond" type="ColorRect" parent="."]
+[node name="Fond" type="ColorRect" parent="." unique_id=1310792194]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -16,17 +17,17 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0.840238, 0.29497874, 0.16470589)
 
-[node name="LifeContainer" type="HBoxContainer" parent="."]
+[node name="LifeContainer" type="HBoxContainer" parent="." unique_id=1595087270]
 offset_right = 175.0
 offset_bottom = 19.0
 scale = Vector2(4, 4)
 size_flags_vertical = 4
 
-[node name="TextureRect" type="TextureRect" parent="LifeContainer"]
+[node name="TextureRect" type="TextureRect" parent="LifeContainer" unique_id=147070212]
 layout_mode = 2
 texture = ExtResource("1_2fwl4")
 
-[node name="Pause Button" type="Button" parent="."]
+[node name="Pause Button" type="Button" parent="." unique_id=434839016]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -40,7 +41,7 @@ theme_override_fonts/font = ExtResource("3_e6gg6")
 theme_override_font_sizes/font_size = 64
 text = "Pause"
 
-[node name="Menu Button" type="Button" parent="."]
+[node name="Menu Button" type="Button" parent="." unique_id=676502922]
 process_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -57,7 +58,7 @@ theme_override_fonts/font = ExtResource("3_e6gg6")
 theme_override_font_sizes/font_size = 64
 text = "Menu"
 
-[node name="Restart Button" type="Button" parent="."]
+[node name="Restart Button" type="Button" parent="." unique_id=1686704324]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -73,7 +74,7 @@ theme_override_fonts/font = ExtResource("3_e6gg6")
 theme_override_font_sizes/font_size = 64
 text = "Restart"
 
-[node name="Back Button" type="Button" parent="."]
+[node name="Back Button" type="Button" parent="." unique_id=2057067403]
 visible = false
 anchors_preset = 1
 anchor_left = 1.0
@@ -87,6 +88,24 @@ scale = Vector2(0.385, 0.385)
 theme_override_fonts/font = ExtResource("3_e6gg6")
 theme_override_font_sizes/font_size = 64
 text = "Back"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1041563813]
+offset_left = 7.0
+offset_top = 76.0
+offset_right = 61.0
+offset_bottom = 132.0
+texture = ExtResource("4_hat8c")
+
+[node name="Label" type="Label" parent="TextureRect" unique_id=226365092]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 1.0
+offset_right = 107.0
+offset_bottom = 49.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_e6gg6")
+theme_override_font_sizes/font_size = 32
+text = "0"
 
 [connection signal="pressed" from="Pause Button" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="Menu Button" to="." method="_on_menu_button_pressed"]

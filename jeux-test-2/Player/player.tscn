@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://drtqdvw6bxpeo"]
+[gd_scene format=3 uid="uid://drtqdvw6bxpeo"]
 
 [ext_resource type="Texture2D" uid="uid://c3ulmkwyiq5g5" path="res://base de donné image/kenney_pixel-platformer/Tilemap/tilemap-characters.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://deuqqk5mxh8ty" path="res://Player/player.gd" id="1_4ntmi"]
+[ext_resource type="Texture2D" uid="uid://c086vyv6377ci" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0000 Mina.png" id="2_fhl08"]
 [ext_resource type="FontFile" uid="uid://cq8fch0f4cr5d" path="res://base de donné image/Fonts/Kenney Blocks.ttf" id="3_btcbx"]
+[ext_resource type="Texture2D" uid="uid://behw76kyi0vx" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0001 Mina.png" id="3_vtle1"]
 [ext_resource type="AudioStream" uid="uid://cla1vd7d1vm6h" path="res://Son/jump.mp3" id="4_gwnis"]
 [ext_resource type="AudioStream" uid="uid://gknyhkrwbil2" path="res://Son/damage.mp3" id="5_k53q1"]
 
@@ -18,6 +20,17 @@ region = Rect2(25, 0, 24, 24)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("2_fhl08")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vtle1")
+}],
+"loop": true,
+"name": &"Soucoupe",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_onrkg")
 }, {
 "duration": 1.0,
@@ -29,38 +42,43 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_btcbx"]
-radius = 9.0
-height = 24.0
+radius = 7.0
+height = 26.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_gwnis"]
 font = ExtResource("3_btcbx")
 font_size = 124
 font_color = Color(0, 0, 0, 1)
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=407528065 groups=["Player"]]
 collision_layer = 3
 collision_mask = 7
 platform_floor_layers = 4294967041
 platform_wall_layers = 1
 script = ExtResource("1_4ntmi")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1753366262]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_hqtel")
 animation = &"player 1"
+autoplay = "player 1"
+frame = 1
+frame_progress = 1.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1306331615]
+position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_btcbx")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1130240708]
 zoom = Vector2(2.025, 2.025)
+process_callback = 0
 limit_left = -575
 limit_bottom = 20
 position_smoothing_enabled = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=95373484]
 
-[node name="TimerLabel" type="Label" parent="CanvasLayer"]
+[node name="TimerLabel" type="Label" parent="CanvasLayer" unique_id=645879814]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -75,13 +93,13 @@ label_settings = SubResource("LabelSettings_gwnis")
 horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Timer" type="Timer" parent="CanvasLayer"]
+[node name="Timer" type="Timer" parent="CanvasLayer" unique_id=107895524]
 
-[node name="Jumps Sound" type="AudioStreamPlayer" parent="."]
+[node name="Jumps Sound" type="AudioStreamPlayer" parent="." unique_id=1343412864]
 stream = ExtResource("4_gwnis")
 volume_db = -34.467
 
-[node name="Damage Sond" type="AudioStreamPlayer" parent="."]
+[node name="Damage Sond" type="AudioStreamPlayer" parent="." unique_id=1225378934]
 stream = ExtResource("5_k53q1")
 volume_db = -13.929
 

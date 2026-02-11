@@ -57,3 +57,9 @@ func _on_damage_body_entered(body: Node2D) -> void:
 	if body.has_method("take_damage"):  
 		body.take_damage()  
 		print("hit chomp")
+
+
+func _on_detection_body_exited(body: Node2D) -> void:
+	if body.name == "Player":
+		if not is_falling and not is_rising:
+			anim_sprite.play("idle")

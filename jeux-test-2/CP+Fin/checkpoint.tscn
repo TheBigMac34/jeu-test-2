@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://jgckt7m41o3p"]
+
+[ext_resource type="Script" uid="uid://5cktn4vfavc0" path="res://CP+Fin/checkpoint.gd" id="1_udy3f"]
+[ext_resource type="Texture2D" uid="uid://dusxonfwivtjk" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0131.png" id="2_i7kqc"]
+[ext_resource type="Texture2D" uid="uid://crkdoqlcfuha4" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0111_green.png" id="3_aah8w"]
+[ext_resource type="Texture2D" uid="uid://b1ck85iirf80i" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0111.png" id="3_wbfuj"]
+[ext_resource type="Texture2D" uid="uid://4ylcje648l80" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0112.png" id="4_aah8w"]
+[ext_resource type="Texture2D" uid="uid://86j5227fulo3" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0112_green.png" id="4_giix1"]
+[ext_resource type="AudioStream" uid="uid://dm0k7dpkspnf0" path="res://Son/checkpoint_arcade.wav" id="7_b7orp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_giix1"]
+size = Vector2(20, 37)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x7g8l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_aah8w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_giix1")
+}],
+"loop": true,
+"name": &"Green",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_wbfuj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_aah8w")
+}],
+"loop": true,
+"name": &"Red",
+"speed": 5.0
+}]
+
+[node name="Checkpoint" type="Node2D"]
+script = ExtResource("1_udy3f")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -13.5)
+shape = SubResource("RectangleShape2D_giix1")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+position = Vector2(0, -6)
+texture = ExtResource("2_i7kqc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+position = Vector2(0, -23)
+sprite_frames = SubResource("SpriteFrames_x7g8l")
+animation = &"Green"
+autoplay = "Red"
+frame_progress = 0.37709108
+
+[node name="RespownPoint" type="Marker2D" parent="."]
+position = Vector2(36, -21)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_b7orp")
+volume_db = -48.43
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

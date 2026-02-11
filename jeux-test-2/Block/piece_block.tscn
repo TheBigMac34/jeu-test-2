@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctn1d5moef16y"]
+
+[ext_resource type="Texture2D" uid="uid://milv7bqr6yc2" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0151.png" id="1_6yt8l"]
+[ext_resource type="Script" uid="uid://dt7qdjhyddyga" path="res://Block/piece_block.gd" id="1_un3ef"]
+[ext_resource type="AudioStream" uid="uid://bkpap3446k0wc" path="res://Son/coin.mp3" id="3_t2chm"]
+
+[node name="Piece" type="Node2D"]
+script = ExtResource("1_un3ef")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6yt8l")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_t2chm")
+volume_db = -31.917

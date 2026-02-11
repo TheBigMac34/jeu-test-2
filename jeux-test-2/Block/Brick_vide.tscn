@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://ky5rk4xvw0d1"]
+
+[ext_resource type="Script" uid="uid://bf38tcurqrqxr" path="res://Block/brick_vide.gd" id="1_25mqt"]
+[ext_resource type="Texture2D" uid="uid://db7bkrrephr4f" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0029.png" id="1_ol1vv"]
+[ext_resource type="AudioStream" uid="uid://b8d7lgr3xmdy8" path="res://Son/brique_cassee_arcade.wav" id="3_jn7y4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_25mqt"]
+size = Vector2(16, 18)
+
+[node name="Brick_vide" type="StaticBody2D"]
+script = ExtResource("1_25mqt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_25mqt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ol1vv")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_jn7y4")
+volume_db = -39.661
