@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://box758pinfe0k"]
+[gd_scene format=3 uid="uid://box758pinfe0k"]
 
 [ext_resource type="Script" uid="uid://clcv2bweq72ma" path="res://enemie/chauve souris/mobs_imo_1.gd" id="1_07pqb"]
 [ext_resource type="Texture2D" uid="uid://cex50s3js3s2i" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0025.png" id="2_b02t8"]
@@ -31,23 +31,23 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_731m8"]
 size = Vector2(16, 3.25)
 
-[node name="Mobs 1" type="Node2D"]
+[node name="Mobs 1" type="Node2D" unique_id=907655951]
 script = ExtResource("1_07pqb")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=948987571]
 
-[node name="Player death" type="CollisionShape2D" parent="Area2D"]
+[node name="Player death" type="CollisionShape2D" parent="Area2D" unique_id=577535732]
 shape = SubResource("CircleShape2D_i6ygs")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D" unique_id=2042099832]
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_7nvl7")
 autoplay = "default"
 frame_progress = 0.130975
 
-[node name="TopHitbox" type="Area2D" parent="."]
+[node name="TopHitbox" type="Area2D" parent="." unique_id=404897431]
 
-[node name="jump" type="CollisionShape2D" parent="TopHitbox"]
+[node name="jump" type="CollisionShape2D" parent="TopHitbox" unique_id=824442630]
 position = Vector2(0, -9.625)
 shape = SubResource("RectangleShape2D_731m8")
 one_way_collision_margin = 0.0

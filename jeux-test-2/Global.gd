@@ -2,14 +2,44 @@ extends Node
 
 @onready var over = preload("res://Game Over/Game Over.tscn")
 
+var save_path = "user://savegame.json"
+var data: Dictionary = {}   # ✅ AJOUTE ÇA ICI
+var piece_objectif := {}
+var levels_data := {}
 var coins: int = 0
 var vies_max = 3
-var vies_actuelles = vies_max
+var vies_actuelles = 2
 var dernier_niveau_path: String = ""
 var last_checkpoint_position: Vector2 = Vector2.ZERO
 
 var CHECKPOINT_SAVE := "user://checkpoint.json"
 var checkpoint_position : Vector2 = Vector2.ZERO
+
+# Médailles de fin de niveau
+var medaille_bronze: bool = false
+var medaille_argent: bool = false
+var medaille_or: bool = false
+var current_level_scene: String = ""  # pour le bouton Rejouer
+
+# Power-ups débloqués par le PNJ
+var has_dash: bool = false
+var has_double_jump: bool = false
+
+
+func _ready():
+	print("SAVE FILE PATH:", ProjectSettings.globalize_path(save_path))
+	load_game()
+
+func save_game() -> void:
+	# IMPORTANT : on met bien piece_objectif dans data avant d'écrire
+	data["piece_objectif"] = piece_objectif
+	data["has_dash"] = has_dash
+	data["has_double_jump"] = has_double_jump
+	var fw := FileAccess.open(save_path, FileAccess.WRITE)
+	if fw:
+		fw.store_string(JSON.stringify(data))
+		fw.close()
+
 
 func save_checkpoint(pos: Vector2) -> void:
 	checkpoint_position = pos
@@ -47,8 +77,6 @@ func clear_checkpoint() -> void:
 		#print("🗑️ Checkpoint supprimé")
 
 
-
-
 signal heal
 
 func perdre_vie():
@@ -71,8 +99,62 @@ func gagner_vie():
 		ui.update_vie()
 	emit_signal("heal")
 
+#piece objectif 
+func load_game() -> void:
+	if not FileAccess.file_exists(save_path):
+		data = {}
+		piece_objectif = {}
+		return
+
+	var f := FileAccess.open(save_path, FileAccess.READ)
+	if not f:
+		data = {}
+		piece_objectif = {}
+		return
+
+	var parsed = JSON.parse_string(f.get_as_text())
+	f.close()
+
+	if typeof(parsed) != TYPE_DICTIONARY:
+		data = {}
+		piece_objectif = {}
+		return
+
+	data = parsed
+	piece_objectif = data.get("piece_objectif", {})
+	has_dash = data.get("has_dash", false)
+	has_double_jump = data.get("has_double_jump", false)
 
 
+
+func is_piece_objectif_collected(level_id: String, piece_objectif_id: String) -> bool:
+	var raw = piece_objectif.get(level_id, {}).get(piece_objectif_id, false)
+
+	if raw is bool:
+		return raw
+	if raw is String:
+		return raw.to_lower() == "true"
+	if raw is int:
+		return raw == 1
+	return false
+
+
+func set_piece_objectif_collected(level_id: String, piece_objectif_id: String) -> void:
+	if not piece_objectif.has(level_id):
+		piece_objectif[level_id] = {}
+	piece_objectif[level_id][piece_objectif_id] = true
+	save_game()
+
+func get_piece_objectif_count(level_id: String) -> int:
+	if not piece_objectif.has(level_id):
+		return 0
+	return piece_objectif[level_id].size()
+
+func has_all_piece_objectifs(level_id: String, total := 5) -> bool:
+	for i in range(1, total + 1):
+		if not is_piece_objectif_collected(level_id, "piece_objectif_%d" % i):
+			return false
+	return true
 
 
 func game_over():

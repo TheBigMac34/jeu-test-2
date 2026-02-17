@@ -1,0 +1,148 @@
+[gd_scene format=3 uid="uid://dagb8snyrnvgh"]
+
+[ext_resource type="Texture2D" uid="uid://chqogy34ges66" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0117.png" id="1_ed1tc"]
+[ext_resource type="Texture2D" uid="uid://xfiafvg18ww5" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0116.png" id="2_7f85c"]
+[ext_resource type="Texture2D" uid="uid://80usse65hjg6" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0119.png" id="3_ddfrm"]
+[ext_resource type="Texture2D" uid="uid://bjtoyd4n52eft" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0118.png" id="4_fx1t6"]
+[ext_resource type="Texture2D" uid="uid://ct3fhphx3hq3c" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0097.png" id="5_4yikl"]
+[ext_resource type="Texture2D" uid="uid://dpn30nbx75mbw" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0096.png" id="6_4tmbc"]
+[ext_resource type="Texture2D" uid="uid://1yboq3tyawya" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0016.png" id="7_u0cef"]
+[ext_resource type="Texture2D" uid="uid://e7en6u01b2hl" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0098.png" id="8_lphak"]
+[ext_resource type="Texture2D" uid="uid://dqi5tsn6mbq3a" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0099.png" id="9_twsw8"]
+[ext_resource type="Texture2D" uid="uid://py5ud7p2ik05" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0058.png" id="10_2dkrq"]
+[ext_resource type="Texture2D" uid="uid://bhoi5lnsg6e8h" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0057.png" id="11_yic88"]
+[ext_resource type="Texture2D" uid="uid://bac5jf6bacipt" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0036.png" id="12_4iige"]
+[ext_resource type="Texture2D" uid="uid://cptaxqxcysvgn" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0037.png" id="13_8m4e8"]
+[ext_resource type="Texture2D" uid="uid://b5kxpmmct1ghl" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0038.png" id="14_dm47q"]
+[ext_resource type="Texture2D" uid="uid://cfxcf6yjhnx32" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0017.png" id="15_me2pl"]
+[ext_resource type="Texture2D" uid="uid://cyolqwfnk01oo" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0018.png" id="16_x5y3v"]
+[ext_resource type="Texture2D" uid="uid://c3mrxoevu6vt6" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0019.png" id="17_s5flw"]
+
+[node name="arbre1" type="Node2D" unique_id=1000370014]
+
+[node name="Tile0117" type="Sprite2D" parent="." unique_id=878026618]
+position = Vector2(0, -9)
+texture = ExtResource("1_ed1tc")
+
+[node name="Tile0116" type="Sprite2D" parent="." unique_id=1465049455]
+position = Vector2(0, -25)
+texture = ExtResource("2_7f85c")
+
+[node name="Tile0118" type="Sprite2D" parent="." unique_id=1186290197]
+position = Vector2(0, -42)
+texture = ExtResource("2_7f85c")
+
+[node name="Tile0119" type="Sprite2D" parent="." unique_id=593278398]
+position = Vector2(-12, -42)
+texture = ExtResource("3_ddfrm")
+
+[node name="Tile0121" type="Sprite2D" parent="." unique_id=1683276199]
+position = Vector2(-12, -25)
+texture = ExtResource("4_fx1t6")
+
+[node name="Tile0122" type="Sprite2D" parent="." unique_id=1633765278]
+position = Vector2(18, -19)
+rotation = -3.1415927
+texture = ExtResource("4_fx1t6")
+
+[node name="Tile0123" type="Sprite2D" parent="." unique_id=350439630]
+position = Vector2(-17, -9)
+texture = ExtResource("4_fx1t6")
+
+[node name="Tile0097" type="Sprite2D" parent="." unique_id=1349640852]
+position = Vector2(0, -76)
+texture = ExtResource("5_4yikl")
+
+[node name="Tile0096" type="Sprite2D" parent="." unique_id=2116575541]
+position = Vector2(0, -59)
+texture = ExtResource("6_4tmbc")
+
+[node name="Tile0016" type="Sprite2D" parent="." unique_id=1300690830]
+position = Vector2(-34, -70)
+texture = ExtResource("7_u0cef")
+
+[node name="Tile0016" type="Sprite2D" parent="Tile0016" unique_id=1557922608]
+position = Vector2(-9, -12)
+texture = ExtResource("7_u0cef")
+
+[node name="Tile0016" type="Sprite2D" parent="Tile0016/Tile0016" unique_id=1681182773]
+position = Vector2(39, -21)
+texture = ExtResource("7_u0cef")
+
+[node name="Tile0016" type="Sprite2D" parent="Tile0016/Tile0016/Tile0016" unique_id=699295172]
+position = Vector2(34, 18)
+texture = ExtResource("7_u0cef")
+
+[node name="Tile0098" type="Sprite2D" parent="." unique_id=174145917]
+position = Vector2(14, -42)
+rotation = 3.1415927
+texture = ExtResource("8_lphak")
+
+[node name="Tile0099" type="Sprite2D" parent="." unique_id=117949896]
+position = Vector2(-26, -42)
+texture = ExtResource("9_twsw8")
+
+[node name="Tile0058" type="Sprite2D" parent="." unique_id=153755959]
+position = Vector2(-18, -76)
+texture = ExtResource("10_2dkrq")
+
+[node name="Tile0057" type="Sprite2D" parent="." unique_id=320069451]
+position = Vector2(-35, -76)
+texture = ExtResource("11_yic88")
+
+[node name="Tile0036" type="Sprite2D" parent="." unique_id=280425208]
+position = Vector2(-35, -103)
+texture = ExtResource("12_4iige")
+
+[node name="Tile0037" type="Sprite2D" parent="." unique_id=1853331688]
+position = Vector2(-35, -94)
+texture = ExtResource("13_8m4e8")
+
+[node name="Tile0038" type="Sprite2D" parent="." unique_id=852812694]
+position = Vector2(-17, -94)
+texture = ExtResource("14_dm47q")
+
+[node name="Tile0039" type="Sprite2D" parent="." unique_id=1686069801]
+position = Vector2(-20, -96)
+rotation = 1.5707964
+texture = ExtResource("13_8m4e8")
+
+[node name="Tile0040" type="Sprite2D" parent="." unique_id=478744144]
+position = Vector2(-2, -96)
+rotation = 1.5707964
+texture = ExtResource("13_8m4e8")
+
+[node name="Tile0041" type="Sprite2D" parent="." unique_id=409272707]
+position = Vector2(-7, -85)
+texture = ExtResource("14_dm47q")
+
+[node name="Tile0017" type="Sprite2D" parent="." unique_id=1876261279]
+position = Vector2(11, -96)
+rotation = 1.5707964
+texture = ExtResource("15_me2pl")
+
+[node name="Tile0018" type="Sprite2D" parent="." unique_id=761234987]
+position = Vector2(14, -76)
+rotation = 3.1415927
+texture = ExtResource("16_x5y3v")
+
+[node name="Tile0020" type="Sprite2D" parent="." unique_id=1154974711]
+position = Vector2(24, -96)
+texture = ExtResource("17_s5flw")
+
+[node name="Tile0042" type="Sprite2D" parent="." unique_id=163100155]
+position = Vector2(8, -85)
+texture = ExtResource("14_dm47q")
+
+[node name="Tile0043" type="Sprite2D" parent="." unique_id=147308229]
+position = Vector2(20, -83)
+texture = ExtResource("14_dm47q")
+
+[node name="Tile0019" type="Sprite2D" parent="." unique_id=1041958806]
+position = Vector2(24, -76)
+rotation = 1.5707964
+texture = ExtResource("17_s5flw")
+
+[node name="Tile0100" type="Sprite2D" parent="." unique_id=1544982185]
+position = Vector2(-44, -42)
+texture = ExtResource("8_lphak")

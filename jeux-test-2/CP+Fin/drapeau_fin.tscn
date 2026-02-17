@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b1ck85iirf80i" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0111.png" id="3_lh57a"]
 [ext_resource type="Texture2D" uid="uid://86j5227fulo3" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0112_green.png" id="3_veai8"]
 [ext_resource type="Texture2D" uid="uid://6p0ctpookjjl" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0131_grand.png" id="4_veai8"]
-[ext_resource type="AudioStream" uid="uid://cpne7pyi4gyao" path="res://Son/winning-82808.mp3" id="7_veai8"]
+[ext_resource type="AudioStream" uid="uid://c4m5tiwvfklnv" path="res://Son/Fin.mp3" id="7_tkmcm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lh57a"]
 size = Vector2(20, 150)
@@ -63,11 +63,11 @@ position = Vector2(6, -35)
 position = Vector2(6, 96)
 
 [node name="Musique_Fin" type="AudioStreamPlayer" parent="." unique_id=1723245887]
-stream = ExtResource("7_veai8")
-volume_db = -23.797
+stream = ExtResource("7_tkmcm")
+volume_db = -10.0
 
 [node name="Timer" type="Timer" parent="." unique_id=244328802]
-wait_time = 5.0
+wait_time = 4.0
 one_shot = true
 
 [connection signal="level_completed" from="." to="." method="_on_level_completed"]

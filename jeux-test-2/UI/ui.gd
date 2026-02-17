@@ -3,6 +3,16 @@ extends CanvasLayer
 @onready var life_container = $LifeContainer  # ton HBoxContainer ou autre
 @onready var label = $TextureRect/Label
 
+
+#piece objectif 
+@onready var objectifs_box =$Node/HBoxContainer
+@export var tex_empty: Texture2D
+@export var tex_full: Texture2D
+@export var level_id := "Lvl_1_1"
+@onready var icons := [$Node/HBoxContainer/piece_objectif_vide_1, $Node/HBoxContainer/piece_objectif_vide_2, $Node/HBoxContainer/piece_objectif_vide_3, $Node/HBoxContainer/piece_objectif_vide_4 ,$Node/HBoxContainer/piece_objectif_vide_5 ]
+
+
+
 #progres bar 
 @onready var bar_fill = $ProgressContainer/BarFill
 @onready var bar_background = $ProgressContainer/BarBackground
@@ -19,6 +29,7 @@ func setup_progress(p: Node2D,level_start_x: float, level_end_x: float) -> void:
 	start_x = level_start_x
 	end_x = level_end_x
 
+
 #progres bar 
 
 func _ready() -> void:
@@ -27,9 +38,11 @@ func _ready() -> void:
 	$"Menu Button".hide()
 	$"Restart Button".hide()
 	$"Back Button".hide()
-	
+
+
+
 func _process(delta: float) -> void:
-	label.text = str(Global.coins) + "/10" # sa c pour les coin a changer plus tard
+	label.text = str(Global.coins) + "/20" # sa c pour les coin a changer plus tard
 	# progress bar
 	if player != null:
 		var percent = ((player.global_position.x - start_x) / (end_x - start_x)) * 100.0 
@@ -123,3 +136,14 @@ func _on_restart_button_pressed() -> void:
 	get_tree().reload_current_scene()  # 🔹 Recharge le niveau depuis le début
 	print("RESTART")
 	Global.last_checkpoint_position = Vector2.ZERO
+
+
+#piece objectif 
+func update_piece_objectif_ui():
+	for i in range(5):
+		var key := "piece_objectif_%d" % (i + 1)
+		var done := Global.is_piece_objectif_collected(level_id, key)
+
+		# Exemple visuel :
+		# done -> icône pleine / sinon grisée
+		icons[i].texture = tex_full if done else tex_empty

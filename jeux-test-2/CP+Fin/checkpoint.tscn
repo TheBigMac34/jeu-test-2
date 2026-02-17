@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://jgckt7m41o3p"]
+[gd_scene format=3 uid="uid://jgckt7m41o3p"]
 
 [ext_resource type="Script" uid="uid://5cktn4vfavc0" path="res://CP+Fin/checkpoint.gd" id="1_udy3f"]
 [ext_resource type="Texture2D" uid="uid://dusxonfwivtjk" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0131.png" id="2_i7kqc"]
@@ -36,31 +36,31 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Checkpoint" type="Node2D"]
+[node name="Checkpoint" type="Node2D" unique_id=1092550477]
 script = ExtResource("1_udy3f")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=494356613]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=852905041]
 position = Vector2(0, -13.5)
 shape = SubResource("RectangleShape2D_giix1")
 
-[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1114220571]
 position = Vector2(0, -6)
 texture = ExtResource("2_i7kqc")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D" unique_id=781606332]
 position = Vector2(0, -23)
 sprite_frames = SubResource("SpriteFrames_x7g8l")
 animation = &"Green"
 autoplay = "Red"
 frame_progress = 0.37709108
 
-[node name="RespownPoint" type="Marker2D" parent="."]
+[node name="RespownPoint" type="Marker2D" parent="." unique_id=963691637]
 position = Vector2(36, -21)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=655011361]
 stream = ExtResource("7_b7orp")
-volume_db = -48.43
+volume_db = -25.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

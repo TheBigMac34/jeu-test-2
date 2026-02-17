@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://1udu7c4h54gy"]
+[gd_scene format=3 uid="uid://1udu7c4h54gy"]
 
 [ext_resource type="Texture2D" uid="uid://br7m4mdrr4gvv" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0151_phase0.png" id="1_10qqn"]
 [ext_resource type="Script" uid="uid://b8qhd3bd7evf3" path="res://power up+piece/piece.gd" id="1_gt64k"]
@@ -30,22 +30,22 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_gxsn3"]
 radius = 6.0
 
-[node name="Piece" type="Node2D"]
+[node name="Piece" type="Node2D" unique_id=1010891904]
 script = ExtResource("1_gt64k")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=139459419]
 stream = ExtResource("6_w2svy")
-volume_db = -31.917
+volume_db = -10.0
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=204187017]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D" unique_id=293864710]
 sprite_frames = SubResource("SpriteFrames_u2lic")
 animation = &"piece"
 autoplay = "piece"
 frame_progress = 0.7373402
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=22926642]
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_gxsn3")
 

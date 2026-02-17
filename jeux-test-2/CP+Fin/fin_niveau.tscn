@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://c6tjed6sbmfm3"]
+
+[ext_resource type="Script" uid="uid://g0uuqr7muq4c" path="res://CP+Fin/fin_niveau.gd" id="1"]
+[ext_resource type="FontFile" uid="uid://cq8fch0f4cr5d" path="res://base de donné image/Fonts/Kenney Blocks.ttf" id="2_33rv0"]
+[ext_resource type="Texture2D" uid="uid://c1thjtgats52f" path="res://base de donné image/kenney_platformer-art-pixel-redux/Tiles/tile_0076 pointiller.png" id="3_3sfoo"]
+
+[node name="Fin_Niveau" type="Control" unique_id=651250077]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=205623197]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.06, 0.06, 0.06, 0.7058824)
+
+[node name="Label" type="Label" parent="." unique_id=868347135]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -188.0
+offset_top = 52.0
+offset_right = 188.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_33rv0")
+theme_override_font_sizes/font_size = 32
+text = "Niveau Terminer !"
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=896909481]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer" unique_id=907516101]
+layout_mode = 2
+theme_override_constants/separation = 26
+
+[node name="Bronze" type="VBoxContainer" parent="CenterContainer/HBoxContainer" unique_id=879223222]
+layout_mode = 2
+
+[node name="Bronze_Médaille" type="TextureRect" parent="CenterContainer/HBoxContainer/Bronze" unique_id=622509352]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_3sfoo")
+
+[node name="Bronze" type="Label" parent="CenterContainer/HBoxContainer/Bronze" unique_id=1518772075]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_33rv0")
+theme_override_font_sizes/font_size = 32
+text = "Bronze"
+horizontal_alignment = 1
+
+[node name="Argent" type="VBoxContainer" parent="CenterContainer/HBoxContainer" unique_id=1074139980]
+layout_mode = 2
+
+[node name="Argent_Médaille" type="TextureRect" parent="CenterContainer/HBoxContainer/Argent" unique_id=638075364]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_3sfoo")
+
+[node name="Argent" type="Label" parent="CenterContainer/HBoxContainer/Argent" unique_id=1699518408]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_33rv0")
+theme_override_font_sizes/font_size = 32
+text = "Argent"
+horizontal_alignment = 1
+
+[node name="Or" type="VBoxContainer" parent="CenterContainer/HBoxContainer" unique_id=1546396883]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Or_Médaille" type="TextureRect" parent="CenterContainer/HBoxContainer/Or" unique_id=1677444085]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_3sfoo")
+
+[node name="Or" type="Label" parent="CenterContainer/HBoxContainer/Or" unique_id=716223514]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_33rv0")
+theme_override_font_sizes/font_size = 32
+text = "OR"
+horizontal_alignment = 1
+
+[node name="Menu_Button" type="Button" parent="." unique_id=1011962500]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -180.0
+offset_top = -157.0
+offset_right = 180.0
+offset_bottom = -101.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_33rv0")
+theme_override_font_sizes/font_size = 32
+text = "Menu Principale"
+
+[connection signal="pressed" from="Menu_Button" to="." method="_on_menu_button_pressed"]

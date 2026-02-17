@@ -5,8 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://c086vyv6377ci" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0000 Mina.png" id="2_fhl08"]
 [ext_resource type="FontFile" uid="uid://cq8fch0f4cr5d" path="res://base de donné image/Fonts/Kenney Blocks.ttf" id="3_btcbx"]
 [ext_resource type="Texture2D" uid="uid://behw76kyi0vx" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0001 Mina.png" id="3_vtle1"]
+[ext_resource type="Texture2D" uid="uid://c8whejddwia0y" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0000_red.png" id="4_00tjw"]
 [ext_resource type="AudioStream" uid="uid://cla1vd7d1vm6h" path="res://Son/jump.mp3" id="4_gwnis"]
 [ext_resource type="AudioStream" uid="uid://gknyhkrwbil2" path="res://Son/damage.mp3" id="5_k53q1"]
+[ext_resource type="Texture2D" uid="uid://ix8tgp3ipf7f" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0001_red.png" id="5_x3vf3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i3pqv"]
 atlas = ExtResource("1_4flbx")
@@ -31,6 +33,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("5_x3vf3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_00tjw")
+}],
+"loop": false,
+"name": &"dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_i3pqv")
 }, {
 "duration": 1.0,
@@ -51,6 +64,7 @@ font_size = 124
 font_color = Color(0, 0, 0, 1)
 
 [node name="Player" type="CharacterBody2D" unique_id=407528065 groups=["Player"]]
+z_index = 10
 collision_layer = 3
 collision_mask = 7
 platform_floor_layers = 4294967041
@@ -60,7 +74,7 @@ script = ExtResource("1_4ntmi")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1753366262]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_hqtel")
-animation = &"player 1"
+animation = &"dash"
 autoplay = "player 1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1306331615]
@@ -94,10 +108,9 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Jumps Sound" type="AudioStreamPlayer" parent="." unique_id=1343412864]
 stream = ExtResource("4_gwnis")
-volume_db = -34.467
+volume_db = -20.0
 
 [node name="Damage Sond" type="AudioStreamPlayer" parent="." unique_id=1225378934]
 stream = ExtResource("5_k53q1")
-volume_db = -13.929
 
 [connection signal="timeout" from="CanvasLayer/Timer" to="." method="_on_timer_timeout"]

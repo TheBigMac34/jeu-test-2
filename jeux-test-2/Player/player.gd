@@ -11,11 +11,30 @@ var last_checkpoint: Vector2
 var time_left := 300
 var invincible = false
 var blink_timer := 2.0
+var move_input : float
+var fige := false
+
+# Double saut
+var sauts_restants: int = 1
+
+# Dash
+var can_dash: bool = true
+var is_dashing: bool = false
+var dash_timer: float = 0.0
+var dash_direction: float = 1.0
+var derniere_direction: float = 1.0
+const DASH_DURATION: float = 0.2
+const DASH_SPEED: float = 400.0
+
+
+
 
 @export var Y_LIMITE = 100  # Choisis une valeur assez basse selon ton niveau
 @export var INVINCIBILITY_TIME := 2.0
 @export var BLINK_INTERVAL := 0.1
 @export var SPEED = 200
+@export var acceleration : float = 50
+@export var braking : float = 20
 @export var JUMP_VELOCITY = -300
 
 func _on_timer_timeout() -> void:
@@ -32,6 +51,11 @@ func update_timer_label():
 
 func _ready() -> void:
 	timer.start()
+	# Initialiser la bonne animation dès le départ selon l'état du dash
+	if Global.has_dash:
+		animation.play("dash")
+	else:
+		animation.play("player 1")
 
 	var spawn_point = get_parent().get_node("SpawnPoint")
 
@@ -58,34 +82,70 @@ func _physics_process(delta: float) -> void:
 
 
 	# Add the gravity.
+
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	#jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	# freeze du drapeur 
+	if fige:
+		if is_on_floor():
+			velocity.x = lerp(velocity.x, 0.0, braking * delta)
+		move_and_slide()
+		return
+
+	# --- DASH ---
+	if dash_timer > 0:
+		dash_timer -= delta
+		if dash_timer <= 0:
+			is_dashing = false
+
+	if not can_dash and not is_dashing and is_on_floor():
+		can_dash = true
+
+	if Global.has_dash and can_dash and not is_dashing and Input.is_action_just_pressed("dash"):
+		is_dashing = true
+		can_dash = false
+		dash_direction = derniere_direction
+		dash_timer = DASH_DURATION
+
+	if is_dashing:
+		velocity.x = dash_direction * DASH_SPEED
+		move_and_slide()
+		return
+
+	# --- DOUBLE SAUT ---
+	if is_on_floor():
+		sauts_restants = 2 if Global.has_double_jump else 1
+
+	if Input.is_action_just_pressed("ui_accept") and sauts_restants > 0:
 		velocity.y = JUMP_VELOCITY
 		$"Jumps Sound".play()
+		sauts_restants -= 1
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("ui_left", "ui_right")
-	
-	if direction < 0: #spite flip
+
+	if direction < 0:
 		animation.flip_h = false
+		derniere_direction = -1.0
 	elif direction > 0:
 		animation.flip_h = true
-	
-	if  Input.is_action_pressed("ui_left"):
-		animation.play("player 1")
-	elif Input.is_action_pressed("ui_right"):
-		animation.play("player 1")
-	
-	
-	if direction:
-		velocity.x = direction * SPEED
+		derniere_direction = 1.0
+
+	# Animation de marche (appelé chaque frame comme à l'origine)
+	if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
+		if Global.has_dash and can_dash:
+			animation.play("dash")
+		else:
+			animation.play("player 1")
+
+	move_input = Input.get_axis("ui_left", "ui_right")
+
+	if move_input != 0:
+		velocity.x = lerp(velocity.x, move_input * SPEED, acceleration * delta)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = lerp(velocity.x, 0.0, braking * delta)
 	move_and_slide()
+	
 	
 	# 🔍 Détection des collisions (coup de tête)
 	for i in range(get_slide_collision_count()):
@@ -119,3 +179,10 @@ func take_damage():
 
 func bounce():
 	velocity.y = -400  # Ajuste la valeur pour le rebond
+
+
+func figer():
+	fige = true
+
+func defiger():
+	fige = false

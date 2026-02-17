@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 @export var speed := 60
-@export var group_to_activate := "chainede4"
+@export var group_to_activate: String
 @export var leader_chaine_de_4 := false
-
+@export var leader_chaine_de_4v2 := false
 
 var has_been_visible := false
 var is_active := false
@@ -20,12 +20,20 @@ func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	is_active = true
 	#print("entred screen")
 	
-	if not leader_chaine_de_4:
-		return  # ⛔ seul le leader active le groupe
-	
-	for mob in get_tree().get_nodes_in_group(group_to_activate):
-		mob.is_active = true
+	var is_leader := leader_chaine_de_4 or leader_chaine_de_4v2
+	if not is_leader:
+		return  # ⛔ seul un leader active le groupe
+		
 
+	if group_to_activate.strip_edges() == "":
+		# print("⚠️ group_to_activate vide sur", name)
+		return
+
+	var mobs := get_tree().get_nodes_in_group(group_to_activate)
+	# print("Leader", name, "active", mobs.size(), "mobs du groupe", group_to_activate)
+
+	for mob in mobs:
+		mob.is_active = true
 
 
 func _physics_process(delta):
@@ -44,4 +52,4 @@ func _physics_process(delta):
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("take_damage"):  
 		body.take_damage()  
-		print("hit chenille bleu")
+		# print("hit chenille bleu")

@@ -12,8 +12,12 @@ func start_animation():
 	var tween = create_tween()
 	tween.tween_property(self, "global_position", end_pos, duree / 2)
 	tween.tween_property(self, "global_position", start_pos, duree / 2)
-	tween.finished.connect(queue_free)
 	$AudioStreamPlayer.play()
+	await tween.finished
+	visible = false 
+	
+	await $AudioStreamPlayer.finished
+	queue_free()
 	#print("START:", global_position)
 
 func _ready() -> void:

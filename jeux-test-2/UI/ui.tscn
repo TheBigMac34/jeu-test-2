@@ -2,10 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://cnmdqlcdchheo" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0044.png" id="1_2fwl4"]
 [ext_resource type="Script" uid="uid://by1o8220ds7me" path="res://UI/ui.gd" id="1_dajm1"]
+[ext_resource type="Texture2D" uid="uid://b56oatamvtvvr" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0151_purple0.png" id="3_cbfhl"]
 [ext_resource type="FontFile" uid="uid://cq8fch0f4cr5d" path="res://base de donné image/Fonts/Kenney Blocks.ttf" id="3_e6gg6"]
 [ext_resource type="Texture2D" uid="uid://milv7bqr6yc2" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0151.png" id="4_hat8c"]
 [ext_resource type="Texture2D" uid="uid://e80b5x4d37xw" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0001.png" id="5_3sbvi"]
 [ext_resource type="Texture2D" uid="uid://r3l0eaco2tmt" path="res://base de donné image/kenney_pixel-platformer/Tiles/bar progress.png" id="5_nm1m0"]
+[ext_resource type="Texture2D" uid="uid://cd7w4dg2lbqak" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0151_purple_vide.png" id="7_c7tqi"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nm1m0"]
 
@@ -14,6 +16,8 @@
 [node name="ui" type="CanvasLayer" unique_id=1956993423]
 process_mode = 3
 script = ExtResource("1_dajm1")
+tex_empty = ExtResource("7_c7tqi")
+tex_full = ExtResource("3_cbfhl")
 
 [node name="Fond" type="ColorRect" parent="." unique_id=1310792194]
 anchors_preset = 15
@@ -161,6 +165,41 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_e6gg6")
 theme_override_styles/background = SubResource("StyleBoxEmpty_nm1m0")
 theme_override_styles/fill = SubResource("StyleBoxEmpty_c7tqi")
+
+[node name="Node" type="Node" parent="." unique_id=2035104685]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Node" unique_id=1361327985]
+anchors_preset = -1
+anchor_left = 0.994
+anchor_top = 0.091000006
+anchor_right = 0.994
+anchor_bottom = 0.091000006
+offset_left = -0.087890625
+offset_top = 75.032
+offset_right = 135.91211
+offset_bottom = 103.032
+rotation = 3.1415927
+scale = Vector2(2.68, 2.68)
+
+[node name="piece_objectif_vide_1" type="TextureRect" parent="Node/HBoxContainer" unique_id=999276952]
+layout_mode = 2
+texture = ExtResource("7_c7tqi")
+
+[node name="piece_objectif_vide_2" type="TextureRect" parent="Node/HBoxContainer" unique_id=978456333]
+layout_mode = 2
+texture = ExtResource("7_c7tqi")
+
+[node name="piece_objectif_vide_3" type="TextureRect" parent="Node/HBoxContainer" unique_id=1270402574]
+layout_mode = 2
+texture = ExtResource("7_c7tqi")
+
+[node name="piece_objectif_vide_4" type="TextureRect" parent="Node/HBoxContainer" unique_id=316903518]
+layout_mode = 2
+texture = ExtResource("7_c7tqi")
+
+[node name="piece_objectif_vide_5" type="TextureRect" parent="Node/HBoxContainer" unique_id=1343328781]
+layout_mode = 2
+texture = ExtResource("7_c7tqi")
 
 [connection signal="pressed" from="Pause Button" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="Menu Button" to="." method="_on_menu_button_pressed"]

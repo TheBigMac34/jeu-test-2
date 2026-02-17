@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://c522yw4a187kr"]
+
+[ext_resource type="Texture2D" uid="uid://b56oatamvtvvr" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0151_purple0.png" id="1_38ucg"]
+[ext_resource type="Script" uid="uid://l7nibnmujp46" path="res://power up+piece/piece_objectif.gd" id="1_d77om"]
+[ext_resource type="Texture2D" uid="uid://bx102h2lwbv14" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0151_purple1.png" id="2_pfvlf"]
+[ext_resource type="Texture2D" uid="uid://dnxhhi6e7xg7v" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0151_purple2.png" id="3_d77om"]
+[ext_resource type="Texture2D" uid="uid://dbtx3i281s62j" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0151_purple3.png" id="4_5jq4s"]
+[ext_resource type="Texture2D" uid="uid://cd7w4dg2lbqak" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0151_purple_vide.png" id="5_e2bqx"]
+[ext_resource type="AudioStream" uid="uid://cf5b36v11gnmc" path="res://Son/piece_objectif.mp3" id="7_5jq4s"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cc4xq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_38ucg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_pfvlf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_d77om")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5jq4s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_e2bqx")
+}],
+"loop": true,
+"name": &"piece recup",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x8ubc"]
+radius = 8.0
+
+[node name="piece_objectif" type="Area2D" unique_id=127304848]
+collision_layer = 3
+collision_mask = 7
+script = ExtResource("1_d77om")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1633007774]
+sprite_frames = SubResource("SpriteFrames_cc4xq")
+animation = &"piece recup"
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1833786108]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_x8ubc")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1321872785]
+stream = ExtResource("7_5jq4s")
+volume_db = -20.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
