@@ -66,5 +66,12 @@ func _on_timer_timeout() -> void:
 func _on_level_completed() -> void:
 	print("save")
 	var data = load_save()
+
+	# Bronze (niveau terminé)
 	data["level_1_1_done"] = true
+
+	# Argent (30 pièces ramassées)
+	if Global.coins >= 10:
+		data["level_1_1_silver"] = true
+
 	save_game(data)

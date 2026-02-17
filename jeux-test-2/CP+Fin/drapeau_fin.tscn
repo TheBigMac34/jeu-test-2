@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://biwc1cdumlpuu"]
+[gd_scene format=3 uid="uid://biwc1cdumlpuu"]
 
 [ext_resource type="Script" uid="uid://df368h0kiuowv" path="res://CP+Fin/drapeau_fin.gd" id="1_lh57a"]
 [ext_resource type="Texture2D" uid="uid://4ylcje648l80" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0112.png" id="2_3umwg"]
@@ -36,37 +36,37 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="DrapeauFin" type="Node2D"]
+[node name="DrapeauFin" type="Node2D" unique_id=1048206130]
 script = ExtResource("1_lh57a")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1824200366]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=412803116]
 position = Vector2(0, 30)
 shape = SubResource("RectangleShape2D_lh57a")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D" unique_id=1567020391]
 position = Vector2(6, -35)
 sprite_frames = SubResource("SpriteFrames_t7myr")
 animation = &"Red"
 autoplay = "Red"
 
-[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1916502332]
 position = Vector2(0, 43.5)
 scale = Vector2(1, 2.359375)
 texture = ExtResource("4_veai8")
 
-[node name="Haut" type="Marker2D" parent="."]
+[node name="Haut" type="Marker2D" parent="." unique_id=905039393]
 position = Vector2(6, -35)
 
-[node name="Bas" type="Marker2D" parent="."]
+[node name="Bas" type="Marker2D" parent="." unique_id=227799720]
 position = Vector2(6, 96)
 
-[node name="Musique_Fin" type="AudioStreamPlayer" parent="."]
+[node name="Musique_Fin" type="AudioStreamPlayer" parent="." unique_id=1723245887]
 stream = ExtResource("7_veai8")
 volume_db = -23.797
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=244328802]
 wait_time = 5.0
 one_shot = true
 

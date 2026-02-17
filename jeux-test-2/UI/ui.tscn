@@ -4,6 +4,12 @@
 [ext_resource type="Script" uid="uid://by1o8220ds7me" path="res://UI/ui.gd" id="1_dajm1"]
 [ext_resource type="FontFile" uid="uid://cq8fch0f4cr5d" path="res://base de donné image/Fonts/Kenney Blocks.ttf" id="3_e6gg6"]
 [ext_resource type="Texture2D" uid="uid://milv7bqr6yc2" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0151.png" id="4_hat8c"]
+[ext_resource type="Texture2D" uid="uid://e80b5x4d37xw" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0001.png" id="5_3sbvi"]
+[ext_resource type="Texture2D" uid="uid://r3l0eaco2tmt" path="res://base de donné image/kenney_pixel-platformer/Tiles/bar progress.png" id="5_nm1m0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nm1m0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c7tqi"]
 
 [node name="ui" type="CanvasLayer" unique_id=1956993423]
 process_mode = 3
@@ -106,6 +112,55 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_e6gg6")
 theme_override_font_sizes/font_size = 32
 text = "0"
+
+[node name="ProgressContainer" type="Control" parent="." unique_id=2085601347]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -230.0
+offset_top = 3.0
+offset_right = 170.0
+offset_bottom = 13.0
+grow_horizontal = 2
+scale = Vector2(1.265, 1.265)
+
+[node name="BarBackground" type="ColorRect" parent="ProgressContainer" unique_id=1458024899]
+layout_mode = 1
+offset_right = 400.0
+offset_bottom = 10.0
+color = Color(0.16, 0.16, 0.16, 0)
+
+[node name="BarFill" type="ColorRect" parent="ProgressContainer" unique_id=384535683]
+layout_mode = 0
+offset_bottom = 10.0
+color = Color(1, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="ProgressContainer" unique_id=1448108652]
+custom_minimum_size = Vector2(400, 10)
+layout_mode = 0
+offset_left = -10.27668
+offset_top = -0.7905139
+offset_right = 409.72333
+offset_bottom = 11.209486
+texture = ExtResource("5_nm1m0")
+
+[node name="PlayerIcon" type="Sprite2D" parent="ProgressContainer" unique_id=1876010734]
+visible = false
+position = Vector2(1, 20.999998)
+scale = Vector2(0.715, 0.715)
+texture = ExtResource("5_3sbvi")
+
+[node name="ProgressBar" type="ProgressBar" parent="ProgressContainer" unique_id=1898434973]
+layout_mode = 0
+offset_left = 400.0
+offset_top = -7.9051385
+offset_right = 443.0
+offset_bottom = 20.094862
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_e6gg6")
+theme_override_styles/background = SubResource("StyleBoxEmpty_nm1m0")
+theme_override_styles/fill = SubResource("StyleBoxEmpty_c7tqi")
 
 [connection signal="pressed" from="Pause Button" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="Menu Button" to="." method="_on_menu_button_pressed"]

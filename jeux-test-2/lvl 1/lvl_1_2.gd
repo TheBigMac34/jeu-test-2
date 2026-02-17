@@ -7,7 +7,7 @@ extends Node2D
 @onready var ui = $ui
 
 @export var level_start_x = -500
-@export var level_end_x = 2600 # mets la position X de ton drapeau de fin
+@export var level_end_x = 1321 # mets la position X de ton drapeau de fin
 
 
 
@@ -28,10 +28,9 @@ func _enter_tree():
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$"Lvl 1_1 music".play()
+
 	#progress bar
-	ui.setup_progress(player, level_start_x, level_end_x)
-	
+	ui.setup_progress(player, level_start_x, level_end_x)	
 	
 
 func _on_drapeau_fin_level_completed() -> void:

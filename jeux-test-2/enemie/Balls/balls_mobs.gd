@@ -4,12 +4,12 @@ extends Node2D
 
 
 
-# Called when the node enters the scene tree for the first time.
+# Appelé quand le nœud entre dans l'arbre de scène pour la première fois.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass # Remplacer par le corps de la fonction.
 
 
-# apparais a la camera 
+# Apparaît à la caméra 
 func _process(delta: float) -> void:
 	if player_camera:
 		var cam_pos = player_camera.global_position
@@ -17,9 +17,9 @@ func _process(delta: float) -> void:
 		var visible_zone = Rect2(cam_pos - screen_size / 2, screen_size)
 
 		visible = visible_zone.has_point(global_position)
-		#print("vue")
+		#print("visible")
 
 func _on_balls_body_entered(body: Node2D) -> void:
 	if body.has_method("take_damage"):  
 		body.take_damage()  
-		print("hit Balls")
+		print("touché par Balls")

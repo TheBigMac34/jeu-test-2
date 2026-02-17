@@ -12,11 +12,11 @@ var time_left := 300
 var invincible = false
 var blink_timer := 2.0
 
-const Y_LIMITE = 100  # Choisis une valeur assez basse selon ton niveau
-const INVINCIBILITY_TIME := 2.0
-const BLINK_INTERVAL := 0.1
-const SPEED = 200
-const JUMP_VELOCITY = -300
+@export var Y_LIMITE = 100  # Choisis une valeur assez basse selon ton niveau
+@export var INVINCIBILITY_TIME := 2.0
+@export var BLINK_INTERVAL := 0.1
+@export var SPEED = 200
+@export var JUMP_VELOCITY = -300
 
 func _on_timer_timeout() -> void:
 	time_left -= 1
@@ -52,16 +52,16 @@ func _physics_process(delta: float) -> void:
 		blink_timer+=delta
 		# Rendre visible/invisible toutes les BLINK_INTERVAL (secondes)
 		if int(blink_timer / BLINK_INTERVAL) % 2 == 0:
-			$AnimatedSprite2D.visible = false
+			animation.visible = false
 		else:
-			$AnimatedSprite2D.visible = true
+			animation.visible = true
 
 
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# Handle jump.
+	#jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		$"Jumps Sound".play()
@@ -70,7 +70,7 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("ui_left", "ui_right")
 	
-	if direction < 0:
+	if direction < 0: #spite flip
 		animation.flip_h = false
 	elif direction > 0:
 		animation.flip_h = true
@@ -115,7 +115,7 @@ func take_damage():
 	blink_timer = 0.0
 	await get_tree().create_timer(INVINCIBILITY_TIME).timeout
 	invincible = false
-	$AnimatedSprite2D.visible = true  # Assure qu'il redevienne visible à la fin
+	animation.visible = true  # Assure qu'il redevienne visible à la fin
 
 func bounce():
 	velocity.y = -400  # Ajuste la valeur pour le rebond

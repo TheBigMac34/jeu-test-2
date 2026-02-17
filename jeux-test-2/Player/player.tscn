@@ -8,13 +8,13 @@
 [ext_resource type="AudioStream" uid="uid://cla1vd7d1vm6h" path="res://Son/jump.mp3" id="4_gwnis"]
 [ext_resource type="AudioStream" uid="uid://gknyhkrwbil2" path="res://Son/damage.mp3" id="5_k53q1"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_onrkg"]
-atlas = ExtResource("1_4flbx")
-region = Rect2(0, 0, 24, 24)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_i3pqv"]
 atlas = ExtResource("1_4flbx")
 region = Rect2(25, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onrkg"]
+atlas = ExtResource("1_4flbx")
+region = Rect2(0, 0, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hqtel"]
 animations = [{
@@ -31,10 +31,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_onrkg")
+"texture": SubResource("AtlasTexture_i3pqv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i3pqv")
+"texture": SubResource("AtlasTexture_onrkg")
 }],
 "loop": false,
 "name": &"player 1",
@@ -43,7 +43,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_btcbx"]
 radius = 7.0
-height = 26.0
+height = 24.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_gwnis"]
 font = ExtResource("3_btcbx")
@@ -62,11 +62,8 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_hqtel")
 animation = &"player 1"
 autoplay = "player 1"
-frame = 1
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1306331615]
-position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_btcbx")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1130240708]

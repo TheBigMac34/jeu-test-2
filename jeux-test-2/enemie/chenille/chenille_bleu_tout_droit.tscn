@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bw7glqxm4m5t5"]
+[gd_scene format=3 uid="uid://bw7glqxm4m5t5"]
 
 [ext_resource type="Script" uid="uid://dnq2bjc4rtupv" path="res://enemie/chenille/chenille_bleu_tout_droit.gd" id="1_3oxh2"]
 [ext_resource type="Texture2D" uid="uid://cygl0x7rgxlfd" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0018.png" id="1_hpsla"]
@@ -35,28 +35,28 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3oxh2"]
-size = Vector2(11, 10)
+size = Vector2(11, 9)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=542570632]
 script = ExtResource("1_3oxh2")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=749907846]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=298990177]
 position = Vector2(0.75, 3)
 shape = SubResource("RectangleShape2D_nfy6c")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D" unique_id=2145344142]
 position = Vector2(1, 5)
 sprite_frames = SubResource("SpriteFrames_7odoe")
 animation = &"pick"
 autoplay = "pick"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 7)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=842471408]
+position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_3oxh2")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=274798907]
 position = Vector2(-1, -23)
 rect = Rect2(-10, -10, 48, 48)
 

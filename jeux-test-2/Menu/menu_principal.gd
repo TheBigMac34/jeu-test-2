@@ -41,6 +41,10 @@ func save_game(data):
 func apply_bronze_reward():
 	bronze_sprite.texture = preload("res://base de donné image/kenney_platformer-art-pixel-redux/Tiles/tile_0076.png")
 
+func apply_silver_reward():
+	argent_sprite.texture = preload("res://base de donné image/kenney_platformer-art-pixel-redux/Tiles/tile_0077.png")
+
+
 func _ready() -> void:
 	init_save_if_needed()
 	
@@ -54,6 +58,10 @@ func _ready() -> void:
 	var data = load_save()
 	if data.get("level_1_1_done", false) == true:
 		apply_bronze_reward()
+	else:
+		apply_default_medals()
+	if data.get("level_1_1_silver", false) == true:
+		apply_silver_reward()
 	else:
 		apply_default_medals()
 

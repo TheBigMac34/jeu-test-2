@@ -2,8 +2,9 @@ extends CharacterBody2D
 
 @export var speed := 40
 @export var gravity := 800
+var on_screen := false
 
-var direction := 1  # -1 = gauche, 1 = droite
+var direction := -1  # -1 = gauche, 1 = droite
 
 @onready var ground_check = $RayCast2D
 @onready var wall_check = $WallCheck
@@ -12,6 +13,7 @@ var direction := 1  # -1 = gauche, 1 = droite
 
 func _ready():
 	_update_raycast_positions()
+	sprite.flip_h = direction > 0
 
 
 func _physics_process(delta):
@@ -20,6 +22,8 @@ func _physics_process(delta):
 	else:
 		velocity.y = 0
 
+	if  not on_screen:
+		return
 
 	# Si pas de sol ou mur devant → demi-tour
 	if not ground_check.is_colliding():
@@ -55,3 +59,7 @@ func _on_death_body_entered(body: Node2D) -> void:
 	if body.has_method("take_damage"):  
 		body.take_damage()  
 		#print("hit chenille bleu")
+
+
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	on_screen = true 
