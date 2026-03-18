@@ -2,7 +2,31 @@
 
 [ext_resource type="Script" uid="uid://brfrtu1q0omi5" path="res://Game Over/game_over.gd" id="1_fl8gp"]
 [ext_resource type="FontFile" uid="uid://cq8fch0f4cr5d" path="res://base de donné image/Fonts/Kenney Blocks.ttf" id="2_exro6"]
+[ext_resource type="Texture2D" uid="uid://dkd7pfanuprhw" path="res://base de donné image/bouton-ui/Default/button_rectangle_depth_gloss.png" id="3_3g3vv"]
 [ext_resource type="AudioStream" uid="uid://dfio4bweuucrb" path="res://Son/game_over.mp3" id="3_exro6"]
+[ext_resource type="Script" uid="uid://buaa37stsvn5u" path="res://Menu/HoverScale.gd" id="4_qalxt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w65k2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d0jko"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_22kfk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qjfju"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nfsdr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4qfm7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gvjpa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yajnp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ciw75"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wir4d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t5ak5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gyyjp"]
 font = ExtResource("2_exro6")
@@ -21,13 +45,35 @@ grow_vertical = 2
 color = Color(0.501407, 0.501406, 0.501406, 1)
 
 [node name="Button" type="Button" parent="." unique_id=160595382]
-offset_left = 457.0
-offset_top = 472.0
-offset_right = 673.0
-offset_bottom = 576.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.99997
+offset_top = 116.0
+offset_right = 65.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.46, 1.46)
 theme_override_fonts/font = ExtResource("2_exro6")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 39
+theme_override_styles/normal = SubResource("StyleBoxEmpty_w65k2")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_d0jko")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_22kfk")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_qjfju")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_nfsdr")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_4qfm7")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_gvjpa")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_yajnp")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ciw75")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_wir4d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t5ak5")
 text = "Menu"
+icon = ExtResource("3_3g3vv")
+icon_alignment = 1
+script = ExtResource("4_qalxt")
 
 [node name="Game over" type="Label" parent="." unique_id=1966430718]
 offset_left = 310.0
@@ -39,13 +85,28 @@ text = "Game Over"
 label_settings = SubResource("LabelSettings_gyyjp")
 
 [node name="Restart" type="Button" parent="." unique_id=1239399342]
-offset_left = 439.0
-offset_top = 289.0
-offset_right = 687.0
-offset_bottom = 393.0
+offset_left = 449.0
+offset_top = 304.0
+offset_right = 641.0
+offset_bottom = 368.0
+scale = Vector2(1.46, 1.46)
 theme_override_fonts/font = ExtResource("2_exro6")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 39
+theme_override_styles/normal = SubResource("StyleBoxEmpty_w65k2")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_d0jko")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_22kfk")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_qjfju")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_nfsdr")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_4qfm7")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_gvjpa")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_yajnp")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ciw75")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_wir4d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t5ak5")
 text = "ReTry"
+icon = ExtResource("3_3g3vv")
+icon_alignment = 1
+script = ExtResource("4_qalxt")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=373938632]
 stream = ExtResource("3_exro6")

@@ -78,13 +78,19 @@
   - Textes avec `\n` manuels pour contrôler les coupures de ligne (pas de word-wrap automatique)
   - `scroll_active = false` sur le RichTextLabel
 - ✅ Reset (`menu_principal.gd`) remet aussi `Global.has_dash = false` et `Global.has_double_jump = false` en mémoire
-- ✅ Animation dash (`player.gd`) : animation `"dash"` (personnage redessiné en rouge) quand `has_dash and can_dash`, sinon `"player 1"` — jouée chaque frame comme l'originale, initialisée dans `_ready()`
 - ✅ Orbe PNJ : explosion en 5 mini-sprites qui s'absorbent vers le joueur (style Hollow Knight) via `_explosion_absorption()` dans `pnj.gd` avec Tweens dynamiques
+- ✅ **DASH TERMINÉ** — Effet trail pendant le dash (`player.gd` : `_spawn_trail_ghost()`)
+  - Des fantômes bleutés translucides apparaissent derrière le joueur **pendant** le dash uniquement
+  - Spawné toutes les `TRAIL_INTERVAL` (0.05s) via `trail_timer` dans le bloc `is_dashing`
+  - Chaque fantôme : Sprite2D créé dynamiquement, même texture/orientation que le joueur, fade out en 0.3s via Tween puis `queue_free`
+  - Couleur : `Color(0.5, 0.85, 1.0, 0.55)` (bleu translucide)
+  - Dash recharge au sol (`can_dash = true` dès `is_on_floor()`), direction mémorisée dans `derniere_direction`
 - 🔧 À faire : niveau 1-2, 1-3 (level design), chauve-souris verticale, son heal, boutons animés
 - 🔧 À faire : placer le PNJ dans lvl_1_2.tscn et lvl_1_3.tscn
 - 🔧 Prochain objectif : dynamiser l'attente du drapeau de fin (feux d'artifice avec `CPUParticles2D` pendant les ~5s avant la scène de fin)
 
 ## Notes importantes
+- **Tous les fichiers `.gd` doivent avoir un commentaire sur chaque ligne importante** expliquant à quoi elle sert — pour que le code soit lisible par tout le monde
 - Les commentaires de debug sont mis en commentaire (`#print(...)`) intentionnellement
 - Les pièces objectif sont identifiées par `"piece_objectif_1"` à `"piece_objectif_5"` par niveau
 - Le niveau suivant est débloqué selon la progression sauvegardée

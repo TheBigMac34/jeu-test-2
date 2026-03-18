@@ -387,7 +387,7 @@ position = Vector2(-316, -18)
 position = Vector2(-446, -36)
 
 [node name="DrapeauFin" parent="." unique_id=1048206130 instance=ExtResource("13_annxd")]
-position = Vector2(-275, -158)
+position = Vector2(2660, -110)
 
 [node name="piece" type="Node" parent="." unique_id=920955946]
 

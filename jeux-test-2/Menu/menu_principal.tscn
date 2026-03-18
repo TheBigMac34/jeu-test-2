@@ -4,15 +4,48 @@
 [ext_resource type="Script" uid="uid://b2k5u3f1acn1r" path="res://Menu/menu_principal.gd" id="1_xbuub"]
 [ext_resource type="Texture2D" uid="uid://c7ar4x4tkgurf" path="res://base de donné image/video random/test.png" id="2_avouw"]
 [ext_resource type="FontFile" uid="uid://cq8fch0f4cr5d" path="res://base de donné image/Fonts/Kenney Blocks.ttf" id="3_uqf63"]
-[ext_resource type="FontFile" uid="uid://tieccn0jv3pd" path="res://base de donné image/Fonts/Kenney Future Narrow.ttf" id="5_b00oi"]
+[ext_resource type="Texture2D" uid="uid://cvi1t0oaio1dj" path="res://base de donné image/bouton-ui/Default/button_rectangle_depth_flat.png" id="5_af3rq"]
+[ext_resource type="Script" uid="uid://buaa37stsvn5u" path="res://Menu/HoverScale.gd" id="5_ttrea"]
 [ext_resource type="Texture2D" uid="uid://c1thjtgats52f" path="res://base de donné image/kenney_platformer-art-pixel-redux/Tiles/tile_0076 pointiller.png" id="6_dbu0d"]
 [ext_resource type="Script" uid="uid://cjrfo2wjtmhrm" path="res://Menu/level_1_1_bouton.gd" id="6_sy6l5"]
 [ext_resource type="AudioStream" uid="uid://d2e5sqe7rtsl5" path="res://Son/main menu.mp3" id="6_y2etj"]
+[ext_resource type="Script" uid="uid://bbjfj2giwnlsr" path="res://Menu/level_1_2.gd" id="9_af3rq"]
+[ext_resource type="Script" uid="uid://dbh3g3bsm8xxt" path="res://Menu/level_1_3.gd" id="10_4o7li"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_af3rq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h84ei"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4o7li"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_51m5g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1ffi5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cjkfs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3rkdx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pwe04"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qqj71"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xbuub"]
 font = ExtResource("3_uqf63")
 font_size = 101
 font_color = Color(0.29219, 0.29219, 0.29219, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ttrea"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n0b68"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_krpa7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tdo81"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_17jjq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y7xun"]
 
 [node name="Menu Principal" type="Control" unique_id=1371938614]
 process_mode = 3
@@ -41,22 +74,36 @@ autoplay = true
 loop = true
 
 [node name="Chose your level" type="Button" parent="." unique_id=1814049562]
+texture_filter = 1
+texture_repeat = 1
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -217.0
-offset_top = -252.00003
-offset_right = 1287.0
-offset_bottom = -40.0
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = 55.0
+offset_right = 96.0
+offset_bottom = 119.0
 grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(0.285, 0.285)
+grow_vertical = 2
+scale = Vector2(1.775, 1.775)
 theme_override_fonts/font = ExtResource("3_uqf63")
-theme_override_font_sizes/font_size = 136
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_af3rq")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_h84ei")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4o7li")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_51m5g")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_1ffi5")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_cjkfs")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_3rkdx")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_pwe04")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qqj71")
 text = "Chose your level"
+icon = ExtResource("5_af3rq")
+icon_alignment = 1
+script = ExtResource("5_ttrea")
 
 [node name="Main Menu" type="Label" parent="." unique_id=483366885]
 visible = false
@@ -77,47 +124,91 @@ label_settings = SubResource("LabelSettings_xbuub")
 horizontal_alignment = 1
 
 [node name="back" type="Button" parent="." unique_id=630946406]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-theme_override_fonts/font = ExtResource("5_b00oi")
-theme_override_font_sizes/font_size = 64
+layout_mode = 1
+offset_top = 1.0
+offset_right = 192.0
+offset_bottom = 67.0
+theme_override_fonts/font = ExtResource("3_uqf63")
+theme_override_font_sizes/font_size = 44
+theme_override_styles/normal = SubResource("StyleBoxEmpty_af3rq")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_h84ei")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4o7li")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_51m5g")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ttrea")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_1ffi5")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_cjkfs")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_3rkdx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_n0b68")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_pwe04")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qqj71")
 text = "Back"
+icon = ExtResource("5_af3rq")
+icon_alignment = 1
+script = ExtResource("5_ttrea")
 
 [node name="Level 1" type="Button" parent="." unique_id=1041524707 groups=["level_buttons"]]
-layout_mode = 0
-offset_left = 58.0
-offset_top = 190.0
-offset_right = 370.0
-offset_bottom = 294.0
-scale = Vector2(0.5, 0.5)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -459.0
+offset_top = -83.0
+offset_right = -267.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_uqf63")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxEmpty_af3rq")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_h84ei")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4o7li")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_51m5g")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_1ffi5")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_cjkfs")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_3rkdx")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_pwe04")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qqj71")
 text = "Level 1"
+icon = ExtResource("5_af3rq")
+icon_alignment = 1
+script = ExtResource("5_ttrea")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Level 1" unique_id=1983670757]
 layout_mode = 0
-offset_left = 340.0
-offset_top = -96.0
-offset_right = 748.0
-offset_bottom = 224.0
+offset_left = 212.0
+offset_top = -81.0
+offset_right = 404.0
+offset_bottom = 147.0
 theme_override_constants/separation = 18
 
 [node name="Level 1-1" type="Button" parent="Level 1/VBoxContainer" unique_id=476286507 groups=["level_buttons"]]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_uqf63")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxEmpty_af3rq")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_h84ei")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4o7li")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_51m5g")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_1ffi5")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_cjkfs")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_3rkdx")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_pwe04")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qqj71")
 text = "Level 1-1"
+icon = ExtResource("5_af3rq")
+icon_alignment = 1
 script = ExtResource("6_sy6l5")
 
 [node name="VBoxContainer" type="HBoxContainer" parent="Level 1/VBoxContainer/Level 1-1" unique_id=159412264]
 layout_direction = 2
 layout_mode = 0
-offset_left = 408.0
-offset_top = -60.0
-offset_right = 511.97394
-offset_bottom = -28.0
-scale = Vector2(7.675, 7.675)
+offset_left = 179.0
+offset_top = -16.0
+offset_right = 282.97394
+offset_bottom = 16.0
+scale = Vector2(3, 3)
 theme_override_constants/separation = -13
 
 [node name="Bronze 1-1" type="TextureRect" parent="Level 1/VBoxContainer/Level 1-1/VBoxContainer" unique_id=642819521]
@@ -141,17 +232,29 @@ texture = ExtResource("6_dbu0d")
 [node name="Level 1-2" type="Button" parent="Level 1/VBoxContainer" unique_id=360419485 groups=["level_buttons"]]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_uqf63")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxEmpty_af3rq")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_h84ei")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4o7li")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_51m5g")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_1ffi5")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_cjkfs")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_3rkdx")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_pwe04")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qqj71")
 text = "Level 1-2"
+icon = ExtResource("5_af3rq")
+icon_alignment = 1
+script = ExtResource("9_af3rq")
 
 [node name="VBoxContainer" type="HBoxContainer" parent="Level 1/VBoxContainer/Level 1-2" unique_id=36701955]
 layout_direction = 2
 layout_mode = 0
-offset_left = 408.0
-offset_top = -60.0
-offset_right = 472.0
-offset_bottom = -28.0
-scale = Vector2(7.675, 7.675)
+offset_left = 179.0
+offset_top = -16.0
+offset_right = 249.0
+offset_bottom = 16.0
+scale = Vector2(3, 3)
 theme_override_constants/separation = -13
 
 [node name="Bronze 1-2" type="TextureRect" parent="Level 1/VBoxContainer/Level 1-2/VBoxContainer" unique_id=135016481]
@@ -175,17 +278,29 @@ texture = ExtResource("6_dbu0d")
 [node name="Level 1-3" type="Button" parent="Level 1/VBoxContainer" unique_id=2074522648 groups=["level_buttons"]]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_uqf63")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxEmpty_af3rq")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_h84ei")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4o7li")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_51m5g")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_1ffi5")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_cjkfs")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_3rkdx")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_pwe04")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qqj71")
 text = "Level 1-3"
+icon = ExtResource("5_af3rq")
+icon_alignment = 1
+script = ExtResource("10_4o7li")
 
 [node name="VBoxContainer" type="HBoxContainer" parent="Level 1/VBoxContainer/Level 1-3" unique_id=209163396]
 layout_direction = 2
 layout_mode = 0
-offset_left = 408.0
-offset_top = -60.0
-offset_right = 472.0
-offset_bottom = -28.0
-scale = Vector2(7.675, 7.675)
+offset_left = 179.0
+offset_top = -16.0
+offset_right = 249.0
+offset_bottom = 16.0
+scale = Vector2(3, 3)
 theme_override_constants/separation = -13
 
 [node name="Bronze 1-3" type="TextureRect" parent="Level 1/VBoxContainer/Level 1-3/VBoxContainer" unique_id=1120586349]
@@ -213,30 +328,59 @@ parameters/looping = true
 
 [node name="Quit" type="Button" parent="." unique_id=1444137733]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 420.0
-offset_top = -325.0
-offset_right = 577.0
-offset_bottom = -245.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("5_b00oi")
-theme_override_font_sizes/font_size = 64
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -192.0
+offset_top = 16.0
+offset_bottom = 80.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("3_uqf63")
+theme_override_font_sizes/font_size = 39
+theme_override_styles/normal = SubResource("StyleBoxEmpty_af3rq")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_h84ei")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4o7li")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_51m5g")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_krpa7")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_1ffi5")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_cjkfs")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_3rkdx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_tdo81")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_pwe04")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qqj71")
 text = "Quit"
+icon = ExtResource("5_af3rq")
+icon_alignment = 1
+script = ExtResource("5_ttrea")
 
 [node name="Reset" type="Button" parent="." unique_id=1492056861]
-layout_mode = 0
-offset_left = 904.0
-offset_top = 520.0
-offset_right = 1152.0
-offset_bottom = 624.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -64.0
+grow_horizontal = 0
+grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_uqf63")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 41
+theme_override_styles/normal = SubResource("StyleBoxEmpty_af3rq")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_h84ei")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4o7li")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_51m5g")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_17jjq")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_1ffi5")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_cjkfs")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_3rkdx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_y7xun")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_pwe04")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qqj71")
 text = "Reset"
+icon = ExtResource("5_af3rq")
+icon_alignment = 1
+script = ExtResource("5_ttrea")
 
 [connection signal="pressed" from="Chose your level" to="." method="_on_chose_your_level_pressed"]
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]

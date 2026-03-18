@@ -7,7 +7,31 @@
 [ext_resource type="Texture2D" uid="uid://milv7bqr6yc2" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0151.png" id="4_hat8c"]
 [ext_resource type="Texture2D" uid="uid://e80b5x4d37xw" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0001.png" id="5_3sbvi"]
 [ext_resource type="Texture2D" uid="uid://r3l0eaco2tmt" path="res://base de donné image/kenney_pixel-platformer/Tiles/bar progress.png" id="5_nm1m0"]
+[ext_resource type="Texture2D" uid="uid://cvi1t0oaio1dj" path="res://base de donné image/bouton-ui/Default/button_rectangle_depth_flat.png" id="6_h81ot"]
+[ext_resource type="Script" uid="uid://buaa37stsvn5u" path="res://Menu/HoverScale.gd" id="7_6rr40"]
 [ext_resource type="Texture2D" uid="uid://cd7w4dg2lbqak" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0151_purple_vide.png" id="7_c7tqi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0w6e5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o2jkc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2qbci"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ow1yt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o2t6a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8gukh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8gkfd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0tr35"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7j5ik"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i1yd8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j5i65"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nm1m0"]
 
@@ -37,67 +61,115 @@ size_flags_vertical = 4
 layout_mode = 2
 texture = ExtResource("1_2fwl4")
 
+[node name="Back Button" type="Button" parent="." unique_id=2057067403]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -256.0
+offset_right = -64.0
+offset_bottom = 66.0
+grow_horizontal = 0
+scale = Vector2(0.67, 0.67)
+theme_override_fonts/font = ExtResource("3_e6gg6")
+theme_override_font_sizes/font_size = 44
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0w6e5")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_o2jkc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2qbci")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_ow1yt")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o2t6a")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_8gukh")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_8gkfd")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_0tr35")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_7j5ik")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_i1yd8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_j5i65")
+text = "Back"
+icon = ExtResource("6_h81ot")
+icon_alignment = 1
+script = ExtResource("7_6rr40")
+
 [node name="Pause Button" type="Button" parent="." unique_id=434839016]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -184.0
-offset_top = 13.000001
-offset_right = 64.0
-offset_bottom = 117.0
+offset_left = -256.0
+offset_right = -64.0
+offset_bottom = 65.0
 grow_horizontal = 0
-scale = Vector2(0.385, 0.385)
+scale = Vector2(0.67, 0.67)
 theme_override_fonts/font = ExtResource("3_e6gg6")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 43
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0w6e5")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_o2jkc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2qbci")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_ow1yt")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o2t6a")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_8gukh")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_8gkfd")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_0tr35")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_7j5ik")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_i1yd8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_j5i65")
 text = "Pause"
+icon = ExtResource("6_h81ot")
+icon_alignment = 1
+script = ExtResource("7_6rr40")
 
-[node name="Menu Button" type="Button" parent="." unique_id=676502922]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=687184820]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -138.00003
+offset_top = -83.000015
+offset_right = 54.0
+offset_bottom = 84.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.735, 1.735)
+theme_override_constants/separation = 39
+
+[node name="Menu Button" type="Button" parent="VBoxContainer" unique_id=676502922]
 process_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -108.0
-offset_top = -107.0
-offset_right = 108.0
-offset_bottom = -3.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_fonts/font = ExtResource("3_e6gg6")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0w6e5")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_o2jkc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2qbci")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_ow1yt")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o2t6a")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_8gukh")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_8gkfd")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_0tr35")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_7j5ik")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_i1yd8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_j5i65")
 text = "Menu"
+icon = ExtResource("6_h81ot")
+icon_alignment = 1
+script = ExtResource("7_6rr40")
 
-[node name="Restart Button" type="Button" parent="." unique_id=1686704324]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -172.0
-offset_top = 37.0
-offset_right = 172.0
-offset_bottom = 141.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Restart Button" type="Button" parent="VBoxContainer" unique_id=1686704324]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("3_e6gg6")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0w6e5")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_o2jkc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2qbci")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_ow1yt")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o2t6a")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_8gukh")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_8gkfd")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_0tr35")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_7j5ik")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_i1yd8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_j5i65")
 text = "Restart"
-
-[node name="Back Button" type="Button" parent="." unique_id=2057067403]
-visible = false
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -184.0
-offset_top = 13.000001
-offset_right = 64.0
-offset_bottom = 117.0
-grow_horizontal = 0
-scale = Vector2(0.385, 0.385)
-theme_override_fonts/font = ExtResource("3_e6gg6")
-theme_override_font_sizes/font_size = 64
-text = "Back"
+icon = ExtResource("6_h81ot")
+icon_alignment = 1
+script = ExtResource("7_6rr40")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1041563813]
 offset_left = 7.0
@@ -201,7 +273,7 @@ texture = ExtResource("7_c7tqi")
 layout_mode = 2
 texture = ExtResource("7_c7tqi")
 
-[connection signal="pressed" from="Pause Button" to="." method="_on_pause_button_pressed"]
-[connection signal="pressed" from="Menu Button" to="." method="_on_menu_button_pressed"]
-[connection signal="pressed" from="Restart Button" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="Back Button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Pause Button" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Menu Button" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Restart Button" to="." method="_on_restart_button_pressed"]

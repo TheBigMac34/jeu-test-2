@@ -1,23 +1,25 @@
 extends StaticBody2D
 
 
-@export var cassable := true
+# --- VARIABLES EXPORTÉES ---
+@export var cassable := true # Si vrai, le bloc peut être cassé par le joueur
 
+
+# --- FONCTION DE DESTRUCTION ---
 func casser():
-	if cassable:
-		$AudioStreamPlayer.play()
-		var tween = create_tween()
-		tween.tween_property(self, "position:y", position.y - 6, 0.05)
-		tween.tween_property(self, "position:y", position.y, 0.05)
-		tween.finished.connect(queue_free)
+	if cassable: # Vérifie que le bloc est autorisé à être cassé
+		$AudioStreamPlayer.play() # Joue le son de destruction du bloc
+		var tween = create_tween() # Crée un tween pour animer le bloc
+		tween.tween_property(self, "position:y", position.y - 6, 0.05) # Monte le bloc de 6 pixels en 0.05s (animation de choc)
+		tween.tween_property(self, "position:y", position.y, 0.05) # Redescend le bloc à sa position d'origine en 0.05s
+		tween.finished.connect(queue_free) # Supprime le nœud du jeu une fois l'animation terminée
 
 
-
-# Called when the node enters the scene tree for the first time.
+# --- INITIALISATION ---
 func _ready() -> void:
-	pass # Replace with function body.
+	pass # Aucune initialisation nécessaire au démarrage
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# --- BOUCLE PRINCIPALE ---
 func _process(delta: float) -> void:
-	pass
+	pass # Aucun traitement nécessaire chaque frame

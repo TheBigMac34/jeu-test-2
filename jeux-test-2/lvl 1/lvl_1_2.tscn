@@ -388,7 +388,7 @@ position = Vector2(-524, -171)
 [node name="ui" parent="." unique_id=501494320 instance=ExtResource("4_qws8j")]
 
 [node name="SpawnPoint" type="Marker2D" parent="." unique_id=1873012283]
-position = Vector2(706, -17)
+position = Vector2(-547, -25)
 
 [node name="CheckPoint Manager" type="Node2D" parent="." unique_id=1431038970]
 
@@ -396,23 +396,24 @@ position = Vector2(706, -17)
 position = Vector2(1452, -12)
 
 [node name="PNJ" parent="." unique_id=155114267 instance=ExtResource("8_o61g4")]
-visible = false
 position = Vector2(-317, -15)
 
 [node name="decoration" type="Node" parent="." unique_id=877584341]
 
-[node name="XboxRbBlack" type="Sprite2D" parent="decoration" unique_id=1963154686]
-position = Vector2(-285, -124)
-texture = ExtResource("9_wf2h7")
+[node name="tuto" type="Node" parent="decoration" unique_id=62915136]
 
-[node name="Label" type="Label" parent="decoration" unique_id=1514822702]
-offset_left = -258.0
-offset_top = -135.0
-offset_right = -158.0
-offset_bottom = -111.0
+[node name="Label" type="Label" parent="decoration/tuto" unique_id=1514822702]
+offset_left = -297.0
+offset_top = -98.0
+offset_right = -197.0
+offset_bottom = -74.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("10_dkewx")
 text = "pour dash"
+
+[node name="XboxRbBlack" type="Sprite2D" parent="decoration/tuto" unique_id=1963154686]
+position = Vector2(-324, -87)
+texture = ExtResource("9_wf2h7")
 
 [node name="Mobs" type="Node" parent="." unique_id=232055866]
 

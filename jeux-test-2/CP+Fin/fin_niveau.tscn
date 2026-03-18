@@ -3,6 +3,16 @@
 [ext_resource type="Script" uid="uid://g0uuqr7muq4c" path="res://CP+Fin/fin_niveau.gd" id="1"]
 [ext_resource type="FontFile" uid="uid://cq8fch0f4cr5d" path="res://base de donné image/Fonts/Kenney Blocks.ttf" id="2_33rv0"]
 [ext_resource type="Texture2D" uid="uid://c1thjtgats52f" path="res://base de donné image/kenney_platformer-art-pixel-redux/Tiles/tile_0076 pointiller.png" id="3_3sfoo"]
+[ext_resource type="Texture2D" uid="uid://cvi1t0oaio1dj" path="res://base de donné image/bouton-ui/Default/button_rectangle_depth_flat.png" id="4_q2d4v"]
+[ext_resource type="Script" uid="uid://buaa37stsvn5u" path="res://Menu/HoverScale.gd" id="5_iqxev"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y6gnp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qrxh2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kam3p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h6ocq"]
 
 [node name="Fin_Niveau" type="Control" unique_id=651250077]
 layout_mode = 3
@@ -107,19 +117,27 @@ horizontal_alignment = 1
 
 [node name="Menu_Button" type="Button" parent="." unique_id=1011962500]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -180.0
-offset_top = -157.0
-offset_right = 180.0
-offset_bottom = -101.0
+anchor_bottom = 0.5
+offset_left = -85.99997
+offset_top = 123.0
+offset_right = 106.0
+offset_bottom = 187.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+scale = Vector2(1.675, 1.675)
 theme_override_fonts/font = ExtResource("2_33rv0")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_y6gnp")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_qrxh2")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_kam3p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h6ocq")
 text = "Menu Principale"
+icon = ExtResource("4_q2d4v")
+icon_alignment = 1
+script = ExtResource("5_iqxev")
 
 [connection signal="pressed" from="Menu_Button" to="." method="_on_menu_button_pressed"]
