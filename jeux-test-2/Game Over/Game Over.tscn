@@ -44,19 +44,23 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.501407, 0.501406, 0.501406, 1)
 
-[node name="Button" type="Button" parent="." unique_id=160595382]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=956568759]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -126.99997
-offset_top = 116.0
-offset_right = 65.0
-offset_bottom = 180.0
+offset_left = -122.00003
+offset_top = -17.0
+offset_right = 70.0
+offset_bottom = 152.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.46, 1.46)
+scale = Vector2(1.52, 1.52)
+theme_override_constants/separation = 41
+
+[node name="Menu" type="Button" parent="VBoxContainer" unique_id=160595382]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("2_exro6")
 theme_override_font_sizes/font_size = 39
 theme_override_styles/normal = SubResource("StyleBoxEmpty_w65k2")
@@ -75,21 +79,8 @@ icon = ExtResource("3_3g3vv")
 icon_alignment = 1
 script = ExtResource("4_qalxt")
 
-[node name="Game over" type="Label" parent="." unique_id=1966430718]
-offset_left = 310.0
-offset_top = 131.0
-offset_right = 726.0
-offset_bottom = 227.0
-scale = Vector2(1.335, 1.335)
-text = "Game Over"
-label_settings = SubResource("LabelSettings_gyyjp")
-
-[node name="Restart" type="Button" parent="." unique_id=1239399342]
-offset_left = 449.0
-offset_top = 304.0
-offset_right = 641.0
-offset_bottom = 368.0
-scale = Vector2(1.46, 1.46)
+[node name="Restart" type="Button" parent="VBoxContainer" unique_id=1239399342]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("2_exro6")
 theme_override_font_sizes/font_size = 39
 theme_override_styles/normal = SubResource("StyleBoxEmpty_w65k2")
@@ -108,9 +99,18 @@ icon = ExtResource("3_3g3vv")
 icon_alignment = 1
 script = ExtResource("4_qalxt")
 
+[node name="Game over" type="Label" parent="." unique_id=1966430718]
+offset_left = 310.0
+offset_top = 131.0
+offset_right = 726.0
+offset_bottom = 227.0
+scale = Vector2(1.335, 1.335)
+text = "Game Over"
+label_settings = SubResource("LabelSettings_gyyjp")
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=373938632]
 stream = ExtResource("3_exro6")
 volume_db = -22.961
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="VBoxContainer/Menu" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Restart" to="." method="_on_restart_pressed"]

@@ -56,6 +56,12 @@
 - ✅ Ennemis (plusieurs types)
 - ✅ Écran de fin de niveau (`fin_niveau.tscn`) avec médailles bronze/argent/or
 - ✅ Médailles affichées dans le menu principal (sprites + couleur bouton)
+- ✅ Boutons de niveaux animés au hover/focus (grossissement 110%, 0.1s) — `level_1_1_bouton.gd`, `level_1_2.gd`, `level_1_3.gd`
+- ✅ Déblocage progressif des niveaux dans le menu : 1-2 caché jusqu'à `level_1_1_done`, 1-3 caché jusqu'à `level_1_2_done` — `_update_level_visibility()` dans `menu_principal.gd`
+- ✅ Navigation focus pause : le focus va sur le bouton **Menu** à l'ouverture du menu pause (avant : Back) — `ui.gd`
+- ✅ DrapeauFin ajouté dans `lvl_1_2.tscn` avec `save_key="level_1_2"` — écrira `level_1_2_done` à la complétion
+- ✅ Tuto dash dans `lvl_1_2.tscn` (`decoration/HBoxContainer`) : affiché seulement si `Global.has_dash == true`, vérifié dans `_process` de `lvl_1_2.gd`
+- ✅ `savegame.json` indenté avec tabulations (`JSON.stringify(data, "\t")`) dans `Global.gd`, `drapeau_fin.gd`, `menu_principal.gd`
 - ✅ Son gold brick corrigé (`piece_block.gd` : play → await tween → visible=false → await son → queue_free)
 - ✅ Joueur figé au contact du drapeau (`var fige`, `func figer()` dans `player.gd`, `body.figer()` dans `drapeau_fin.gd`)
   - Gravité maintenue, inputs bloqués, freinage progressif au sol, inertie gardée en l'air
@@ -85,9 +91,9 @@
   - Chaque fantôme : Sprite2D créé dynamiquement, même texture/orientation que le joueur, fade out en 0.3s via Tween puis `queue_free`
   - Couleur : `Color(0.5, 0.85, 1.0, 0.55)` (bleu translucide)
   - Dash recharge au sol (`can_dash = true` dès `is_on_floor()`), direction mémorisée dans `derniere_direction`
-- 🔧 À faire : niveau 1-2, 1-3 (level design), chauve-souris verticale, son heal, boutons animés
-- 🔧 À faire : placer le PNJ dans lvl_1_2.tscn et lvl_1_3.tscn
-- 🔧 Prochain objectif : dynamiser l'attente du drapeau de fin (feux d'artifice avec `CPUParticles2D` pendant les ~5s avant la scène de fin)
+- 🔧 À faire : niveau 1-2, 1-3 (level design), chauve-souris verticale, son heal
+- 🔧 À faire : placer le PNJ dans lvl_1_3.tscn
+- 🔧 À faire : médailles pour lvl_1_2 (argent/or) — pièces objectif à placer, `piece_objectif_key` à configurer sur le DrapeauFin
 
 ## Notes importantes
 - **Tous les fichiers `.gd` doivent avoir un commentaire sur chaque ligne importante** expliquant à quoi elle sert — pour que le code soit lisible par tout le monde

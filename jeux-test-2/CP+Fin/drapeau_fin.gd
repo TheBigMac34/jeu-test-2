@@ -6,6 +6,7 @@ signal level_completed # Signal émis quand le joueur atteint le drapeau de fin
 # --- VARIABLES EXPORTÉES ---
 @export var save_key: String = "level_1_1"          # Clé utilisée dans le fichier de sauvegarde (ex: "level_1_1_done")
 @export var piece_objectif_key: String = "Lvl_1_1"  # Clé pour identifier les pièces objectif du niveau dans Global
+@export var seuil_argent: int = 20                  # Nombre de pièces à collecter pour obtenir la médaille argent
 
 # --- VARIABLES D'ÉTAT ---
 var fini := false # Indique si le drapeau a déjà été déclenché (évite les déclenchements multiples)
@@ -16,6 +17,7 @@ var speed = 75 # Vitesse de déplacement du sprite du drapeau en pixels par seco
 # --- INITIALISATION ---
 func _ready():
 	$Area2D/AnimatedSprite2D.play("Red") # Joue l'animation rouge du drapeau au démarrage (pas encore atteint)
+	Global.seuil_argent = seuil_argent   # transmet le seuil de ce niveau à Global pour que l'UI l'affiche correctement
 
 # --- BOUCLE PRINCIPALE ---
 func _process(delta):
@@ -114,7 +116,7 @@ func _on_level_completed() -> void:
 	data[save_key + "_done"] = true # Marque le niveau comme complété dans la sauvegarde
 
 	# Argent : 20 pièces ramassées OU déjà gagné dans une session précédente
-	Global.medaille_argent = Global.coins >= 20 or data.get(save_key + "_silver", false) # Argent si 20 pièces collectées cette session OU médaille déjà obtenue avant
+	Global.medaille_argent = Global.coins >= seuil_argent or data.get(save_key + "_silver", false) # Argent si le seuil de pièces est atteint cette session OU médaille déjà obtenue avant
 	if Global.medaille_argent: # Si la condition argent est remplie
 		data[save_key + "_silver"] = true # Enregistre la médaille argent dans la sauvegarde
 
@@ -148,5 +150,5 @@ func _load_save() -> Dictionary:
 # --- ÉCRITURE DE LA SAUVEGARDE ---
 func _save_game(data: Dictionary) -> void:
 	var file = FileAccess.open(save_path, FileAccess.WRITE) # Ouvre le fichier en écriture (écrase le contenu existant)
-	file.store_string(JSON.stringify(data)) # Convertit le dictionnaire en JSON et l'écrit dans le fichier
+	file.store_string(JSON.stringify(data, "\t")) # Convertit le dictionnaire en JSON indenté et l'écrit dans le fichier
 	file.close() # Ferme le fichier après écriture

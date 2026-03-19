@@ -1,18 +1,24 @@
 extends CanvasLayer
 
+
 # --- RESSOURCES PRÉCHARGÉES ---
 @onready var menu_principale = preload("res://Menu/menu_principal.tscn") # Scène du menu principal préchargée pour la transition
+@onready var menu_button = $VBoxContainer/Menu
+@onready var restart_button = $VBoxContainer/Restart
+
+
+
 
 # --- INITIALISATION ---
 func _ready() -> void:
 	$AudioStreamPlayer.play() # Joue la musique ou le son de l'écran Game Over au démarrage
 
 	# --- NAVIGATION MANETTE ---
-	$Button.focus_mode  = Control.FOCUS_ALL                          # autorise le focus sur le bouton Menu
-	$Restart.focus_mode = Control.FOCUS_ALL                          # autorise le focus sur le bouton Retry
-	$Button.focus_neighbor_bottom  = $Button.get_path_to($Restart)   # D-pad bas depuis Menu → Retry
-	$Restart.focus_neighbor_top    = $Restart.get_path_to($Button)   # D-pad haut depuis Retry → Menu
-	$Button.grab_focus()                                             # focus sur Menu au démarrage
+	menu_button.focus_mode  = Control.FOCUS_ALL                          # autorise le focus sur le bouton Menu
+	restart_button.focus_mode = Control.FOCUS_ALL                          # autorise le focus sur le bouton Retry
+	menu_button.focus_neighbor_bottom  = 	menu_button.get_path_to(restart_button)   # D-pad bas depuis Menu → Retry
+	restart_button.focus_neighbor_top    = restart_button.get_path_to(	menu_button)   # D-pad haut depuis Retry → Menu
+	menu_button.grab_focus()                                             # focus sur Menu au démarrage
 
 
 # --- SIGNAL : BOUTON MENU PRESSÉ ---

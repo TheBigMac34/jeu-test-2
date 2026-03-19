@@ -7,6 +7,8 @@ extends Node2D
 # progress bar
 @onready var ui = $ui # Référence au nœud UI (interface HUD) de la scène
 
+@onready var tuto = $decoration/HBoxContainer # Indicateur de tuto dash (affiché seulement quand le joueur a le dash)
+
 # --- PARAMÈTRES EXPORTÉS ---
 @export var level_start_x = -500 # Position X du début du niveau (pour la barre de progression)
 @export var level_end_x = 1321 # Position X de la fin du niveau (là où se trouve le drapeau)
@@ -32,6 +34,12 @@ func _enter_tree():
 func _ready() -> void:
 	#progress bar
 	ui.setup_progress(player, level_start_x, level_end_x) # Configure la barre de progression avec le joueur et les limites du niveau
+	tuto.visible = Global.has_dash # Cache le tuto dash si le joueur n'a pas encore le dash
+
+
+# --- MISE À JOUR CHAQUE FRAME ---
+func _process(_delta: float) -> void:
+	tuto.visible = Global.has_dash # Affiche le tuto dès que le joueur reçoit le dash du PNJ
 
 
 # --- CALLBACK : FIN DE NIVEAU (signal du drapeau) ---

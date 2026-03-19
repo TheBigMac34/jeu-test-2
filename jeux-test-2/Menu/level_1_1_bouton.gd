@@ -67,9 +67,9 @@ func _kill_tween():
 func update_visual():
 	var data := _load_save_file() # charge les données de sauvegarde pour lire les médailles
 
-	var done   := bool(data.get("level_1_1_done",   false)) # vrai si le niveau 1-1 a déjà été complété
-	var silver := bool(data.get("level_1_1_silver", false)) # vrai si la médaille argent a été obtenue sur ce niveau
-	var gold   := bool(data.get("level_1_1_gold",   false)) # vrai si la médaille or a été obtenue sur ce niveau
+	var done   := bool(data.get("level_" + level_id + "_done",   false)) # vrai si le niveau a déjà été complété
+	var silver := bool(data.get("level_" + level_id + "_silver", false)) # vrai si la médaille argent a été obtenue
+	var gold   := bool(data.get("level_" + level_id + "_gold",   false)) # vrai si la médaille or a été obtenue
 
 	# On choisit la couleur selon la meilleure médaille obtenue
 	var couleur : Color

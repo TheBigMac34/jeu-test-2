@@ -11,6 +11,7 @@ var levels_data := {}                   # dictionnaire réservé pour les donné
 
 # --- VARIABLES DE JEU ---
 var coins: int = 0                      # nombre de pièces collectées dans la session en cours
+var seuil_argent: int = 20             # seuil de pièces à atteindre pour la médaille argent (défini par le niveau)
 var vies_max = 3                        # nombre maximum de vies autorisées
 var vies_actuelles = 2                  # nombre de vies actuellement disponibles au démarrage
 var dernier_niveau_path: String = ""    # chemin de la dernière scène de niveau lancée (pour relancer)
@@ -47,7 +48,7 @@ func save_game() -> void:
 	data["has_double_jump"] = has_double_jump        # sauvegarde l'état du power-up double saut
 	var fw := FileAccess.open(save_path, FileAccess.WRITE) # ouvre le fichier de sauvegarde en écriture
 	if fw:                                           # vérifie que l'ouverture a réussi
-		fw.store_string(JSON.stringify(data))        # écrit le dictionnaire sérialisé en JSON dans le fichier
+		fw.store_string(JSON.stringify(data, "\t"))  # écrit le JSON indenté avec des tabulations pour la lisibilité
 		fw.close()                                   # ferme le fichier pour valider l'écriture
 
 
@@ -90,6 +91,9 @@ func clear_checkpoint() -> void:
 
 # --- SIGNAL SOIN ---
 signal heal # signal émis quand le joueur gagne une vie, utilisé pour déclencher des effets visuels
+
+# --- SIGNAL PIÈCE OBJECTIF ---
+signal piece_objectif_collected # signal émis quand une pièce objectif est ramassée, pour mettre à jour l'UI
 
 
 # --- GESTION DES VIES ---
@@ -160,6 +164,7 @@ func set_piece_objectif_collected(level_id: String, piece_objectif_id: String) -
 		piece_objectif[level_id] = {}           # crée l'entrée pour ce niveau si elle est absente
 	piece_objectif[level_id][piece_objectif_id] = true # marque cette pièce objectif comme collectée
 	save_game()                                 # sauvegarde immédiatement pour persister la progression
+	emit_signal("piece_objectif_collected")     # notifie l'UI que l'affichage doit être mis à jour
 
 func get_piece_objectif_count(level_id: String) -> int:
 	if not piece_objectif.has(level_id): # vérifie si des données existent pour ce niveau

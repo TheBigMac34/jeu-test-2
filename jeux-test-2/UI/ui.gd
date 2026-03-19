@@ -40,6 +40,8 @@ func setup_progress(p: Node2D, level_start_x: float, level_end_x: float) -> void
 # --- INITIALISATION ---
 func _ready() -> void:
 	update_vie()                    # génère les icônes de vie dès le chargement de l'UI
+	update_piece_objectif_ui()      # affiche l'état initial des pièces objectif (déjà collectées depuis la save)
+	Global.piece_objectif_collected.connect(update_piece_objectif_ui) # met à jour les icônes dès qu'une pièce est ramassée
 	$Fond.hide()                    # cache le fond semi-transparent du menu pause
 	$"VBoxContainer/Menu Button".hide()           # cache le bouton Menu (visible uniquement en pause)
 	$"VBoxContainer/Restart Button".hide()        # cache le bouton Restart (visible uniquement en pause)
@@ -63,7 +65,7 @@ func _process(delta: float) -> void:
 		else:
 			_on_pause_button_pressed()  # sinon → mettre en pause
 
-	label.text = str(Global.coins) + "/20"  # met à jour le label des pièces avec la valeur actuelle et l'objectif de 20
+	label.text = str(Global.coins) + "/" + str(Global.seuil_argent)  # met à jour le label des pièces avec la valeur actuelle et le seuil argent du niveau
 
 	# progress bar
 	if player != null:                                                                        # ne met à jour la barre que si un joueur a été assigné
@@ -117,7 +119,7 @@ func _on_pause_button_pressed() -> void:
 	$"VBoxContainer/Menu Button".show()           # affiche le bouton pour retourner au menu principal
 	$"VBoxContainer/Restart Button".show()        # affiche le bouton pour recommencer le niveau
 	$"Back Button".show()           # affiche le bouton pour reprendre la partie
-	$"Back Button".grab_focus()     # donne le focus au bouton Reprendre pour la navigation manette
+	$"VBoxContainer/Menu Button".grab_focus()  # donne le focus au bouton Menu pour la navigation manette
 	#print("pause")
 
 
