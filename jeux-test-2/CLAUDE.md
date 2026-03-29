@@ -69,21 +69,13 @@
   - DASH_SPEED=400, DASH_DURATION=0.2
   - **Recharge au sol** : `can_dash` repasse à `true` dès que `is_on_floor()` (plus de cooldown timer)
   - Direction mémorisée dans `derniere_direction`
-- ✅ Double saut (`player.gd` : `sauts_restants`, reset au sol, décrémenté au saut)
-  - Actif uniquement si `Global.has_double_jump == true`
 - ✅ `defiger()` ajouté dans `player.gd`
-- ✅ PNJ vieux (`PNJ/pnj.gd` + `PNJ/pnj.tscn`)
+- ✅ PNJ vieux (`PNJ/pnj.gd` + `PNJ/pnj.tscn`) — uniquement pour le dash (lvl 1_2)
   - Dialogue machine à écrire + attente A + remise orbe
-  - `@export var type_orbe` : `"dash"` (lvl 1_2) ou `"double_saut"` (lvl 1_3)
-  - Interaction non rejouable, persistée via `Global.has_dash` / `Global.has_double_jump`
-  - Signal `body_entered` de `Zone` → `_on_zone_body_entered`
+  - Interaction non rejouable, persistée via `Global.has_dash`
   - Bulle de dialogue en espace monde (`DialogueBulle` Node2D positionné au-dessus du PNJ)
-  - Structure : `DialogueBulle` → `DialoguePanel` → `NinePatchRect` + `RichTextLabel` + `HintLabel`
-  - Chemins `@onready` : `$DialogueBulle/DialoguePanel`, `.../RichTextLabel`, `.../HintLabel`
-  - **Effet machine à écrire sans émargement** : `visible_characters = 0` AVANT `text = texte`, puis `await process_frame`, puis boucle `visible_characters = i + 1`
-  - Textes avec `\n` manuels pour contrôler les coupures de ligne (pas de word-wrap automatique)
-  - `scroll_active = false` sur le RichTextLabel
-- ✅ Reset (`menu_principal.gd`) remet aussi `Global.has_dash = false` et `Global.has_double_jump = false` en mémoire
+  - **Effet machine à écrire sans émargement** : `visible_characters = 0` AVANT `text = texte`
+- ✅ Reset (`menu_principal.gd`) remet aussi `Global.has_dash = false` en mémoire
 - ✅ Orbe PNJ : explosion en 5 mini-sprites qui s'absorbent vers le joueur (style Hollow Knight) via `_explosion_absorption()` dans `pnj.gd` avec Tweens dynamiques
 - ✅ **DASH TERMINÉ** — Effet trail pendant le dash (`player.gd` : `_spawn_trail_ghost()`)
   - Des fantômes bleutés translucides apparaissent derrière le joueur **pendant** le dash uniquement
@@ -91,8 +83,27 @@
   - Chaque fantôme : Sprite2D créé dynamiquement, même texture/orientation que le joueur, fade out en 0.3s via Tween puis `queue_free`
   - Couleur : `Color(0.5, 0.85, 1.0, 0.55)` (bleu translucide)
   - Dash recharge au sol (`can_dash = true` dès `is_on_floor()`), direction mémorisée dans `derniere_direction`
-- 🔧 À faire : niveau 1-2, 1-3 (level design), chauve-souris verticale, son heal
-- 🔧 À faire : placer le PNJ dans lvl_1_3.tscn
+- ✅ **Chenille 4** (`enemie/chenille/chenille_4.gd` + `chenille 4.tscn`) — Surface Walker
+  - Approche mathématique pure : suivi du périmètre en pixels, pas de physique/gravité/raycasts
+  - `perimeter_progress` avance de `speed` px/s, bouclé avec `fposmod()`
+  - `_get_surface_data(t)` retourne `[surface_point, surface_normal]` pour les 4 faces (UP/RIGHT/DOWN/LEFT)
+  - `global_position = parent.to_global(surface_point + normal * offset)` avec offset par face
+  - Offsets par face (tiles Kenney asymétriques) : `OFFSET_TOP=14`, `OFFSET_BOTTOM=13`, `OFFSET_SIDE=14`
+  - Rotation sprite : `surface_normal.angle() + PI/2` ; flip : `speed > 0`
+  - Activée par `VisibleOnScreenNotifier2D` (`on_screen = true`)
+- ✅ **Système clé style Mario** (`power up+piece/key.gd` + `key_bloc.gd`)
+  - `key.tscn` : Area2D dans le niveau → joueur touche → `Global.has_key = true` → clé suit le joueur
+  - Suivi lerp (`LERP_SPEED=10`) + `.round()` pour éviter la vibration subpixel
+  - La clé se place **derrière** le joueur : offset `-dir * OFFSET.x` (retourne selon direction)
+  - Groupe `"key"` pour que `key_bloc` puisse retrouver la clé via `get_first_node_in_group`
+  - `key_bloc.tscn` : Area2D destination → vérifie `Global.has_key` → `queue_free()` la clé → instancie `piece_objectif.tscn` à sa position
+  - `key_bloc` exports : `piece_scene` (PackedScene), `level_id`, `piece_objectif_id` (défaut: `piece_objectif_5`)
+  - `Global.has_key: bool` ajouté dans `Global.gd` (non persisté, remis à false à la livraison)
+- ✅ Clé tombe si le joueur prend un dégât (`drop()` dans `key.gd`, appelé depuis `take_damage()` dans `player.gd`)
+- ✅ Level design lvl_1_2 terminé
+- 🔧 À faire : level design lvl_1_3
+- 🔧 À faire : chauve-souris verticale (ennemi)
+- 🔧 À faire : son heal (quand le joueur regagne une vie)
 - 🔧 À faire : médailles pour lvl_1_2 (argent/or) — pièces objectif à placer, `piece_objectif_key` à configurer sur le DrapeauFin
 
 ## Notes importantes

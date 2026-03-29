@@ -32,6 +32,7 @@ var current_level_scene: String = ""   # chemin de la scène du niveau en cours,
 # Ces booléens sont débloqués via interaction avec le PNJ et persistés dans la sauvegarde
 var has_dash: bool = false             # vrai si le joueur a débloqué le dash
 var has_double_jump: bool = false      # vrai si le joueur a débloqué le double saut
+var has_key: bool = false              # vrai si le joueur porte actuellement une clé (remis à false à la livraison)
 
 
 # --- INITIALISATION ---

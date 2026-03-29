@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var fall_speed := 500.0 # Vitesse de chute du Chomp vers le bas (pixels/seconde)
 @export var rise_speed := 100.0 # Vitesse de remontée du Chomp vers sa position initiale (pixels/seconde)
 @export var wait_time := 0.5  # Temps d'attente en secondes avant de remonter après l'impact
+@export var fall_distance := 210.0 # Nombre de pixels maximum que le Chomp descend avant de s'arrêter
 
 # --- VARIABLES D'ÉTAT ---
 var player_in_zone := false # Indique si le joueur est dans la zone de détection (non utilisé activement)
@@ -26,7 +27,7 @@ func _physics_process(delta):
 	if is_falling: # Si le Chomp est en phase de chute
 		velocity.y = fall_speed # Applique la vitesse de chute vers le bas
 		move_and_slide() # Déplace le Chomp en tenant compte des collisions
-		if is_on_floor(): # Vérifie si le Chomp a touché le sol
+		if is_on_floor() or global_position.y >= start_position.y + fall_distance: # Vérifie si le Chomp a touché le sol ou atteint la distance maximale de chute
 			is_falling = false # Arrête la phase de chute
 			anim_sprite.play("impact") # Joue l'animation d'impact au sol
 			await get_tree().create_timer(wait_time).timeout # Attend le délai configuré avant de remonter

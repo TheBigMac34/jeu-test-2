@@ -19,6 +19,15 @@ var fige := false                                   # True quand le joueur est b
 
 # --- DOUBLE SAUT ---
 var sauts_restants: int = 1                         # Nombre de sauts encore disponibles (1 normal, 2 si double saut)
+var was_on_floor: bool = false                      # True si le joueur était au sol la frame précédente
+
+# --- COYOTE TIME ---
+var coyote_timer: float = 0.0                       # Temps restant pendant lequel on peut encore sauter après avoir quitté le sol
+const COYOTE_TIME: float = 0.1                      # Fenêtre coyote time en secondes (comme Celeste)
+
+# --- JUMP BUFFER ---
+var jump_buffer_timer: float = 0.0                  # Temps restant depuis le dernier appui saut (pour sauter dès l'atterrissage)
+const JUMP_BUFFER_TIME: float = 0.08               # Fenêtre de temps du jump buffer en secondes
 
 # --- DASH ---
 var can_dash: bool = true                           # True si le dash est rechargé et utilisable
@@ -128,17 +137,39 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return                                      # On ignore le reste du mouvement pendant le dash
 
-	# --- DOUBLE SAUT ---
+	# --- DOUBLE SAUT & COYOTE TIME ---
 
 	# Réinitialise les sauts disponibles quand on touche le sol
 	if is_on_floor():
 		sauts_restants = 2 if Global.has_double_jump else 1
+		coyote_timer = 0.0                          # Pas besoin du coyote time si on est au sol
 
-	# Saut sur appui (A Xbox / Espace) si des sauts restants
-	if Input.is_action_just_pressed("ui_accept") and sauts_restants > 0:
+	# Coyote time : quand on quitte le sol sans sauter, on démarre le timer
+	if was_on_floor and not is_on_floor() and velocity.y >= 0:
+		coyote_timer = COYOTE_TIME                  # On a 0.1s pour encore sauter
+
+	# Décompte du coyote timer
+	if coyote_timer > 0:
+		coyote_timer -= delta
+
+	was_on_floor = is_on_floor()                    # On mémorise l'état du sol pour la prochaine frame
+
+	# Jump buffer : décompte du timer et enregistrement de l'appui saut
+	if Input.is_action_just_pressed("ui_accept"):
+		jump_buffer_timer = JUMP_BUFFER_TIME        # L'appui est mémorisé pendant 0.08s
+	if jump_buffer_timer > 0:
+		jump_buffer_timer -= delta                  # On diminue le timer chaque frame
+
+	# Peut sauter si : au sol, ou dans la fenêtre coyote, ou double saut disponible
+	var peut_sauter = is_on_floor() or coyote_timer > 0 or (Global.has_double_jump and sauts_restants > 0)
+
+	# Saut si le buffer est actif et qu'on peut sauter
+	if jump_buffer_timer > 0 and peut_sauter:
 		velocity.y = JUMP_VELOCITY
 		$"Jumps Sound".play()
 		sauts_restants -= 1                         # On consomme un saut
+		coyote_timer = 0.0                          # Coyote time consommé
+		jump_buffer_timer = 0.0                     # Buffer consommé
 
 	# --- DIRECTION ET ANIMATION ---
 
@@ -181,6 +212,13 @@ func take_damage():
 	# Appelé quand le joueur touche un ennemi ou un danger
 	if invincible:
 		return                                      # Aucun dégât pendant l'invincibilité
+
+	# Si le joueur portait la clé, elle tombe et redevient ramassable
+	if Global.has_key:
+		for k in get_tree().get_nodes_in_group("key"):
+			if k.has_method("drop"):
+				k.drop()
+
 	Global.perdre_vie()
 	if Global.vies_actuelles <= 0:
 		call_deferred("_go_to_game_over")           # Plus de vies = game over

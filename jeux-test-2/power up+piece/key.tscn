@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b6sw4c6b7wy8a"]
+
+[ext_resource type="Script" uid="uid://4ch3d1t0lsth" path="res://power up+piece/key.gd" id="1_ajjwr"]
+[ext_resource type="Texture2D" uid="uid://defmx4l7s0kck" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0027.png" id="2_6rla6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xupdg"]
+size = Vector2(18, 12)
+
+[node name="key" type="Area2D" unique_id=1544059836]
+script = ExtResource("1_ajjwr")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=721581352]
+texture_filter = 1
+texture_repeat = 1
+texture = ExtResource("2_6rla6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=501633373]
+visible = false
+shape = SubResource("RectangleShape2D_xupdg")

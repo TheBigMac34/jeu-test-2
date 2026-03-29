@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://bxdy2jp53c8g"]
 
-[ext_resource type="Texture2D" uid="uid://cp0rehruiqyy6" path="res://base de donné image/kenney_pixel-platformer/Tilemap/tilemap-backgrounds_packed.png" id="1_qt2sd"]
-[ext_resource type="Texture2D" uid="uid://dlwmbh2x0si36" path="res://base de donné image/kenney_pixel-platformer/Tilemap/tilemap.png" id="2_g17xu"]
+[ext_resource type="Texture2D" uid="uid://dpgrq0uqferjm" path="res://base de donné image/kenney_pixel-platformer/Tilemap/tilemap-backgrounds_packed.png" id="1_qt2sd"]
+[ext_resource type="Texture2D" uid="uid://daqvtepudd4hh" path="res://base de donné image/kenney_pixel-platformer/Tilemap/tilemap.png" id="2_g17xu"]
 [ext_resource type="PackedScene" uid="uid://drtqdvw6bxpeo" path="res://Player/player.tscn" id="3_x4qp6"]
 [ext_resource type="PackedScene" uid="uid://bwcbnmwranim6" path="res://UI/ui.tscn" id="4_yo8ny"]
 [ext_resource type="PackedScene" uid="uid://doc66ywrgq7w6" path="res://enemie/Balls/balls_mobs.tscn" id="5_fmr5b"]
@@ -376,6 +376,7 @@ tile_set = SubResource("TileSet_8khwv")
 position = Vector2(-530, -32)
 
 [node name="ui" parent="." unique_id=821396917 instance=ExtResource("4_yo8ny")]
+level_id = "Lvl_1_3"
 
 [node name="Balls Mobs" parent="." unique_id=272822155 instance=ExtResource("5_fmr5b")]
 position = Vector2(-72, -66)

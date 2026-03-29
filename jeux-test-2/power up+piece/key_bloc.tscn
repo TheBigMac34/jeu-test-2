@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://wj8ajhmo6p3y"]
+
+[ext_resource type="Texture2D" uid="uid://d0je5f4f4x7qo" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0028.png" id="1_5dsxn"]
+[ext_resource type="Script" uid="uid://djslo1ux5vc3w" path="res://power up+piece/key_bloc.gd" id="1_pp381"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pp381"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_static"]
+size = Vector2(16, 16)
+
+[node name="key_bloc" type="Area2D" unique_id=129010117]
+script = ExtResource("1_pp381")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=222434787]
+texture = ExtResource("1_5dsxn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=588590113]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_pp381")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=314159266]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=271828182]
+shape = SubResource("RectangleShape2D_static")

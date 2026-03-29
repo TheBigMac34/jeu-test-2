@@ -1,34 +1,33 @@
 [gd_scene format=4 uid="uid://bugcbhjvk6wwh"]
 
 [ext_resource type="Script" uid="uid://bpue3g50c4tra" path="res://lvl 1/lvl_1_1.gd" id="1_xagii"]
-[ext_resource type="Texture2D" uid="uid://cp0rehruiqyy6" path="res://base de donné image/kenney_pixel-platformer/Tilemap/tilemap-backgrounds_packed.png" id="1_yfilb"]
-[ext_resource type="Texture2D" uid="uid://dlwmbh2x0si36" path="res://base de donné image/kenney_pixel-platformer/Tilemap/tilemap.png" id="1_yufwk"]
-[ext_resource type="Texture2D" uid="uid://csh36i6nio2oi" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0087.png" id="3_lgprf"]
+[ext_resource type="Texture2D" uid="uid://dpgrq0uqferjm" path="res://base de donné image/kenney_pixel-platformer/Tilemap/tilemap-backgrounds_packed.png" id="1_yfilb"]
+[ext_resource type="Texture2D" uid="uid://daqvtepudd4hh" path="res://base de donné image/kenney_pixel-platformer/Tilemap/tilemap.png" id="1_yufwk"]
+[ext_resource type="Texture2D" uid="uid://dljph1e3djsie" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0087.png" id="3_lgprf"]
 [ext_resource type="PackedScene" uid="uid://drtqdvw6bxpeo" path="res://Player/player.tscn" id="3_m1jwn"]
 [ext_resource type="PackedScene" uid="uid://dagb8snyrnvgh" path="res://decord/arbre.tscn" id="4_4fofu"]
 [ext_resource type="PackedScene" uid="uid://bwcbnmwranim6" path="res://UI/ui.tscn" id="4_7t2xu"]
-[ext_resource type="Texture2D" uid="uid://3nxi63tlsq76" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0124.png" id="4_mixi6"]
-[ext_resource type="Texture2D" uid="uid://cyxg1gpt8s4yq" path="res://base de donné image/kenney_pixel-platformer-farm-expansion/Tiles/tile_0020.png" id="5_1ew0x"]
+[ext_resource type="Texture2D" uid="uid://cw0xg6qsqbqcn" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0124.png" id="4_mixi6"]
+[ext_resource type="Texture2D" uid="uid://cgws4ymwdjje" path="res://base de donné image/kenney_pixel-platformer-farm-expansion/Tiles/tile_0020.png" id="5_1ew0x"]
 [ext_resource type="PackedScene" uid="uid://bw7glqxm4m5t5" path="res://enemie/chenille/chenille_bleu_tout_droit.tscn" id="6_fnie1"]
-[ext_resource type="Texture2D" uid="uid://crltgn1ebvjun" path="res://base de donné image/kenney_pixel-platformer-farm-expansion/Tiles/tile_0026.png" id="6_l80iv"]
-[ext_resource type="Texture2D" uid="uid://b46kpkojwfqqt" path="res://base de donné image/kenney_pixel-platformer-farm-expansion/Tiles/tile_0036.png" id="7_ecmlj"]
-[ext_resource type="AudioStream" uid="uid://bt5sjulog60e6" path="res://Son/LVL-1.mp3" id="8_7t2xu"]
-[ext_resource type="Texture2D" uid="uid://bk7pgjif3ewxj" path="res://base de donné image/kenney_pixel-platformer-farm-expansion/Tiles/tile_0055.png" id="8_081te"]
-[ext_resource type="Texture2D" uid="uid://jedgf0ewwqlo" path="res://base de donné image/kenney_pixel-platformer-farm-expansion/Tiles/tile_0073.png" id="9_eguqp"]
+[ext_resource type="Texture2D" uid="uid://dytn1aovf4mry" path="res://base de donné image/kenney_pixel-platformer-farm-expansion/Tiles/tile_0026.png" id="6_l80iv"]
+[ext_resource type="Texture2D" uid="uid://70c0u22aea8u" path="res://base de donné image/kenney_pixel-platformer-farm-expansion/Tiles/tile_0036.png" id="7_ecmlj"]
+[ext_resource type="AudioStream" uid="uid://cwxfonhgf0hr8" path="res://Son/LVL-1.mp3" id="8_7t2xu"]
+[ext_resource type="Texture2D" uid="uid://b43xeawns4jws" path="res://base de donné image/kenney_pixel-platformer-farm-expansion/Tiles/tile_0055.png" id="8_081te"]
+[ext_resource type="Texture2D" uid="uid://cptqiuyfcmev2" path="res://base de donné image/kenney_pixel-platformer-farm-expansion/Tiles/tile_0073.png" id="9_eguqp"]
 [ext_resource type="PackedScene" uid="uid://cgubbtebu55kr" path="res://Block/ensemble_5_1_brick.tscn" id="10_0bwqe"]
 [ext_resource type="PackedScene" uid="uid://jgckt7m41o3p" path="res://CP+Fin/checkpoint.tscn" id="10_3p4hs"]
-[ext_resource type="Texture2D" uid="uid://du0io8g6lohat" path="res://base de donné image/kenney_pixel-platformer-farm-expansion/Tiles/tile_0104.png" id="10_aqomk"]
+[ext_resource type="Texture2D" uid="uid://231mx0mqpaax" path="res://base de donné image/kenney_pixel-platformer-farm-expansion/Tiles/tile_0104.png" id="10_aqomk"]
 [ext_resource type="PackedScene" uid="uid://bmw8fvkp54m4f" path="res://enemie/chenille/chenille_rouge.tscn" id="10_vomjb"]
 [ext_resource type="PackedScene" uid="uid://dvxg7yeb8qve1" path="res://power up+piece/ensemble_de_4_pièces.tscn" id="11_vomjb"]
 [ext_resource type="PackedScene" uid="uid://1udu7c4h54gy" path="res://power up+piece/piece.tscn" id="12_0bwqe"]
 [ext_resource type="PackedScene" uid="uid://boipvgiu4drc1" path="res://power up+piece/heal.tscn" id="13_0moxg"]
 [ext_resource type="PackedScene" uid="uid://biwc1cdumlpuu" path="res://CP+Fin/drapeau_fin.tscn" id="13_annxd"]
 [ext_resource type="PackedScene" uid="uid://c522yw4a187kr" path="res://power up+piece/piece_objectif.tscn" id="14_lahcm"]
-[ext_resource type="Texture2D" uid="uid://cno37umdf65xn" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0127.png" id="19_8v2wl"]
+[ext_resource type="Texture2D" uid="uid://b8sd8rep83iil" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0127.png" id="19_8v2wl"]
 [ext_resource type="Texture2D" uid="uid://b1mowfgj5ljt8" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0088_end.png" id="26_u4quy"]
-[ext_resource type="Texture2D" uid="uid://d0333wjyeud2r" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0128.png" id="27_m5yhl"]
-[ext_resource type="Texture2D" uid="uid://dsvuqacpyjqrs" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0126.png" id="28_iax6m"]
-[ext_resource type="Texture2D" uid="uid://cn6xba7sh8t8d" path="res://base de donné image/kenney_pixel-platformer/Tiles/Chatteau.png" id="29_1ew0x"]
+[ext_resource type="Texture2D" uid="uid://cxtxph4wrwrfq" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0128.png" id="27_m5yhl"]
+[ext_resource type="Texture2D" uid="uid://dlfba6mx54yjm" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0126.png" id="28_iax6m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m1jwn"]
 texture = ExtResource("1_yfilb")
@@ -339,7 +338,7 @@ volume_db = -26.129
 parameters/looping = true
 
 [node name="SpawnPoint" type="Marker2D" parent="." unique_id=1021711508]
-position = Vector2(-543, -20)
+position = Vector2(2515, -46)
 
 [node name="Checkpoint2" parent="." unique_id=2029051497 instance=ExtResource("10_3p4hs")]
 position = Vector2(1049, -88)
@@ -514,11 +513,6 @@ texture = ExtResource("27_m5yhl")
 [node name="Tile0126" type="Sprite2D" parent="decoration" unique_id=250986985]
 position = Vector2(1064, -11)
 texture = ExtResource("28_iax6m")
-
-[node name="Chatteau" type="Sprite2D" parent="decoration" unique_id=81279215]
-position = Vector2(2752.0002, -63)
-scale = Vector2(5, 5)
-texture = ExtResource("29_1ew0x")
 
 [node name="Player" parent="." unique_id=413450925 instance=ExtResource("3_m1jwn")]
 position = Vector2(-541, -29)
