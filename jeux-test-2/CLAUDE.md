@@ -20,6 +20,7 @@
 | `UI/` | Interface HUD (`ui.gd`, `ui.tscn`) |
 | `Block/` | Blocs de plateforme |
 | `Son/` | Effets sonores |
+| `interaction/` | Leviers (`levier.gd`, `levier_timer.gd`) |
 | `power up+piece/` | Power-ups et pièces |
 | `decord/` | Éléments de décor |
 | `Game Over/` | Scène Game Over |
@@ -83,6 +84,24 @@
   - Chaque fantôme : Sprite2D créé dynamiquement, même texture/orientation que le joueur, fade out en 0.3s via Tween puis `queue_free`
   - Couleur : `Color(0.5, 0.85, 1.0, 0.55)` (bleu translucide)
   - Dash recharge au sol (`can_dash = true` dès `is_on_floor()`), direction mémorisée dans `derniere_direction`
+  - **Gravité annulée pendant le dash** : `if not is_on_floor() and not is_dashing` + `velocity.y = 0` au déclenchement
+  - **Dash annulé au drapeau de fin** : `figer()` remet `is_dashing = false` et `dash_timer = 0`
+  - Freinage à la fin du niveau s'applique aussi en l'air (suppression du `if is_on_floor()` dans le bloc `fige`)
+- ✅ **Caméra excentrée** — `Camera2D.position = Vector2(0, -50)` dans `player.tscn` → joueur dans le bas de l'écran
+- ✅ **Chauve-souris mobile** (`mobs_mouv_1.gd`) refaite
+  - Exports : `move_direction (Vector2)` encode direction ET distance, `move_speed (float)`
+  - Déplacement `move_toward` entre `start_pos` et `start_pos + move_direction`
+  - Rebondir dessus recharge le dash (`body.can_dash = true`)
+- ✅ **Chauve-souris immobile** (`mobs_imo_1.gd`) — export `recharge_dash (bool)` + recharge dash au rebond
+- ✅ **Levier** (`interaction/levier.gd` + `levier.tscn`)
+  - Activation : bouton X Xbox / Carré PS (action `"interact"`, `button_index: 2` dans `project.godot`)
+  - Spawn de chauve-souris aux positions des `Marker2D` enfants dans la scène niveau
+  - Affiche `emote_X.png` au-dessus du joueur quand il est proche (Sprite2D enfant, `visible=false` par défaut)
+  - Joue animation `"action"` une seule fois à l'activation — ne peut être activé qu'une fois
+- ✅ **Levier Timer** (`interaction/levier_timer.gd`)
+  - Même principe que le levier mais avec export `duree_timer (float)` (défaut 5s)
+  - Garde une liste `mobs_spawnes` des mobs instanciés
+  - Après `duree_timer` : supprime les mobs encore en vie (`is_instance_valid`), reset animation, `active = false` → réactivable
 - ✅ **Chenille 4** (`enemie/chenille/chenille_4.gd` + `chenille 4.tscn`) — Surface Walker
   - Approche mathématique pure : suivi du périmètre en pixels, pas de physique/gravité/raycasts
   - `perimeter_progress` avance de `speed` px/s, bouclé avec `fposmod()`
@@ -101,10 +120,9 @@
   - `Global.has_key: bool` ajouté dans `Global.gd` (non persisté, remis à false à la livraison)
 - ✅ Clé tombe si le joueur prend un dégât (`drop()` dans `key.gd`, appelé depuis `take_damage()` dans `player.gd`)
 - ✅ Level design lvl_1_2 terminé
-- 🔧 À faire : level design lvl_1_3
-- 🔧 À faire : chauve-souris verticale (ennemi)
+- 🔧 À faire : level design lvl_1_3 (structure créée, contenu à finir)
+- 🔧 À faire : musiques (fond + transitions)
 - 🔧 À faire : son heal (quand le joueur regagne une vie)
-- 🔧 À faire : médailles pour lvl_1_2 (argent/or) — pièces objectif à placer, `piece_objectif_key` à configurer sur le DrapeauFin
 
 ## Notes importantes
 - **Tous les fichiers `.gd` doivent avoir un commentaire sur chaque ligne importante** expliquant à quoi elle sert — pour que le code soit lisible par tout le monde
