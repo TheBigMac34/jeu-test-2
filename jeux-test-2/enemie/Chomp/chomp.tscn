@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://2pb23fgy4mwd"]
+[gd_scene format=3 uid="uid://2pb23fgy4mwd"]
 
 [ext_resource type="Script" uid="uid://djemv3ufy47ea" path="res://enemie/Chomp/chomp.gd" id="1_x4jjo"]
-[ext_resource type="Texture2D" uid="uid://cjuxxh7462eiy" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0011.png" id="2_vji4f"]
-[ext_resource type="Texture2D" uid="uid://d0i3rsqwqd6w" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0012.png" id="3_hqsrs"]
-[ext_resource type="Texture2D" uid="uid://bxjxkxxyk8bw4" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0012.1.png" id="3_vji4f"]
+[ext_resource type="Texture2D" uid="uid://c3ynfrp76u24" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0011.png" id="2_vji4f"]
+[ext_resource type="Texture2D" uid="uid://dkaj1p5lrsjq6" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0012.png" id="3_hqsrs"]
+[ext_resource type="Texture2D" uid="uid://d32knkq7r6t2l" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0012.1.png" id="3_vji4f"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rq6un"]
 animations = [{
@@ -56,40 +56,40 @@ animations = [{
 size = Vector2(18, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_amm2v"]
-size = Vector2(42, 210)
+size = Vector2(42, 168)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x4jjo"]
-size = Vector2(86, 212)
+size = Vector2(86, 169)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vji4f"]
 size = Vector2(16, 6)
 
-[node name="Chomp" type="CharacterBody2D"]
+[node name="Chomp" type="AnimatableBody2D" unique_id=995872872]
 position = Vector2(279, 50)
 script = ExtResource("1_x4jjo")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1568702609]
 sprite_frames = SubResource("SpriteFrames_rq6un")
 animation = &"fall"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=242027625]
 shape = SubResource("RectangleShape2D_4klmd")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=386676794]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-2, 55)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1366344976]
+position = Vector2(-2, 76)
 shape = SubResource("RectangleShape2D_amm2v")
 
-[node name="detection" type="Area2D" parent="."]
+[node name="detection" type="Area2D" parent="." unique_id=2005502434]
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="detection"]
-position = Vector2(-2, 55)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="detection" unique_id=295446348]
+position = Vector2(-2, 76.5)
 shape = SubResource("RectangleShape2D_x4jjo")
 
-[node name="damage" type="Area2D" parent="."]
+[node name="damage" type="Area2D" parent="." unique_id=1693224802]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="damage"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="damage" unique_id=159499244]
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_vji4f")
 

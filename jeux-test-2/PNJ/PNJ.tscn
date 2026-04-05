@@ -60,6 +60,7 @@ position = Vector2(0, -22)
 texture = ExtResource("1_o4h2w")
 
 [node name="DialogueBulle" type="Node2D" parent="." unique_id=511851013]
+z_index = 10
 
 [node name="DialoguePanel" type="Panel" parent="DialogueBulle" unique_id=1951109290]
 offset_left = -118.0

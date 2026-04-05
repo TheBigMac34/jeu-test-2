@@ -3,6 +3,7 @@ extends Control
 # --- PRÉCHARGEMENT DES SCÈNES ---
 @onready var first_level = preload("res://lvl 1/lvl_1_1.tscn")   # précharge la scène du niveau 1-1 pour un chargement rapide
 @onready var second_level = preload("res://lvl 1/lvl_1_2.tscn")  # précharge la scène du niveau 1-2
+@onready var third_level = preload("res://lvl 1/lvl_1_3.tscn") # précharge la scène du niveau 1-3
 
 # --- RÉFÉRENCES AUX SPRITES DE MÉDAILLES ---
 @onready var bronze_sprite = $"Level 1/VBoxContainer/Level 1-1/VBoxContainer/Bronze 1-1"    # sprite affichant la médaille bronze du niveau 1-1
@@ -232,6 +233,10 @@ func _on_level_12_pressed() -> void:
 	Global.dernier_niveau_path = "res://lvl 1/lvl_1_2.tscn"     # mémorise le chemin du niveau pour pouvoir le relancer
 	Global.coins = 0                                             # remet le compteur de pièces à zéro pour ce niveau
 
+func _on_level_13_pressed() -> void:
+	get_tree().change_scene_to_packed(third_level)              # charge et lance la scène du niveau 1-2
+	Global.dernier_niveau_path = "res://lvl 1/lvl_1_3.tscn"     # mémorise le chemin du niveau pour pouvoir le relancer
+	Global.coins = 0                                             # remet le compteur de pièces à zéro pour ce niveau
 
 # --- BOUTON : QUITTER LE JEU ---
 func _on_quit_pressed() -> void:

@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://d0je5f4f4x7qo" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0028.png" id="1_5dsxn"]
 [ext_resource type="Script" uid="uid://djslo1ux5vc3w" path="res://power up+piece/key_bloc.gd" id="1_pp381"]
+[ext_resource type="PackedScene" uid="uid://c522yw4a187kr" path="res://power up+piece/piece_objectif.tscn" id="2_kdf6t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pp381"]
 size = Vector2(16, 16)
@@ -11,6 +12,7 @@ size = Vector2(16, 16)
 
 [node name="key_bloc" type="Area2D" unique_id=129010117]
 script = ExtResource("1_pp381")
+piece_scene = ExtResource("2_kdf6t")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=222434787]
 texture = ExtResource("1_5dsxn")

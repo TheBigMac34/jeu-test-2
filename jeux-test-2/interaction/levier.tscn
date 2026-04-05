@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://whoaij22f7ap"]
+
+[ext_resource type="Script" uid="uid://d4hmrimdcxjs0" path="res://interaction/levier.gd" id="1_lp384"]
+[ext_resource type="PackedScene" uid="uid://box758pinfe0k" path="res://enemie/chauve souris/mobs_imo_1.tscn" id="2_bmwoc"]
+[ext_resource type="Texture2D" uid="uid://cv82kdlky0ryf" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0064.png" id="3_mm2pc"]
+[ext_resource type="Texture2D" uid="uid://dk1p2aych7tu8" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0065.png" id="4_kibcj"]
+[ext_resource type="Texture2D" uid="uid://duqhq3mlb7tve" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0066.png" id="5_n1ugi"]
+[ext_resource type="Texture2D" uid="uid://ccmw36hy32yp8" path="res://base de donné image/emotes-pack/emote_X.png" id="6_bmwoc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cbvcu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_mm2pc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kibcj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_n1ugi")
+}],
+"loop": false,
+"name": &"action",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_mm2pc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e867e"]
+
+[node name="Levier" type="Area2D" unique_id=1412261764]
+script = ExtResource("1_lp384")
+bat_scene = ExtResource("2_bmwoc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1950739007]
+sprite_frames = SubResource("SpriteFrames_cbvcu")
+animation = &"action"
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1464477769]
+position = Vector2(0, -10)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_e867e")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1608755152]
+visible = false
+position = Vector2(0, -40)
+texture = ExtResource("6_bmwoc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

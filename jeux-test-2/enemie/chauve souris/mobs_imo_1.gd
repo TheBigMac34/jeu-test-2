@@ -1,5 +1,8 @@
 extends Node2D
 
+# --- PARAMÈTRES EXPORTÉS (modifiables dans l'inspecteur) ---
+@export var recharge_dash: bool = true                     # Si vrai, rebondir sur cet ennemi recharge le dash du joueur
+
 # --- RÉFÉRENCES ---
 @onready var player_camera := get_viewport().get_camera_2d() # Récupère la caméra 2D active dans le viewport
 
@@ -41,6 +44,8 @@ func _on_top_hitbox_body_entered(body: Node2D) -> void:
 	if body.name == "Player" and not damage : # Agit seulement si c'est le joueur et qu'aucun dégât n'a déjà été infligé
 		if body.has_method("bounce"): # Vérifie que le joueur possède une méthode de rebond
 			body.bounce() # Fait rebondir le joueur vers le haut
+			if recharge_dash:                              # Recharge le dash seulement si l'option est activée
+				body.can_dash = true                       # Recharge le dash du joueur
 		invincible_to_player = true # Rend l'ennemi temporairement invincible pour éviter un double déclenchement
 		await get_tree().create_timer(0.05).timeout # Attend 0.05 secondes avant de supprimer (laisse le temps au rebond)
 		queue_free() # Supprime l'ennemi de la scène

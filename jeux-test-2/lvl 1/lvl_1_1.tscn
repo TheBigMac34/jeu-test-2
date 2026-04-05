@@ -24,10 +24,12 @@
 [ext_resource type="PackedScene" uid="uid://boipvgiu4drc1" path="res://power up+piece/heal.tscn" id="13_0moxg"]
 [ext_resource type="PackedScene" uid="uid://biwc1cdumlpuu" path="res://CP+Fin/drapeau_fin.tscn" id="13_annxd"]
 [ext_resource type="PackedScene" uid="uid://c522yw4a187kr" path="res://power up+piece/piece_objectif.tscn" id="14_lahcm"]
+[ext_resource type="PackedScene" uid="uid://wj8ajhmo6p3y" path="res://power up+piece/key_bloc.tscn" id="15_l80iv"]
 [ext_resource type="Texture2D" uid="uid://b8sd8rep83iil" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0127.png" id="19_8v2wl"]
 [ext_resource type="Texture2D" uid="uid://b1mowfgj5ljt8" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0088_end.png" id="26_u4quy"]
 [ext_resource type="Texture2D" uid="uid://cxtxph4wrwrfq" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0128.png" id="27_m5yhl"]
 [ext_resource type="Texture2D" uid="uid://dlfba6mx54yjm" path="res://base de donné image/kenney_pixel-platformer/Tiles/tile_0126.png" id="28_iax6m"]
+[ext_resource type="PackedScene" uid="uid://b6sw4c6b7wy8a" path="res://power up+piece/key.tscn" id="30_ecmlj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m1jwn"]
 texture = ExtResource("1_yfilb")
@@ -338,7 +340,7 @@ volume_db = -26.129
 parameters/looping = true
 
 [node name="SpawnPoint" type="Marker2D" parent="." unique_id=1021711508]
-position = Vector2(2515, -46)
+position = Vector2(-540, -22)
 
 [node name="Checkpoint2" parent="." unique_id=2029051497 instance=ExtResource("10_3p4hs")]
 position = Vector2(1049, -88)
@@ -386,7 +388,7 @@ position = Vector2(-316, -18)
 position = Vector2(-446, -36)
 
 [node name="DrapeauFin" parent="." unique_id=1048206130 instance=ExtResource("13_annxd")]
-position = Vector2(2660, -110)
+position = Vector2(2658, -109)
 
 [node name="piece" type="Node" parent="." unique_id=920955946]
 
@@ -444,8 +446,11 @@ position = Vector2(1653, -161)
 piece_objectif_id = "piece_objectif_4"
 
 [node name="piece_objectif5" parent="piece_objectif" unique_id=943980796 instance=ExtResource("14_lahcm")]
-position = Vector2(2492, -16)
+position = Vector2(2482, -349)
 piece_objectif_id = "piece_objectif_5"
+
+[node name="key_bloc" parent="piece_objectif" unique_id=129010117 instance=ExtResource("15_l80iv")]
+position = Vector2(2529, -31)
 
 [node name="decoration" type="Node" parent="." unique_id=145636829]
 
@@ -516,3 +521,6 @@ texture = ExtResource("28_iax6m")
 
 [node name="Player" parent="." unique_id=413450925 instance=ExtResource("3_m1jwn")]
 position = Vector2(-541, -29)
+
+[node name="key" parent="." unique_id=1544059836 instance=ExtResource("30_ecmlj")]
+position = Vector2(-458, -112)

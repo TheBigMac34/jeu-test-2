@@ -6,6 +6,14 @@ extends CharacterBody2D
 @onready var animation = $AnimatedSprite2D          # Sprite animé du joueur
 @onready var timer_label = $CanvasLayer/TimerLabel  # Label qui affiche le temps restant
 @onready var timer = $CanvasLayer/Timer             # Timer qui décompte chaque seconde
+@onready var camera = $Camera2D                     # Référence à la caméra du joueur
+
+# --- CAMÉRA JOYSTICK DROIT ---
+const CAM_OFFSET_MAX := Vector2(60.0, 80.0)        # Décalage maximum de la caméra en pixels (X et Y)
+const CAM_OFFSET_SPEED := 4.0                       # Vitesse de transition du décalage caméra (lerp)
+const CAM_DEADZONE := 0.2                           # Zone morte du joystick droit (ignore les micro-mouvements)
+var cam_target_offset := Vector2.ZERO               # Décalage cible calculé depuis le joystick
+var _cam_half_w: float = 0.0                        # Demi-largeur du viewport en pixels monde (calculée une fois)
 
 @export var start_position: Vector2                 # Position de départ (non utilisée directement, le spawn se fait via SpawnPoint)
 
@@ -97,14 +105,13 @@ func _physics_process(delta: float) -> void:
 		else:
 			animation.visible = true                # Frame impaire = visible
 
-	# Gravité appliquée quand le joueur est en l'air
-	if not is_on_floor():
+	# Gravité appliquée quand le joueur est en l'air (annulée pendant le dash)
+	if not is_on_floor() and not is_dashing:
 		velocity += get_gravity() * delta
 
 	# Si le joueur est figé (ex: touche le drapeau de fin), on freine progressivement et on sort
 	if fige:
-		if is_on_floor():
-			velocity.x = lerp(velocity.x, 0.0, braking * delta)  # Freinage progressif
+		velocity.x = lerp(velocity.x, 0.0, braking * delta)  # Freinage progressif (sol et air)
 		move_and_slide()
 		return                                      # On court-circuite tout le reste
 
@@ -126,6 +133,7 @@ func _physics_process(delta: float) -> void:
 		can_dash = false                            # Dash consommé, plus disponible jusqu'au sol
 		dash_direction = derniere_direction         # On dashe dans la dernière direction regardée
 		dash_timer = DASH_DURATION                  # On lance le timer du dash
+		velocity.y = 0.0                            # Annule l'élan vertical au démarrage du dash
 
 	# Pendant le dash : vitesse fixe + effet trail + court-circuit du reste
 	if is_dashing:
@@ -194,6 +202,32 @@ func _physics_process(delta: float) -> void:
 		velocity.x = lerp(velocity.x, move_input * SPEED, acceleration * delta)  # Accélération progressive
 	else:
 		velocity.x = lerp(velocity.x, 0.0, braking * delta)  # Freinage progressif si aucun input
+
+	# --- DÉCALAGE CAMÉRA JOYSTICK DROIT ---
+	var right_stick := Vector2(
+		Input.get_joy_axis(0, JOY_AXIS_RIGHT_X),   # Axe horizontal du joystick droit
+		Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)    # Axe vertical du joystick droit
+	)
+	if right_stick.length() < CAM_DEADZONE:         # Ignore les micro-mouvements (zone morte)
+		right_stick = Vector2.ZERO
+	if _cam_half_w == 0.0:
+		_cam_half_w = get_viewport().get_visible_rect().size.x * 0.5 / camera.zoom.x
+	cam_target_offset = right_stick * CAM_OFFSET_MAX                        # Calcule le décalage cible
+	# Limite gauche X : on borne le TARGET avant le lerp pour éviter tout tremblement
+	# La base caméra (sans offset) = sc_x - offset actuel → position stable malgré le smoothing
+	if _cam_half_w > 0.0:
+		var sc_base_x: float = camera.get_screen_center_position().x - camera.offset.x  # Base caméra sans offset
+		if abs(sc_base_x - global_position.x) < 500.0:                      # Sécurité : valeur cohérente seulement
+			var target_left_edge: float = sc_base_x + cam_target_offset.x - _cam_half_w  # Bord gauche si target appliqué
+			if target_left_edge < -575.0:                                    # Dépasserait la limite
+				cam_target_offset.x = -575.0 - sc_base_x + _cam_half_w      # Borne le target pour rester à -575
+	camera.offset = camera.offset.lerp(cam_target_offset, CAM_OFFSET_SPEED * delta) # Transition douce vers la cible
+	camera.offset = camera.offset.clamp(-CAM_OFFSET_MAX, CAM_OFFSET_MAX)   # Borne l'offset dans tous les sens
+	# Limite bas Y : seulement si le joueur est au-dessus de Y=10
+	# (en dessous, la formule deviendrait négative et forcerait la caméra vers le haut)
+	if global_position.y < 10.0:
+		camera.offset.y = minf(camera.offset.y, 10.0 - global_position.y)
+
 	move_and_slide()
 
 	# --- DÉTECTION DES COLLISIONS (coup de tête sur un bloc) ---
@@ -241,6 +275,8 @@ func bounce():
 func figer():
 	# Bloque tous les inputs du joueur (appelé par le drapeau de fin)
 	fige = true
+	is_dashing = false                                  # Annule le dash en cours
+	dash_timer = 0.0                                    # Remet le timer du dash à zéro
 
 func defiger():
 	# Débloque les inputs du joueur

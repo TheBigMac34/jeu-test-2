@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://drtqdvw6bxpeo"]
 
-[ext_resource type="Texture2D" uid="uid://c3ulmkwyiq5g5" path="res://base de donné image/kenney_pixel-platformer/Tilemap/tilemap-characters.png" id="1_4flbx"]
+[ext_resource type="Texture2D" uid="uid://njelryouu6sk" path="res://base de donné image/kenney_pixel-platformer/Tilemap/tilemap-characters.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://deuqqk5mxh8ty" path="res://Player/player.gd" id="1_4ntmi"]
-[ext_resource type="Texture2D" uid="uid://c086vyv6377ci" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0000 Mina.png" id="2_fhl08"]
-[ext_resource type="FontFile" uid="uid://cq8fch0f4cr5d" path="res://base de donné image/Fonts/Kenney Blocks.ttf" id="3_btcbx"]
-[ext_resource type="Texture2D" uid="uid://behw76kyi0vx" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0001 Mina.png" id="3_vtle1"]
+[ext_resource type="Texture2D" uid="uid://dc7mw6fv0dt6g" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0000 Mina.png" id="2_fhl08"]
+[ext_resource type="FontFile" uid="uid://bjuxjh74bo205" path="res://base de donné image/Fonts/Kenney Blocks.ttf" id="3_btcbx"]
+[ext_resource type="Texture2D" uid="uid://dmhy1n3tgy1l1" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0001 Mina.png" id="3_vtle1"]
 [ext_resource type="Texture2D" uid="uid://c8whejddwia0y" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0000_red.png" id="4_00tjw"]
-[ext_resource type="AudioStream" uid="uid://cla1vd7d1vm6h" path="res://Son/jump.mp3" id="4_gwnis"]
-[ext_resource type="AudioStream" uid="uid://gknyhkrwbil2" path="res://Son/damage.mp3" id="5_k53q1"]
+[ext_resource type="AudioStream" uid="uid://d4lnpsxk25lr6" path="res://Son/jump.mp3" id="4_gwnis"]
+[ext_resource type="AudioStream" uid="uid://by3k2c5mhti5g" path="res://Son/damage.mp3" id="5_k53q1"]
 [ext_resource type="Texture2D" uid="uid://ix8tgp3ipf7f" path="res://base de donné image/kenney_pixel-platformer/Tiles/Characters/tile_0001_red.png" id="5_x3vf3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i3pqv"]
@@ -81,10 +81,11 @@ autoplay = "player 1"
 shape = SubResource("CapsuleShape2D_btcbx")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1130240708]
+position = Vector2(0, -60)
 zoom = Vector2(2.025, 2.025)
 process_callback = 0
 limit_left = -575
-limit_bottom = 20
+limit_bottom = 10
 position_smoothing_enabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=95373484]
