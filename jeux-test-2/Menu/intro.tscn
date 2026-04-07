@@ -28,7 +28,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_wcr73")
 theme_override_font_sizes/font_size = 32
-text = "Ce jeu se joue à la manette"
+text = "This game requires a controller"
 
 [node name="XboxButtonAOutline" type="Sprite2D" parent="ColorRect" unique_id=773145368]
 visible = false

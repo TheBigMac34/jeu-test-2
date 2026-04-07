@@ -28,5 +28,5 @@ offset_right = 120.0
 offset_bottom = -135.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Pause"
+text = "Paused"
 label_settings = SubResource("LabelSettings_aq7p1")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://g0uuqr7muq4c" path="res://CP+Fin/fin_niveau.gd" id="1"]
 [ext_resource type="FontFile" uid="uid://cq8fch0f4cr5d" path="res://base de donné image/Fonts/Kenney Blocks.ttf" id="2_33rv0"]
-[ext_resource type="Texture2D" uid="uid://c1thjtgats52f" path="res://base de donné image/kenney_platformer-art-pixel-redux/Tiles/tile_0076 pointiller.png" id="3_3sfoo"]
+[ext_resource type="Texture2D" uid="uid://cj7heho7fvq87" path="res://base de donné image/kenney_platformer-art-pixel-redux/Tiles/tile_0076 pointiller.png" id="3_3sfoo"]
 [ext_resource type="Texture2D" uid="uid://cvi1t0oaio1dj" path="res://base de donné image/bouton-ui/Default/button_rectangle_depth_flat.png" id="4_q2d4v"]
 [ext_resource type="Script" uid="uid://buaa37stsvn5u" path="res://Menu/HoverScale.gd" id="5_iqxev"]
 
@@ -46,7 +46,7 @@ offset_bottom = 100.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_33rv0")
 theme_override_font_sizes/font_size = 32
-text = "Niveau Terminer !"
+text = "Level Complete!"
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=896909481]
 layout_mode = 1
@@ -93,7 +93,7 @@ texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_33rv0")
 theme_override_font_sizes/font_size = 32
-text = "Argent"
+text = "Silver"
 horizontal_alignment = 1
 
 [node name="Or" type="VBoxContainer" parent="CenterContainer/HBoxContainer" unique_id=1546396883]
@@ -112,7 +112,7 @@ texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_33rv0")
 theme_override_font_sizes/font_size = 32
-text = "OR"
+text = "  Gold"
 horizontal_alignment = 1
 
 [node name="Menu_Button" type="Button" parent="." unique_id=1011962500]
@@ -135,7 +135,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_y6gnp")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_qrxh2")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_kam3p")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_h6ocq")
-text = "Menu Principale"
+text = "Main Menu"
 icon = ExtResource("4_q2d4v")
 icon_alignment = 1
 script = ExtResource("5_iqxev")

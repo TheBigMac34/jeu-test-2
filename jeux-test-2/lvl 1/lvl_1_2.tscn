@@ -437,7 +437,7 @@ texture = ExtResource("9_wf2h7")
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("10_dkewx")
-text = "pour dash"
+text = "to dash"
 
 [node name="Mobs" type="Node" parent="." unique_id=232055866]
 

@@ -22,7 +22,7 @@ signal touche_appuyee  # émis quand le joueur appuie sur la touche d'acceptatio
 # --- TEXTES DE DIALOGUE PAR TYPE D'ORBE ---
 const TEXTES = {
 	"dash":
-		"Ah, un voyageur !\nJe t'attendais...\n\nPrens cette orbe rouge.\nElle te permettra\nde foncer comme l'éclair !",  # dialogue du PNJ pour l'orbe dash
+		"Ah, a traveler!\nI was waiting for you...\n\nTake this red orb.\nIt will allow you\nto dash like lightning!",  # dialogue du PNJ pour l'orbe dash
 }
 
 
@@ -71,7 +71,7 @@ func _demarrer_sequence() -> void:
 		await get_tree().create_timer(0.03).timeout        # attend 30ms entre chaque caractère pour le rythme de frappe
 
 	# Inviter le joueur à appuyer
-	label_hint.text = "[ Appuie sur A ]" # affiche l'indication de touche une fois le texte entièrement affiché
+	label_hint.text = "[ Press A ]" # affiche l'indication de touche une fois le texte entièrement affiché
 	label_hint.visible = true             # rend visible l'indication de touche
 	en_attente_touche = true              # active l'écoute de la touche dans _process()
 	await touche_appuyee                  # suspend la séquence jusqu'à ce que le joueur appuie sur A
