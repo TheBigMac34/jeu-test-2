@@ -154,6 +154,7 @@ func _on_menu_button_pressed() -> void:
 func _on_restart_button_pressed() -> void:
 	Global.clear_checkpoint()                           # efface le checkpoint sauvegardé sur le disque
 	Global.coins = 0                                    # remet le compteur de pièces à zéro
+	Global.vies_actuelles = 3
 	$Fond.hide()                                        # cache le fond du menu pause
 	$"VBoxContainer/Menu Button".hide()                               # cache le bouton Menu
 	$"VBoxContainer/Restart Button".hide()                            # cache le bouton Restart
