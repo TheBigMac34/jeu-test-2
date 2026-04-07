@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://xiypqmdsw34u"]
+
+[ext_resource type="Script" uid="uid://ctnnv5f0dt28a" path="res://Menu/intro.gd" id="1_x6r80"]
+[ext_resource type="FontFile" uid="uid://cq8fch0f4cr5d" path="res://base de donné image/Fonts/Kenney Blocks.ttf" id="2_wcr73"]
+[ext_resource type="Texture2D" uid="uid://baal8vt65dqbv" path="res://base de donné image/input-prompts_1.4.1/Xbox Series/Double/xbox_button_a_outline.png" id="3_bb2wu"]
+[ext_resource type="Texture2D" uid="uid://cpu3wp81rn85w" path="res://base de donné image/input-prompts_1.4.1/Nintendo Switch/Double/controller_switch_pro.png" id="4_iee6v"]
+
+[node name="Intro" type="Node2D" unique_id=763460088]
+script = ExtResource("1_x6r80")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=513936694]
+offset_right = 1156.0
+offset_bottom = 650.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="ColorRect" unique_id=269537487]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = -24.0
+offset_right = 280.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_wcr73")
+theme_override_font_sizes/font_size = 32
+text = "Ce jeu se joue à la manette"
+
+[node name="XboxButtonAOutline" type="Sprite2D" parent="ColorRect" unique_id=773145368]
+visible = false
+position = Vector2(1079, 587)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_bb2wu")
+
+[node name="ControllerSwitchPro" type="Sprite2D" parent="ColorRect" unique_id=1933983488]
+position = Vector2(576, 242)
+texture = ExtResource("4_iee6v")
