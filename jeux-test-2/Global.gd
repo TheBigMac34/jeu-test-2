@@ -31,7 +31,6 @@ var current_level_scene: String = ""   # chemin de la scène du niveau en cours,
 # --- POWER-UPS ---
 # Ces booléens sont débloqués via interaction avec le PNJ et persistés dans la sauvegarde
 var has_dash: bool = false             # vrai si le joueur a débloqué le dash
-var has_double_jump: bool = false      # vrai si le joueur a débloqué le double saut
 var has_key: bool = false              # vrai si le joueur porte actuellement une clé (remis à false à la livraison)
 
 
@@ -46,7 +45,6 @@ func save_game() -> void:
 	# IMPORTANT : on met bien piece_objectif dans data avant d'écrire
 	data["piece_objectif"] = piece_objectif          # synchronise le sous-dictionnaire des pièces objectif dans data
 	data["has_dash"] = has_dash                      # sauvegarde l'état du power-up dash
-	data["has_double_jump"] = has_double_jump        # sauvegarde l'état du power-up double saut
 	var fw := FileAccess.open(save_path, FileAccess.WRITE) # ouvre le fichier de sauvegarde en écriture
 	if fw:                                           # vérifie que l'ouverture a réussi
 		fw.store_string(JSON.stringify(data, "\t"))  # écrit le JSON indenté avec des tabulations pour la lisibilité
@@ -144,7 +142,6 @@ func load_game() -> void:
 	data = parsed                                                    # stocke le dictionnaire parsé comme données actives
 	piece_objectif = data.get("piece_objectif", {})                  # récupère les pièces objectif, ou {} si absentes
 	has_dash = data.get("has_dash", false)                           # récupère l'état du dash, false par défaut
-	has_double_jump = data.get("has_double_jump", false)             # récupère l'état du double saut, false par défaut
 
 
 # --- PIÈCES OBJECTIF ---

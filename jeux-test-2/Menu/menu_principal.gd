@@ -12,6 +12,9 @@ extends Control
 @onready var bronze_sprite_12 = $"Level 1/VBoxContainer/Level 1-2/VBoxContainer/Bronze 1-2" # sprite affichant la médaille bronze du niveau 1-2
 @onready var argent_sprite_12 = $"Level 1/VBoxContainer/Level 1-2/VBoxContainer/argent1-2"  # sprite affichant la médaille argent du niveau 1-2
 @onready var gold_sprite_12   = $"Level 1/VBoxContainer/Level 1-2/VBoxContainer/or 1-2"     # sprite affichant la médaille or du niveau 1-2
+@onready var bronze_sprite_13 = $"Level 1/VBoxContainer/Level 1-3/VBoxContainer/Bronze 1-3" # sprite affichant la médaille bronze du niveau 1-3
+@onready var argent_sprite_13 = $"Level 1/VBoxContainer/Level 1-3/VBoxContainer/argent1-3"  # sprite affichant la médaille argent du niveau 1-3
+@onready var gold_sprite_13   = $"Level 1/VBoxContainer/Level 1-3/VBoxContainer/or 1-3"     # sprite affichant la médaille or du niveau 1-3
 
 # --- VARIABLES ---
 var save_path = "user://savegame.json"  # chemin local vers le fichier de sauvegarde principal
@@ -50,6 +53,9 @@ func apply_default_medals():
 	bronze_sprite_12.texture = pointiller # médaille bronze 1-2 vide
 	argent_sprite_12.texture = pointiller # médaille argent 1-2 vide
 	gold_sprite_12.texture   = pointiller # médaille or 1-2 vide
+	bronze_sprite_13.texture = pointiller # médaille bronze 1-3 vide
+	argent_sprite_13.texture = pointiller # médaille argent 1-3 vide
+	gold_sprite_13.texture   = pointiller # médaille or 1-3 vide
 
 
 # --- LECTURE DE LA SAUVEGARDE ---
@@ -145,6 +151,14 @@ func _ready() -> void:
 		argent_sprite_12.texture = preload("res://base de donné image/kenney_platformer-art-pixel-redux/Tiles/tile_0077.png")
 	if data.get("level_1_2_gold", false):    # si la médaille or a été obtenue sur le niveau 1-2
 		gold_sprite_12.texture   = preload("res://base de donné image/kenney_platformer-art-pixel-redux/Tiles/tile_0078.png")
+
+	# Médailles niveau 1-3
+	if data.get("level_1_3_done", false):    # si le niveau 1-3 a été complété au moins une fois
+		bronze_sprite_13.texture = preload("res://base de donné image/kenney_platformer-art-pixel-redux/Tiles/tile_0076.png")
+	if data.get("level_1_3_silver", false):  # si la médaille argent a été obtenue sur le niveau 1-3
+		argent_sprite_13.texture = preload("res://base de donné image/kenney_platformer-art-pixel-redux/Tiles/tile_0077.png")
+	if data.get("level_1_3_gold", false):    # si la médaille or a été obtenue sur le niveau 1-3
+		gold_sprite_13.texture   = preload("res://base de donné image/kenney_platformer-art-pixel-redux/Tiles/tile_0078.png")
 
 
 # --- BOUTON : SÉLECTION DE NIVEAU ---
@@ -247,8 +261,8 @@ func _on_quit_pressed() -> void:
 func _on_reset_pressed() -> void:
 	var default_data = {                      # construit le dictionnaire de sauvegarde par défaut à écrire
 		"has_dash": false,                    # réinitialise le power-up dash à non débloqué
-		"has_double_jump":false,              # réinitialise le power-up double saut à non débloqué
 		"level_1_1_done": false,              # réinitialise la progression du niveau 1-1
+		"level_1_3_done": false, 
 		"level_1_1_silver": false,            # réinitialise la médaille argent du niveau 1-1
 		"level_1_1_gold": false,              # réinitialise la médaille or du niveau 1-1
 		"level_1_2_done": false,              # réinitialise la progression du niveau 1-2
@@ -284,8 +298,7 @@ func _on_reset_pressed() -> void:
 	file.close()                                                 # ferme le fichier pour valider l'écriture
 	Global.data = default_data                                   # synchronise le dictionnaire global avec les données réinitialisées
 	Global.piece_objectif = default_data["piece_objectif"]       # synchronise les pièces objectif dans le singleton Global
-	Global.has_dash = false          # ← ajoute ça : réinitialise le dash en mémoire vive
-	Global.has_double_jump = false   # ← et ça : réinitialise le double saut en mémoire vive
+	Global.has_dash = false          # réinitialise le dash en mémoire vive
 	# Recharge l'UI si elle est ailleurs
 	get_tree().call_group("hud", "refresh_ui") # notifie tous les noeuds du groupe "hud" de se rafraîchir
 

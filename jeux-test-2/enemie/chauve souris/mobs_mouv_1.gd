@@ -48,7 +48,7 @@ func _physics_process(delta: float) -> void:
 
 # --- SAUT DU JOUEUR SUR L'ENNEMI ---
 func _on_top_hitbox_body_entered(body: Node2D) -> void:
-	if body.name == "Player" and not damage:               # Agit seulement si c'est le joueur et qu'aucun dégât n'a déjà été infligé
+	if body.name == "Player" and body.velocity.y > 0:      # Agit seulement si c'est le joueur ET qu'il descend (évite le faux positif avec damage)
 		if body.has_method("bounce"):                      # Vérifie que le joueur possède une méthode de rebond
 			body.bounce()                                  # Fait rebondir le joueur vers le haut
 			body.can_dash = true                           # Recharge le dash du joueur

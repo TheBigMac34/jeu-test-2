@@ -1,13 +1,14 @@
 extends Node2D
 
+
 # --- RÉFÉRENCES ---
 @onready var player = $Player # Référence au nœud joueur dans la scène
 @onready var spawn_point = $SpawnPoint # Référence au point de spawn de départ du joueur
+@onready var music = $AudioStreamPlayer
 
 # progress bar
 @onready var ui = $ui # Référence au nœud UI (interface HUD) de la scène
 
-@onready var tuto = $decoration/HBoxContainer # Indicateur de tuto dash (affiché seulement quand le joueur a le dash)
 
 # --- PARAMÈTRES EXPORTÉS ---
 @export var level_start_x = -500 # Position X du début du niveau (pour la barre de progression)
@@ -34,15 +35,13 @@ func _enter_tree():
 func _ready() -> void:
 	#progress bar
 	ui.setup_progress(player, level_start_x, level_end_x) # Configure la barre de progression avec le joueur et les limites du niveau
-	tuto.visible = Global.has_dash # Cache le tuto dash si le joueur n'a pas encore le dash
-	$AudioStreamPlayer.play()
-
+	music.play()
+ 
 # --- MISE À JOUR CHAQUE FRAME ---
 func _process(_delta: float) -> void:
-	tuto.visible = Global.has_dash # Affiche le tuto dès que le joueur reçoit le dash du PNJ
-
+	pass
 
 # --- CALLBACK : FIN DE NIVEAU (signal du drapeau) ---
-func _on_drapeau_fin_level_completed() -> void:
+#func _on_drapeau_fin_level_completed() -> void:
 	#get_tree().change_scene_to_file("res://Menu/menu_principal.tscn") # (désactivé) Retour au menu principal
-	$"Lvl 1_1 music".stop() # Arrête la musique du niveau quand le drapeau de fin est atteint
+	#$"Lvl 1_1 music".stop() # Arrête la musique du niveau quand le drapeau de fin est atteint

@@ -33,9 +33,6 @@ func _ready() -> void:
 		Or_Médaille.texture = Pointiller # Affiche la texture en pointillés (médaille non obtenue)
 
 # --- BOUCLE PRINCIPALE ---
-func _process(delta: float) -> void:
-	pass # Aucun traitement nécessaire chaque frame
-
 
 # --- SIGNAL : BOUTON MENU PRESSÉ ---
 func _on_menu_button_pressed() -> void:

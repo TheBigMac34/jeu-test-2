@@ -25,8 +25,6 @@ var blink_timer := 2.0                              # Compteur pour l'effet de c
 var move_input : float                              # Valeur de l'axe de déplacement gauche/droite
 var fige := false                                   # True quand le joueur est bloqué (ex: contact drapeau fin)
 
-# --- DOUBLE SAUT ---
-var sauts_restants: int = 1                         # Nombre de sauts encore disponibles (1 normal, 2 si double saut)
 var was_on_floor: bool = false                      # True si le joueur était au sol la frame précédente
 
 # --- COYOTE TIME ---
@@ -145,11 +143,10 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return                                      # On ignore le reste du mouvement pendant le dash
 
-	# --- DOUBLE SAUT & COYOTE TIME ---
+	# --- COYOTE TIME ---
 
-	# Réinitialise les sauts disponibles quand on touche le sol
+	# Réinitialise le coyote time quand on touche le sol
 	if is_on_floor():
-		sauts_restants = 2 if Global.has_double_jump else 1
 		coyote_timer = 0.0                          # Pas besoin du coyote time si on est au sol
 
 	# Coyote time : quand on quitte le sol sans sauter, on démarre le timer
@@ -168,14 +165,13 @@ func _physics_process(delta: float) -> void:
 	if jump_buffer_timer > 0:
 		jump_buffer_timer -= delta                  # On diminue le timer chaque frame
 
-	# Peut sauter si : au sol, ou dans la fenêtre coyote, ou double saut disponible
-	var peut_sauter = is_on_floor() or coyote_timer > 0 or (Global.has_double_jump and sauts_restants > 0)
+	# Peut sauter si : au sol ou dans la fenêtre coyote
+	var peut_sauter = is_on_floor() or coyote_timer > 0
 
 	# Saut si le buffer est actif et qu'on peut sauter
 	if jump_buffer_timer > 0 and peut_sauter:
 		velocity.y = JUMP_VELOCITY
 		$"Jumps Sound".play()
-		sauts_restants -= 1                         # On consomme un saut
 		coyote_timer = 0.0                          # Coyote time consommé
 		jump_buffer_timer = 0.0                     # Buffer consommé
 

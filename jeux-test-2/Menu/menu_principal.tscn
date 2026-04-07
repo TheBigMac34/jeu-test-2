@@ -2,13 +2,13 @@
 
 [ext_resource type="VideoStream" uid="uid://bvfbfktps4xrj" path="res://base de donné image/video random/0626.ogv" id="1_iihua"]
 [ext_resource type="Script" uid="uid://b2k5u3f1acn1r" path="res://Menu/menu_principal.gd" id="1_xbuub"]
-[ext_resource type="Texture2D" uid="uid://rbiunqm0fhpx" path="res://base de donné image/video random/test.png" id="2_avouw"]
-[ext_resource type="FontFile" uid="uid://bjuxjh74bo205" path="res://base de donné image/Fonts/Kenney Blocks.ttf" id="3_uqf63"]
-[ext_resource type="Texture2D" uid="uid://1xomq46f3gmm" path="res://base de donné image/bouton-ui/Default/button_rectangle_depth_flat.png" id="5_af3rq"]
+[ext_resource type="Texture2D" uid="uid://c7ar4x4tkgurf" path="res://base de donné image/video random/test.png" id="2_avouw"]
+[ext_resource type="FontFile" uid="uid://cq8fch0f4cr5d" path="res://base de donné image/Fonts/Kenney Blocks.ttf" id="3_uqf63"]
+[ext_resource type="Texture2D" uid="uid://cvi1t0oaio1dj" path="res://base de donné image/bouton-ui/Default/button_rectangle_depth_flat.png" id="5_af3rq"]
 [ext_resource type="Script" uid="uid://buaa37stsvn5u" path="res://Menu/HoverScale.gd" id="5_ttrea"]
-[ext_resource type="Texture2D" uid="uid://cj7heho7fvq87" path="res://base de donné image/kenney_platformer-art-pixel-redux/Tiles/tile_0076 pointiller.png" id="6_dbu0d"]
+[ext_resource type="Texture2D" uid="uid://c1thjtgats52f" path="res://base de donné image/kenney_platformer-art-pixel-redux/Tiles/tile_0076 pointiller.png" id="6_dbu0d"]
 [ext_resource type="Script" uid="uid://cjrfo2wjtmhrm" path="res://Menu/level_1_1_bouton.gd" id="6_sy6l5"]
-[ext_resource type="AudioStream" uid="uid://c2hfknyoqibs" path="res://Son/main menu.mp3" id="6_y2etj"]
+[ext_resource type="AudioStream" uid="uid://d2e5sqe7rtsl5" path="res://Son/main menu.mp3" id="6_y2etj"]
 [ext_resource type="Script" uid="uid://bbjfj2giwnlsr" path="res://Menu/level_1_2.gd" id="9_af3rq"]
 [ext_resource type="Script" uid="uid://dbh3g3bsm8xxt" path="res://Menu/level_1_3.gd" id="10_4o7li"]
 

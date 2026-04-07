@@ -46,6 +46,10 @@ func _on_area_2d_body_entered(body):
 		# Arrête la musique du niveau si elle existe
 		if get_tree().current_scene.has_method("level_completed"): # Vérifie si la scène du niveau a une méthode level_completed
 			get_tree().current_scene.level_completed() # Appelle la méthode de fin de niveau sur la scène principale
+		# Coupe la musique du niveau en cours si elle existe
+		var scene = get_tree().current_scene # Récupère la scène du niveau actif
+		if scene.has_node("AudioStreamPlayer"): # Vérifie qu'il y a bien un AudioStreamPlayer dans la scène
+			scene.get_node("AudioStreamPlayer").stop() # Arrête la musique du niveau
 		$Musique_Fin.play() # Lance la musique de fin de niveau
 		state = "descend" # Déclenche l'animation de descente du drapeau
 		$Timer.start() # Démarre le timer qui déclenchera la transition vers la scène de fin

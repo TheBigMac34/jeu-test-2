@@ -1,8 +1,7 @@
 extends Node2D
 
 # --- CONFIGURATION EXPORTÉE ---
-# "dash" pour lvl 1_2 (orbe rouge), "double_saut" pour lvl 1_3 (orbe bleue)
-@export var type_orbe: String = "dash"  # détermine quel power-up le PNJ donne : "dash" ou "double_saut"
+@export var type_orbe: String = "dash"  # détermine quel power-up le PNJ donne (actuellement uniquement "dash")
 
 # --- RÉFÉRENCES AUX NOEUDS ---
 @onready var animation_pnj  = $AnimatedSprite2D                       # sprite animé du PNJ (animation idle, parle, etc.)
@@ -24,8 +23,6 @@ signal touche_appuyee  # émis quand le joueur appuie sur la touche d'acceptatio
 const TEXTES = {
 	"dash":
 		"Ah, un voyageur !\nJe t'attendais...\n\nPrens cette orbe rouge.\nElle te permettra\nde foncer comme l'éclair !",  # dialogue du PNJ pour l'orbe dash
-	"double_saut":
-		"Te revoilà ! Tu as bien avancé.\n\nPrens cette orbe bleue.\nElle te donnera la force\nde sauter deux fois\ndans les airs !"  # dialogue du PNJ pour l'orbe double saut
 }
 
 
@@ -36,8 +33,6 @@ func _ready() -> void:
 	# Si le joueur a déjà ce pouvoir, l'interaction ne se déclenchera pas
 	if type_orbe == "dash" and Global.has_dash:          # vérifie si le power-up dash est déjà débloqué dans la save
 		interaction_done = true                          # marque l'interaction comme terminée pour ne pas la rejouer
-	elif type_orbe == "double_saut" and Global.has_double_jump: # vérifie si le double saut est déjà débloqué dans la save
-		interaction_done = true                          # marque l'interaction comme terminée
 
 
 # --- TRAITEMENT CHAQUE FRAME ---
@@ -84,15 +79,12 @@ func _demarrer_sequence() -> void:
 	# Montrer l'orbe
 	dialogue_panel.visible = false        # cache la bulle de dialogue après l'appui du joueur
 	orbe_node.visible = true              # affiche l'orbe flottante pour la remise visuelle
-	await get_tree().create_timer(2.0).timeout # attend 2 secondes pour laisser le joueur voir l'orbe
+	await get_tree().create_timer(1.0).timeout # attend 1 secondes pour laisser le joueur voir l'orbe
 	orbe_node.visible = false             # cache l'orbe avant de lancer l'animation d'absorption
 	await _explosion_absorption()         # joue l'animation d'explosion et d'absorption de l'orbe vers le joueur
 
 	# Débloquer le pouvoir et sauvegarder
-	if type_orbe == "dash":               # vérifie si l'orbe donnée est l'orbe dash
-		Global.has_dash = true            # active le power-up dash dans le singleton Global
-	else:
-		Global.has_double_jump = true     # sinon, active le power-up double saut dans le singleton Global
+	Global.has_dash = true                # active le power-up dash dans le singleton Global
 	Global.save_game()                    # sauvegarde immédiatement pour persister le pouvoir débloqué
 
 	interaction_done = true               # marque l'interaction comme terminée pour ne pas la rejouer

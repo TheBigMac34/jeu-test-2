@@ -4,3 +4,6 @@
 
 # Fichiers d'import auto-générés par Godot
 *.import
+
+# Claude Code (worktrees, mémoire locale)
+.claude/
